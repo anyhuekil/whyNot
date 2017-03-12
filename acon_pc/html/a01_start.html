@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- 
+html은 xml에서 파생된 문서처리형식이다..
+xml이란? extensible markedup language로 데이터를 웹상에서
+전송하는 규격으로 많이 활용되었는데..
+tag -- 태그에 대한 선언하는 부분을 가지고 있었다.
+DOCTYPE :은 이런 선언에 대한 규칙을 정의하는 부분인데,
+ html5에서는 표준화를 해서 선언하지 않게 되었다.
+        
+html은 계층구조화된 tag이다..
+상위태그
+	중간태그
+		하위태그
+		/하위태그
+	/중간태그
+/상위태그
+'<' :생략-- 주석문이라도 tag자체가 겹치기 때문에 
+   에러발생가망성있어 '<'표시는 주석안에서도 가급적
+   쓰지 않는 것이 좋다..
+html --최상위
+	head  -- 화면구성에 설정내용
+			 javascript, css, 한글처리방식, title등 선언
+	/head
+	body -- 메인화면구성
+	/body
+/html  
+
+
+
+ -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+// script block 안에서 주석쓰임..
+
+
+</script>
+</head>
+<!-- html 주석 부분 ps)자바스크립트 주석과 구분
+	1) 소스의 실행에 영향이 없는 부분
+	2) 소스에 대한 정보를 표시..
+-->
+<body>
+<!-- 
+	tag 시작...
+	1) 태그는 시작과 마지막 tag쌍으로 처리 할 수 있다..
+	2) <시작...     </마지막
+	
+ -->
+	<h1>안녕하세요!! html시작입니다.</h1>
+<!-- 태그의 속성..
+	1) 태그는 속성 부분을 처리할 수 있다..
+	   <태그 속성 = '속성값'
+	   
+ -->	
+ 	<h2 align="center">hello! Good days!!!</h2>
+<!-- 
+	h숫자.  : header숫자..
+	title을 처리할 때, 활용된다..
+	숫자 1이 가장 크고, 6이 가장 작음..
+	속성값 : align : left, center, right : 정렬처리..
+				default는 left
+	ps) default란?
+	초기값을 말하는 것으로 옵션 선택을 입력하지 않아도
+	기본적으로 지원하는 것을 말한다.
+	h숫자 tag는 줄바꿈 처리를 함께 하고 있다..
+				
+ -->	
+	<h3 align="right">반갑습니다.</h3>
+	<h4 align="left">반갑습니다.</h4>
+	<h5 align="center">반갑습니다.</h5>
+	<h6 align="center">반갑습니다.</h6>
+<!-- 연습예제.. 
+다음과 같은 화면 구성을 h tag를 활용하여 구성하세요..
+
+
+
+
+ -->	
+	
+</body>
+</html>

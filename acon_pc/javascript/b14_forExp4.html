@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+// 확인예제1
+// \n : 줄바꿈처리..
+// \t : 탭간격처리
+// %  : 나머지 연산자..
+// 1~ 100까지 숫자를 다음과 같은 형식으로 출력하세요.
+// console.log는 줄바꿈 처리 포함되어 있기에 show누적변수를 
+// 활용..
+/*
+1   2   3   4   5
+6   7   8   9   10
+11  12  13  14  15
+*/
+    var show="";
+    // 문자열 누적처리..
+    // 총합산 : @@@@
+    var sum=0;
+    for(var cnt=1;cnt<=100;cnt++){
+        show+=cnt+"\t";
+        if(cnt%5==0){
+            show+="\n";
+        }
+        sum+=cnt;
+
+    }
+    console.log(show);
+    console.log("총합산:"+sum);
+/*
+for문 연습과제..
+1) 아래형식으로 출력(1~100)
+3   6   9   12  15
+18  21 .......
+2) 구구단 2단부터 9단까지 전체 출력..
+3) 아래 내용 출력
+   50  45  40  35
+   30  25  20  15
+   10  5   0
+
+*/
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

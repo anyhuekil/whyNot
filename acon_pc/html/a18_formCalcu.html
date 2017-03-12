@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function plus(){
+		// 1. <input type="text" name="num01"/> 접근해서 value
+		var num01Str = document.calForm.num01.value;
+		// 2. value값을 parseInt()로 숫자로 전환.
+		var num01Value=parseInt(num01Str);
+		// 3. <input type="text" name="num02"/>
+		var num02Str = document.calForm.num02.value;
+		// 4.  value값을 parseInt()로 숫자로 전환.
+		var num02Value=parseInt(num02Str);
+		var sum=num01Value+num02Value;//합산값.
+		// <input type="text" name="sum"/>에 value으로 할당.
+		document.calForm.sum.value=sum;
+	}
+</script>
+</head>
+<body>
+<form name="calForm"><!-- parseInt()활용 -->
+	<input type="text" name="num01"/> +
+	<input type="text" name="num02"/><br>
+	<input type="button" value="연산결과" onclick="javascript:plus()"/><br>
+	결과값 : <input type="text" name="sum"/>
+</form>
+<!-- 
+과제~~
+	영화관에 가서..
+ 제목:[    ]
+ 관람료:[    ]
+ 인원:[   ]
+ 	 [계산]
+영수증 --textarea
+	제목 :@@@
+	계산 : @@@ * @@@ = @@@ 
+ -->
+</body>
+</html>

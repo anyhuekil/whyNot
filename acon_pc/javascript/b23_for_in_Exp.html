@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+    /*
+   응용예제
+    좋아하는 인물 3명을 입력하여,
+    for in 구문으로 아래와 같은 형식으로 출력하세요!! alert
+        좋아하는 인물 Rank3
+        1. @@@
+        2. @@@
+        3. @@@
+   */
+    var favMember=["","",""];
+    for(var memIdx in favMember){
+        favMember[ memIdx ] = prompt( "좋아하는 인물","홍길동");
+    }
+    var favMemList="좋아하는 인물 Rank3\n";
+    var cnt=1;
+    for(var memIdx in favMember){
+        favMemList+=(cnt++)+". "+favMember[ memIdx ]+"\n";
+    }
+    alert( favMemList );
+
+
+
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

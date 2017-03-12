@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ <script type="text/javascript">
+ <!--
+    /*
+    중첩 조건문 : 조건문 안에 조건문이 들어 가는 것으로
+        여러 프로세스 안에 세부적인 조건을 처리할 때 처리한다.
+    형식 :
+        if( 조건 1 ){
+            if( 조건 1-1 ){
+            
+            }
+        }else if( 조건 2){
+            if( 조건 2-1 ){
+            
+            }else if( 조건 2-2){
+            
+            }
+        }else{
+            그외 조건..
+        }
+    ** 휴일 시간 활용..
+    일어나는 시간..
+        7시전
+           조건 날씨 좋다.
+               좋을 때 ==> 등산 준비를 한다. 
+               흐릴 때 ==> 집에서 좋은 음악을 선택하여
+                            하루를 계획한다.
+        7시이후..
+            친구에게 전화를 한다.
+                오후에 시간 여부 확인
+                    ==> 같이 영화를 본다.
+                ==> 혼자 공부를 한다.
+    */
+    // 일어나는 시간에 따라.
+    var getUpTime=parseInt( prompt ("기상시간 입력","0") );
+    var schedule="";
+    if( getUpTime < 7 ){
+        var isWeatherGreen=confirm("오늘 날씨가 좋으면 확인! 그렇지 않으면 취소를 클릭하세요!"); // 날씨가 좋은지 여부..
+        if( isWeatherGreen ){
+            schedule="등산 준비를 한다!";
+        }else{
+            schedule="좋은 음악과 함께 주말 일과 계획";
+        }
+    }else{
+        var hasFriendTime=confirm("친구가 시간이 있는지 여부를 확인!\n친구와 통화되어 시간이 있으면\n 확인 그렇지 않으면 취소!");
+        if( hasFriendTime ){
+            schedule="친구와 함께 영화를 보러 간다!!";
+        }else{
+            schedule="혼자 공부를 계획해 본다!";
+        }
+    }
+    var show="기상 시간은 "+getUpTime+"시\n"+schedule;
+    alert( show );
+/*
+    과제로 친구와 만나기 100M전에 준비할 내용에 대한 프로세스를
+    중첩 if문으로 만들고 여러가지 상황에 합당한 내용을 처리해
+    보세요..
+*/
+
+
+
+ //-->
+ </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

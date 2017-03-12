@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*
+마라톤 대회가 열렸습니다.
+*/
+
+//1. 단계 : 반복적인 처리.
+// 선수 10명이 골인 하는 것을 처리하세요..
+// 마라톤 선수 골인..(짝짝짝!!)
+for(var cnt=1;cnt<=10;cnt++){
+//    alert("마라톤 선수 골인..(짝짝짝!!)");
+}
+//2. 단계 : 지정된 변수를 통하여 증감 처리 되는 내용 확인
+//  1 등 마라톤 선수 골인(numbering을 처리)
+for(var cnt=1;cnt<=10;cnt++){
+//    alert(cnt+"등 마라톤 선수 골인..(짝짝짝!!)");
+}
+//3. 단계 : 조건처리 - 지정된 내용 중, 특정 조건에 대하여
+//          loop에 영향을 미치게 함..
+//  첫번째 선수가 오면 - 드디어 1등 골인 합니다.
+//   10등 골인으로 마라톤선수 전원완주!!
+for(var cnt=1;cnt<=10;cnt++){
+    if( cnt == 1){
+//        alert("드디어 "+cnt+"등 골인 합니다!");
+    }
+//    alert(cnt+"등 마라톤 선수 골인..(짝짝짝!!)");
+    if( cnt == 10){
+//        alert(cnt+"등 골인으로 마라톤선수 전원완주!!");
+    }
+}
+
+
+//4. 단계 : 특정변수를 지정해서, 연산 처리..
+//   상금지정..500*10 ==> 1등 상금 var awardIdx = 10;
+//                                   awdIdx--  
+//                                  awardMoney=awardIdx*500;
+//             500*9 ==> 2등 상금
+//             500*8 ==> 3등 상금
+///  1등 마라톤 선수 골인  상금 @@@ 입니다.
+var awardIdx=10;
+var awardMoney=0;
+for(var cnt=1;cnt<=10;cnt++){
+    awardMoney=awardIdx*500;
+    if( cnt == 1){
+        alert("드디어 "+cnt+"등 골인 합니다!");
+    }
+    alert(cnt+"등 마라톤 선수 골인..(짝짝짝!!) 상금:"+awardMoney+"만원");
+    if( cnt == 10){
+        alert(cnt+"등 골인으로 마라톤선수 전원완주!!");
+    }
+    awardIdx--;
+
+}
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

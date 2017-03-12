@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*
+반복문 : 프로그래밍에 있어서 반복적인 처리를 통해서,
+결과값을 나타나게 할 때 쓰이는 구문이다.
+1) for
+for(;;){} : 무한 loop 처리.
+for(초기값;한계값범위지정;증감값){
+    변수로 loop처리..
+}
+1. 단계 : 반복적인 처리.
+2. 단계 : 지정된 변수를 통하여 증감 처리 되는 내용 확인
+3. 단계 : 조건처리 - 지정된 내용 중, 특정 조건에 대하여
+          loop에 영향을 미치게 함..
+4. 단계 : 특정변수를 지정해서, 연산 처리..
+*/    
+    var sum=0;
+    for(var cnt=1; cnt<=3;cnt++ ){
+        if( cnt == 1){
+            alert("반복문 시작입니다!");
+        }
+        alert(cnt+") 안녕하세요!");
+        if( cnt == 3 ){
+            alert("Say good bye!");
+        }
+        sum += cnt;
+    }
+    alert("총합산:"+sum);
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

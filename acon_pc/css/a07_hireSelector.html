@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+계층 구조상 하위 객체 selector
+1) 상위객체[공백]하위객체
+	ex) tr td[align=center]{속성:속성값}
+*/	
+/* 
+상위 selector는 id값이 title01이고, 하위내용은 태그가 h1인내용
+	글자색상을 오렌지색으로...
+상위 selector는 id값이 title01이고, 하위내용은 class값이
+	greet01인 내용의 글자색상을 빨강으로...
+*/
+	#title01 h1{color:orange;}
+	#title01>.greet01{background:blue;}
+</style>
+</head>
+<body>
+	<div id="title01">
+		<h1 class="greet01">안녕하세요!! 자주 인사합니다!!</h1>
+		<div id="nav">
+			<h1 class="greet01">재미있는 site로 이동할까요?</h1>
+		</div>
+	</div>
+
+
+</body>
+</html>

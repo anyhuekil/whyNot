@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+action : 데이터를 전달할 특정 page
+ -->
+<form action="a14_receive.jsp">
+	<!-- input:입력하는 형식에서 default내용
+		속성 type :어떤 형식의 입력값을 처리할지 지정.
+			name : 이런 elements을 구분하는 구분자..
+	 --><center><!-- 화면을 중앙정렬처리. -->
+	이름:<input type="text" name="inputname"/><br>
+	나이:<input type="text" name="inputage" /><br>
+	<!--
+	   type 속성
+	      1) submit : 현재 form에 있는 내용을 서버에 전송처리..
+	      2) value: 현재 처리할 레이블 내용을 표시..
+ http://localhost:8080/clientPrj/html/
+ 		a13_form.html?inputname=thank
+ 		query string : 데이터를 서버에 특정 형식으로 전송하는 것을
+ 		말하는데, 이 형식은 name1=입력값&name2=입력값	   
+ ex) a13_form.html?inputname=himan&inputage=25		
+ 		
+	 -->
+	<input type="submit" value="전송합니다!"/>
+
+</form>
+
+
+
+</body>
+</html>

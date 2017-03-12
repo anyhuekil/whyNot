@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+    var strNumber01=prompt("첫번째 숫자를 입력하세요","0");
+    var strNumber02=prompt("두번째 숫자를 입력하세요","0");
+    // 형변환 : 숫자형 문자를 Number를 통해서 숫자로 변환처리.
+    //       Number는 정수나 실수 둘다 입력 가능..
+    var number01= Number(strNumber01);
+    var number02= Number(strNumber02);
+    alert("Number처리"+strNumber01+"+"+strNumber02+"="+(number01+number02));
+    // parseInt("정수형 문자") : 정수형 문자를 정수로 변환
+    //          정수만 처리가 된다..
+    //    정수형 문자를 입력시, 숫자와 문자를 혼용해서 입력하더라도,
+    //    시작 입력내용이 숫자이면 숫자만 뽑아서 정상적으로 숫자만
+    //    처리하게 한다. ex) 25원 ==> 25  25$==> 25
+    number01= parseInt(strNumber01);
+    number02= parseInt(strNumber02);
+    alert("parseInt:"+strNumber01+"+"+strNumber02+"="+(number01+number02));
+/*
+일치연산자 : dataType과 data를 같은지 여부를 동시에 확인하는 연산자를 말한다.
+    === : type과 데이터가 동일할 때.
+    !== : type이든 데이터든 동일하지 않을 때.
+*/
+    alert(''===false); // 문자열과 boolean형 비교
+    alert(''===0 ); // 문자열과 숫자형 비교
+    alert(0 ===false); // 숫자형과 boolean형 비교
+    alert('273'===273); // 문자형과 숫자형 비교
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

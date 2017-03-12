@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+/**/
+</style>
+<script type="text/javascript">
+/*
+data는 2가지 형태로 나타난다..
+1) tag안에 lebel내용 <h1>@@@@</h1> <td>####</td>
+2) input에  value속성.. <input value=""/>
+ 
+ */
+	function call(num){
+		if(num==1){
+			// value을 기본속성으로 없는 label에 대한 접근은
+			// innerHTML로 접근해서 변경할 수 있다.
+			// HTML(대문자) 안에(inner)
+			document.getElementById("data01").innerHTML="일어나서 열심히 하는 방법1";
+			// css의 속성을 지정해서 변경하는 방법..
+			// 모든 객체단위.style.스타일 속성="스타일 속성값";
+			//               h1{스타일 속성:스타일 속성값}
+			//                  background-color:pink
+			//      자바스크립트 style.background구분자(-)첫자를대문자
+            document.getElementById("data01").style.backgroundColor="pink";
+		} 
+	 	if(num==2){
+	 		document.getElementById("data02").value="열심은 모든 일에 시작!!";
+	 		
+	 	}
+ 	}
+ /* 확인예제.
+ 	금액 : 1,000 원
+ 	[로또 당첨]  ==> 클릭하는 순간 금액 : 1,000원  일금 5억원정  변경.
+ 									배경색상 pink, 글자색 파랑색
+ */
+ 
+ 
+ 
+</script>
+</head>
+<body>
+	<h1 id="data01">오후에 잠을 깨는 방법?</h1>
+	<input type="text" id="data02"  
+		value="열심히로 부족하지 않을까요?" /><br>
+	<input type="button" value="h1데이터" 
+		onclick="javascript:call(1);"/><br><!-- call에 입력값으로 1을 넘김 -->
+	<input type="button" value="value데이터" 
+		onclick="javascript:call(2);"/><br><!-- call에 입력값으로 2를 넘김.. -->
+		
+		
+		
+		
+		
+
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	table : html에서 표를 만들 때, 사용하는 태그이다.
+	html5이전에 화면구성을 할때 주로 많이 쓰여서 중요도가
+	높다. 현재는 화면구성 시, div를 이용해서 조금은 중요도가
+	떨어졌지만, main 데이터 현황 list에는 꼭 활용하는 태그
+	이기에 반드시 익숙해야 한다..
+	태그
+	1) table :최상위 객체
+	
+	2) tr : table row : 테이블의 행을 나타내는 객체
+	3) td : table data : 테이블에 데이터를 나타내는 객체..
+	4) th : table header : 테이블에 타이틀을 나타내는 객체..
+	table의 속성
+	1) border : 테두리 생성.
+	2) align : 전체화면 대비 정렬처리
+	3) width : 폭의 크기를 지정..
+		default로 열의 가장 큰데이터에 맞게 처리..
+	4) height : 높이를 지정..	
+ -->
+ 		<h1 align="center">구매물품 현황</h1>
+ 	<table align="center" width="300" height="200" border>
+ 		<tr bgColor="yellow">
+ 			<th>NO</th><th>물건명</th><th>가격</th><th>갯수</th>
+ 		</tr>
+ 		<tr>
+ 			<td align="center">1</td><td>사과</td>
+ 			<td align="right">3000</td>
+ 			<td  align="right">2</td>
+ 		</tr>
+ 		<tr align="center"><td>2</td><td>바나나</td>
+ 		    <td>4500</td><td align="right">3</td></tr>
+ 		<tr><td>3</td><td>딸기</td><td>11000</td><td>3</td></tr>
+ 	</table>
+<!-- 
+테이블 과제1
+	    2017년 KBO 리그 구단
+
+  구단명  연고지역  작년(2016)성적	
+   KIA     광주       @@@		
+   롯데     부산       @@승@@패(@@위)	
+ --> 	
+<!-- tr, td 속성..
+	1) bgColor : 해당내용의 text의 색상을 지정..
+	2) align : 글자의 정렬처리.
+		th :default로 중앙 정렬
+		td :default로 왼쪽 정렬
+		right, left, center
+		일반적으로 숫자(화폐)는 오른쪽 정렬, 문자는 왼쪽정렬,
+		code값이나 numbering처리는 중앙정렬처리..
+	3) rowspan, colspan	
+ -->
+<table align="center" width="200" height="200" border>
+	<tr align="center"><td>1</td><td>2</td><td rowspan="2">3</td></tr>
+	<tr align="center"><td>4</td><td>5</td></tr>
+	<tr align="center"><td colspan="3">7</td></tr>
+</table>  
+<!-- 
+테이블과제2
+아래와 같은 테이블을 구성하세요..
+
+과목   내용       비고
+java  기본문법 
+      object
+<td rowspan="2">java</td>
+
+jsp   session
+      bean
+      
+XXX의 마블 판모양 테이블 만들기..      
+
+-->
+<table align="center" width="400" height="400" border>
+	<tr align="center"><td width="100">7</td>
+	    <td width="100">8</td>
+	    <td width="100">9</td>
+	    <td width="100">10</td></tr>	
+	<tr align="center"><td>6</td><td colspan="2" rowspan="2">
+				  XXX의 마블
+				  </td><td>11</td></tr>	
+	<tr align="center"><td>5</td><td>12</td></tr>	
+	<tr align="center"><td>4</td><td>3</td><td>2</td><td>1</td></tr>	
+
+</table> 
+</body>
+</html>

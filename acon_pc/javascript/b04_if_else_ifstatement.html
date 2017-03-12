@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*  if else if 문 :주로 범위에 대한 처리를 할 때 사용.
+    if(조건1){
+        조건1에 해당하는 내용처리
+    }else if(조건2){
+        조건1을 제외한 조건2를 처리하는 내용
+    }else if(조건3){
+        조건1, 조건2를 제외한 조건3을 처리하는 내용
+    }else{
+        상위에 모든 조건을 제외한 내용..
+    }
+*/
+// if else if을 이용한 학점처리.
+// 참고사항 parseInt():문자열을 숫자로 전환처리 함수..
+    var msg = "획득한 점수를 입력하세요";
+    var isValid=true; // 초기 유효성 check
+    // 입력받은 데이터를 함수로 숫자로 처리..
+    var strNumber=prompt( msg, "0" );
+    // null과 그외 number가 아닌 데이터. 처리..
+   // alert( strNumber ); // 취소 클릭시, null
+    //alert( isNaN( strNumber ) ); // 숫자가 아닐때, true,
+                                 // 숫자일 때는 false
+    // isNaN : Is not a Number?
+    if( strNumber == null || isNaN( strNumber ) ){
+        isValid=false; 
+        alert( "숫자를 입력하고 확인버튼을 클릭 하세요!" );
+    }
+
+    var inputPoint=parseInt( strNumber);
+    // 취소를 클릭했을 때, NaN이 나온다.
+    // 숫자가 아닌 문자를 입력 했을 때도, NaN이 나온다.
+    // alert( inputPoint + 10 );
+    // typeof() : 해당 데이터의 유형을 check하는 부분..
+    //alert( typeof(inputPoint) );
+
+    var grade="";
+
+    if( inputPoint < 0 || inputPoint > 100 ){
+        alert( "범위가 0~100로 입력하여야 합니다!" );
+        isValid=false;        
+    }else if( inputPoint >= 90 ){ // 90~100
+        grade="A";
+    }else if( inputPoint >= 80 ){
+        grade="B";
+    }else if( inputPoint >= 70 ){
+        grade="C";
+    }else if( inputPoint >= 60 ){
+        grade="D";
+    // 위에서 지정한 데이터 이외의 경우
+    }else{
+        grade="F";
+    }
+    // 입력한 점수는 @@이고 등급은 @@ 입니다.
+    // 위의 유효성 check를 통과한 경우만,
+    if( isValid ){
+        alert("입력한 점수는 "+inputPoint+"이고 등급은 "+grade+" 입니다." ); 
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

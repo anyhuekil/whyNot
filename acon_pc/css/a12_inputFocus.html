@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+	selector:focus{속성:속성값}
+	해당 selector객체를 focus를 했을때, 변경할 css속성
+	정의
+	ex) input태그에 초점을 맞출 경우에 배경색상을 노랑색으로 변경
+	처리합니다.
+	text기반의 내용만 배경색상 변경 확인..
+*/
+	input:focus{background-color:yellow;}
+</style>
+<script type="text/javascript">
+	function changeVal(obj){
+		// 현재 입력된 내용 삭제..
+		// 초기 문자열인 '입력하세요!!'일 때 입력처리.
+		if( obj.value == "입력하세요!!"){
+			obj.value="";
+		}
+	}
+/*
+ 확인예제 및 과제..
+ 아래와 같은 로그인 화면을 만들고,
+ 	로그인    -- 입력시 마다, focus하는 곳에서 배경색, 글자색 변경처리
+ ID : [     ]
+PASS : [      ]
+   [로그인]    -- id와 pass가 지정된 내용에 맞을 때, 다음 단계 활성화
+   					future//7777 
+ status :[    ] -- 상태여부(로그인전/로그인성공/1단계/2단계)
+1단계 주제를 입력하세요:[   ]  - 초기 비활성화 ==> 활성화  
+                                document.form01.input01.disabled=false;
+2단계 세부주제를 입력하세요:[   ] - 초기 비활성화 ==> 활성화 
+document.form이름.element이름.value
+ */	
+</script>
+</head>
+<body>
+	<h1>포커싱 처리시, 색상 변경</h1>
+	<input type="text" onclick="javascript:changeVal(this)" 
+			value="입력하세요!!"/><br>
+	<input type="password"/><br>
+	<input type="radio"/><br>
+	<input type="checkbox"/><br>
+</body>
+</html>

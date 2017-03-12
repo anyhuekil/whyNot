@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- form은 데이터를 서버에 넘기기위해서 필요
+ -->
+<center>
+<h1>회원가입</h1>
+<form>
+id : <input type="text" name="inId" /><br>
+이름:<input type="text" name="inName" /><br>
+<!-- 
+password : 입력시, 글자가 안보게끔
+  패스워드를 입력하게 처리..
+ -->
+password:<input type="password" name="inPass"/><br>
+성별:
+남자<input type="radio" name="gender" value="man"/>
+여자<input type="radio" name="gender" value="woman"/><br>
+사는곳:
+국내<input type="radio" name="location" value="in"/>
+국외<input type="radio" name="location" value="out"/><br>
+<!-- 
+radio : 단일 선택할 수 있게 하는 elements
+	name으로 그룹을 선택해서 단일처리 가능..
+	ctrl+alt+화살표아래 :복사
+-->
+취미:
+음악<input type="checkbox" name="hobby" value="music"/>
+여행<input type="checkbox" name="hobby" value="travel"/>
+game<input type="checkbox" name="hobby" value="game"/>
+자전거<input type="checkbox" name="hobby" value="cycle"/>
+기타<input type="checkbox" name="hobby" value="etc"/><br>
+<!-- 멀티선택을 가능하게 하는 elements
+	단, 이름을 동일하게 설정하면 서버단에 배열로 값을 받아서
+	처리한다.
+ -->
+사는 지역(국내):
+<select name="selLoc">
+	<option value="loc1">서울/경기</option>
+	<option value="loc2">강원도</option>
+	<option value="loc3">충청도</option>
+	<option value="loc3">경상도</option>
+	<option value="loc4">제주도</option>
+</select><br> 
+<!-- 초기 선택값이 있고, 선택적으로 데이터를 확인하게 할때 쓰인다.
+	3개이상 많은 내용 중,단일 선택 처리에 주로 쓰인다.
+	서버에 전달되는 값
+	..option에 입력되지 않았을 때, 표현되는 label값을
+	value값으로 default 설정 된다..
+	보이는 label값과 실제 server에 전달되는 값이 다를 때는
+	option의 속성값으로 value값을 지정한다.
+ -->
+ 위에 입력한 내용이 사실이면 아래 확인 버튼을 클릭하세요!!<br>
+ <input type="button" name="confirm" value="확인"
+ 	onclick="javascript:alert('감사합니다^^!!')"
+ /><br>
+ 
+ <!-- 
+ button : 주로 버튼모양의 elements로 이벤트 클릭을 처리할 때,
+ 사용됩니다.
+  -->
+<!-- 
+과제
+쇼핑몰이나, 게임사이트 등에서 회원가입란을 확인하시고,
+지금 배운 form객체 하위내용을 table함께 정렬을 효과적해서..
+회원가입처리화면을 구성하세요..
+
+ -->
+입력한 내용 초기화:<input type="reset" value="입력초기화"/>
+<!-- 
+reset : form하위 객체를 기준으로 입력한 내용을 초기화시킬때,
+사용한다..
+
+ -->
+ </form>
+
+</center> 
+</body>
+</html>

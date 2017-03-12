@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+//     확인예제...
+//     마트에가서..
+//     사야 할 물건 갯수를 prompt 입력받음. parseInt활용
+//     for문 활용해서 한계치부분을 입력받은 물건갯수를 setting
+//     @@@번째 구매한 물건 입력 받음..prompt
+//     마지막 물건명을 입력하면 구매완료 alert 창이 나타남..
+//     출력내용.
+//     총 구매한 물건 갯수 : @@@
+//     구매한 물건 list
+//     @@@@
+//     @@@
+//     @@
+    var prodList=[];
+    var buyCnt=parseInt(prompt("사야 할 물건 갯수입력","1"));
+    for(var idx=0;idx<buyCnt;idx++){
+        prodList[idx]=prompt((idx+1)+"번째 구매한 물건 입력","물건");
+    }
+    var buyList="총 구매한 물건 갯수 : "+buyCnt+"\n";
+    buyList+="구매한 물건 List\n";
+    for(var idx=0;idx<prodList.length;idx++){
+        buyList+=(idx+1)+") "+prodList[idx]+"\n";
+    }
+    alert( buyList );
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

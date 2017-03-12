@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+	선언 규칙..
+	1. tag
+		tag명{속성1:속성1값;속성2:속성2값;}
+	2. id값으로 접근..
+	   tag안에 속성값을 id를 설정했을 때는.
+	   #id명{속성1:속성1값}
+	   으로 접근가능..	
+	3. class값으로 접근..
+	   tag안에 속성값을 class 설정했을 때..
+	   .class명{속성1:속성1값} 
+	   
+*/
+/* 글자색상:color, 배경색상:background-color*/
+	h1{color:blue;background-color:yellow;font-size:100pt;}
+	h2{color:blue;background-color:yellow;font-size:5pt;}
+	#title01{background-color:orange;font-size:10pt;}
+	table{background-color:yellow;}
+	.ckPoint{background-color:pink;}
+	
+</style>
+</head>
+<body>
+	<h2 >CSS가 어디까지 지원하는가?</h2>
+	<h2 id="title01">CSS가 어디까지 지원하는가?(id접근.)</h2>
+	<h2 class="ckPoint">CSS가 어디까지 지원하는가?</h2>
+	<h1 >CSS가 어디까지 지원하는가?</h1>
+	<table align="center" width="300" height="300" border>
+		<tr><td class="ckPoint"></td><td></td><td></td></tr>
+		<tr><td></td><td class="ckPoint"></td><td></td></tr>
+		<tr><td></td><td></td><td class="ckPoint"></td></tr>
+		<tr><td></td><td class="ckPoint"></td><td></td></tr>
+		<tr><td class="ckPoint"></td><td></td><td></td></tr>
+	</table>
+
+<!-- 
+css란?
+기본 html의 tag의 고유 속성에서 지원하지 않는 정적인
+페이지에 대한 확장 속성을 지원처리 한다.
+ -->
+<!-- 
+과제
+	어서오세요..
+	즐거운 쇼핑되시길..	
+판매물품현황	
+ch  물건명    가격    갯수
+[]  [사과]   [3000]   [   ]
+[]  [바나나] [5000]   [   ]
+[]  [딸기]   [8000]   [   ]
+         [구매]
+-- 화면 처리 사항(기본 글자색상 검정)
+1. title 부분은 배경색상 노랑 text색상 파랑
+2. 물건명에 해당하는 배경색상 pink
+3. 갯수 부분 입력하는 배경색상 노랑색 글자정렬
+	 오른쪽(text-align활용)
+
+ --> 
+ 
+
+</body>
+</html>

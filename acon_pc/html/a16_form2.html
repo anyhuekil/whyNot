@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+form하위 객체들..
+1. file
+파일을 서버에 등록하게 처리하는 객체..
+application과 연동하여 실제파일을 서버에 전달한다.
+ -->
+등록할 파일:<input type="file" name="infile" /><br> 
+<!-- 
+html5에서 적용되는 객체들..
+1. color : 색상처리
+2. date : 날짜입력
+3. datetime : 날짜와 시간
+4. email : 이메일입력
+5. month : 월단위 입력..
+ -->
+<input type="color" /><br> 
+<input type="date" /><br> 
+<input type="datetime" /><br> 
+<input type="email" /><br> 
+<input type="month" /><br> 
+<!-- 
+6. number : 숫자입력
+7. range : 범위입력..
+8. search : 검색어 입력 양식
+9. tel : 전화번호입력
+10. time : 시간선택양식
+11. url : url입력양식
+12. week : 주단위 입력양식
+ -->
+<input type="number"  /><br>
+<input type="range"  /><br>
+<input type="search"  /><br>
+<input type="tel"  /><br>
+<input type="time"  /><br>
+<input type="url"  /><br>
+<input type="week"  /><br>
+<!-- 문자열을 다중 라인에 입력하는 elements 
+	textarea
+		rows : 행의 크기 설정
+		cols : 열의 크기 설정.
+		name : 서버에 데이터를 넘기기 위한 구분값,
+		       javascript에서는 데이터의 validate나 로직처리를 위해 필요
+-->
+자기 소개서:<br>
+<!-- form하위에 있으면, 
+document.form이름.introMyself.value="영수증\n @@@ * @@@ = @@@" -->
+<textarea name="introMyself" rows="10" cols="50">
+여기에 자기소개서 입력..
+</textarea><br>
+
+
+
+
+
+
+
+
+</body>
+</html>

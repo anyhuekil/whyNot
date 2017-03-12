@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+ /*
+    for in 구문
+        for문에 parameter(매개)값을 in이라는 내용으로 간단하게
+        배열 데이터를 index값으로 처리하는 구문..
+    for( 단위 index in 배열 ){
+        배열[ index]
+    }
+ */  
+    var list=["사과","바나나","딸기"];
+   // for(var idx in list ){
+   //     alert( idx + "-" + list[ idx ] );
+   // }
+/*
+   확인예제..
+   구매한 물건 값을 3개 입력받아서.
+   for in 구문을 이용하여 전체 합산을 출력하세요..
+*/
+    var prodPrice=[];
+    for(var cnt=1;cnt<=3;cnt++){
+       prodPrice[cnt-1]=parseInt( prompt(cnt+"번째 물건값","0")); 
+    }
+    //alert( prodPrice );
+    var tot=0;
+    for(var priceIdx in prodPrice ){
+        tot += prodPrice[ priceIdx ];
+    }
+    alert("총합산금액:" + tot );
+/*
+   응용예제
+    좋아하는 인물 3명을 입력하여,
+    for in 구문으로 아래와 같은 형식으로 출력하세요!! alert
+        좋아하는 인물 Rank3
+        1. @@@
+        2. @@@
+        3. @@@
+*/
+
+
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

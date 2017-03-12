@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+구조 선택자 
+ 특정한 위치 있는 태그를 선택하는 선택자를 말한다.
+ 선택자:first-child{속성:속성값}
+ 형제관계(같은 상위객체에 level같은 관계)에 있는 것중에
+ 첫번째 위치하는 selector를 선택합니다.
+ 
+*/
+/*	float:left 기본속성의 block형태의 내용을 inline형태로 변경해 주는 처리.*/
+/*	list-style : numbering에 대한 style을 css로 변경처리.. 삭제 처리시
+		list-style:none;
+	padding : 글자와 border의 간격처리..	
+		*/
+	li{float:left;list-style:none;padding:15px;background-color:pink;}
+/* 처음 1번 선수 li의 내용을 시작하는 radius 모양으로 만든다. 처음 왼쪽부분만
+	radius로 나오게 처리..
+	*/
+	li:first-child{border-radius:10px 0 0 10px;}	
+/* 마지막 5번 선수 li의 내용을 radius내용 마지막으로 오른쪽부분만 radius처리한다.*/
+	li:last-child{border-radius:0 10px 10px 0;}		
+/* 홀수나 짝수, 또는 3개 ~~ 4개 등 단위로 특정한 css를 적용할 때..
+	nth-child(단위처리)
+	단위처리
+		단위의 크기n, 단위의 크기n + 단위의 크기나머지
+		2개 단위 홀짝에 대한 변경 처리 2n, 2n+1
+		3개 단위로 다른 내용에 대한 처리 3n, 3n+1, 3n+2
+	2단위로 li의 내용 배경색상을 다르게 처리하고자 한다.
+*/	
+	li:nth-child(3n){background:#ff0003;}	
+	li:nth-child(3n+1){background:#800000;}
+	li:nth-child(3n+2){background:#900000;}
+    li:hover{background:pink;color:blue;}
+/*	확인예제
+	h1을 이용하여..명언 5개를 list하고,
+	2개단위로 다른 배경 색상으로 나타나게 처리 하세요..
+	
+	
+*/    
+</style>
+</head>
+<body>
+	<ul>
+		<li>1번 선수</li>
+		<li>2번 선수</li>
+		<li>3번 선수</li>
+		<li>4번 선수</li>
+		<li>5번 선수</li>
+	</ul>
+</body>
+</html>

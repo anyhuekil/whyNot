@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+    function getReward(){
+        var objShowMn=document.getElementById("showMoney");
+        objShowMn.innerHTML="일금 5억원정";
+        objShowMn.style.backgroundColor="pink";
+        objShowMn.style.color="blue";       
+    }
+ /* 숙제!!
+ 	색상과 글자입히기..
+ 	글자색 선택 [select option] - 빨,주,노,초,파,남,보
+ 	입력할 내용 :[      ]
+ 	[확인]
+    @@@@@@@@@@  : 확인을 클릭시, 해당 배경색에 입력할 내용에 
+                   입력한 글자 내용 표시..
+ */   
+  </script>
+ </head>
+ <body>
+  <h1 id="showMoney">금액 : 1,000원</h1>
+  <input type="button" value="로또당첨" onclick="javascript:getReward();"/>
+ </body>
+</html>

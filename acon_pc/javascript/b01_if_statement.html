@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/* 1. 조건문 : 데이터의 내용에 따라 조건연산자를 만들고,
+      조건연산자의 true/false에 따라 다른 프로세스를 가게
+      만드는 것을 말한다.
+   2. 형식
+    1) if(조건연산자){
+            해당 조건일 때, 처리할 프로세스 내용..
+       }
+*/        
+// 점수가 60점이상일때, 합격 메시지처리 그외는 불합격
+    var inputPoint=65;
+    var result="불합격";
+    if( inputPoint >= 60 ){
+        result="합격";
+    }
+//    alert("획득점수:"+inputPoint+"\n결과:"+result);
+/*
+    지난 배운 함수 :
+        confirm() : true/false
+        prompt() : null/입력된 값..
+
+*/
+/*
+    
+*/  
+    var msg = "합격이면 확인버튼을\n 불학격이면 취소버튼을 클릭하세요 ";
+    var result="불합격하셨습니다!";
+    /*
+    var isPass = confirm( msg ); // isPass를 재활용이 필요할 때.
+    if( isPass ){
+        result="합격하셨습니다!";
+    }
+    */
+    //alert("true/false"+isPass);
+    //alert("결과는?"+result);
+/* 확인예제.
+    confirm을 활용하여.. 계속 주문여부를 check하세요..
+    
+    물건을 구매하셨습니다!!!
+    계속 구매하시겠습니까?
+    - true ==> 물건 구매 계속하겠습니다.
+    - false ==> 감사합니다!!
+*/
+    var buyMsg="물건을 구매하셨습니다!!!\n계속 구매하시겠습니까?";
+    var resultMsg="감사합니다!!";
+    if( confirm( buyMsg ) ){
+        resultMsg="물건 구매 계속하겠습니다.";
+    }
+    alert( resultMsg );
+/*
+    2)if( 조건식){
+        조건식이 true일 때, 처리할 내용.
+      }else{
+        조건식이 false일 때, 처리할 내용.
+      }
+    if else문은 범위를 지정하여 처리할 필요가 있을 때, 주로 활용된다.
+*/
+/*  청소년 할인 요금 지원여부 처리..
+    8~18까지 청소년 요금제 지원,
+    그외는 해당사항 없음..
+*/
+    var age = 10;
+    if( age>=8 && age<=18 ){
+ //       alert("청소년 할인 요금 지원!");
+    }else{
+//        alert("해당 나이는 청소년 할인 요금을\n 지원하지 않습니다");
+    }
+/*  prompt("메시지","default입력값"); 
+      확인 : 입력된 문자열
+      취소 : null을 처리..
+*/
+/*
+*과제 공백과 null 차이..
+가장 친한 친구 3명을 입력하세요.
+    1. prompt
+    2. prompt
+    3. prompt
+    입력된 값이 없을 때(취소를 누르거나, 값을 입력하지 않은
+       상태로 확인을 클릭시)
+    입력된 값이 없습니다! 라는 메시지를 출력.. 
+    결과값.
+        가장 친한 친구 list
+        1. @@@@
+        2. @@@
+        3. 입력된 값이 없습니다.
+*/
+    var inputMsg ="가장 친한 친구 3명을 입력하세요.";
+ //   alert( inputMsg );
+    var number=1;
+    var friend01=prompt( ( number++ )+"번째 친구를 입력하세요","");
+    // 취소를 누르거나 입력값이 없고 확인을 클릭시..
+    if( friend01 ==null || friend01==""){
+        alert("입력된 값이 없습니다! ");
+        friend01="입력된 값이 없습니다! "
+    }else{ alert("정상입력 완료");     }
+    var friend02=prompt( ( number++ )+"번째 친구를 입력하세요",""); if( friend02 ==null || friend02==""){
+        alert("입력된 값이 없습니다! ");
+        friend02="입력된 값이 없습니다! "
+    }else{ alert("정상입력 완료");     }
+    var friend03=prompt( ( number )+"번째 친구를 입력하세요","");  if( friend03 ==null || friend03==""){
+        alert("입력된 값이 없습니다! ");
+        friend03="입력된 값이 없습니다! "
+    }else{ alert("정상입력 완료");     }
+    number=1;
+    var friendList="\t가장 친한 친구 list\n";
+    // += : 누적처리 문자열 누적, 숫자 누적덧셈
+    //   1. @@@@
+    friendList += (number++)+". "+friend01+"\n";
+    friendList += (number++)+". "+friend02+"\n";
+    friendList += (number++)+". "+friend03+"\n";
+//    alert( friendList );
+/* 확인예제..
+    직급에 따라 보너스를 다르게 처리하는 프로그램을 만들려고 한다.
+    입력값 prompt 직급:사장, 이사, 부장, 차장, 과장, 대리, 사원
+                보너스:  0%   10%,  30%,  25%,  20%,  15%   10%
+           직급에 해당하지 않는 데이터 : 잘못된 데이터 입력입니다.
+           null이거나, 공백일 때 : 직급을 입력하셔야 합니다.
+    초기 메시지 : 직급을 입력하세요..
+    출력 내용 : 직급은 @@@ 이고, 보너스는 @@ %입니다.
+*/
+    var workerGrade=prompt("직급을 입력하세요!","");
+    var msg ="직급을 입력하세요..";
+    var incentive=0;
+    if( workerGrade == "이사" ||
+        workerGrade == "부장" ||
+        workerGrade == "차장" ||
+        workerGrade == "과장" ||
+        workerGrade == "대리" ||
+        workerGrade == "사원" ){ 
+        if( workerGrade == "이사" ) incentive= 10;
+        if( workerGrade == "부장" ) incentive= 30;
+        if( workerGrade == "차장" ) incentive= 25;
+        if( workerGrade == "과장" ) incentive= 20;
+        if( workerGrade == "대리" ) incentive= 15;
+        if( workerGrade == "사원" ) incentive= 10;
+
+        msg ="직급은 "+workerGrade+"이고, 보너스는 "+incentive+ " %입니다.";
+    }else{
+        msg="잘못된 데이터 입력입니다.";    
+    }
+    alert(msg);
+
+
+
+
+
+
+
+
+
+
+
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

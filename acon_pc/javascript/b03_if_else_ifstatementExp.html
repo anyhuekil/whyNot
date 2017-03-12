@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+    var workerGrade=prompt("직급을 입력하세요!","");
+    var msg ="직급을 입력하세요..";
+    var incentive=0;
+    if( workerGrade==null || workerGrade==""){
+        msg="직급을 입력하셔야 합니다.";    
+    // 입력이 없거나, 입력값이 공백인경우를 제외하고,
+    //  사장입력을 했을 ..
+    }else if( workerGrade == "사장" ){
+        incentive=0;
+    }else if( workerGrade == "이사" ){
+        incentive=10;
+    }else if( workerGrade == "부장" ){
+        incentive=30;
+    }else if( workerGrade == "차장" ){
+        incentive= 25;
+    }else if( workerGrade == "과장" ){
+        incentive= 20;
+    }else if( workerGrade == "대리" ){
+        incentive= 15;
+    }else if( workerGrade == "사원" ){
+        incentive= 10;
+    // 위 조건을 제외한 나머지(null값도 아니고, 공백값도 아니고,
+    //  지정된 직급도 아닐 때..
+    }else{
+         msg="잘못된 데이터 입력입니다.";    
+    }
+    if( workerGrade == "사장" || incentive>0 ){
+        msg ="직급은 "+workerGrade+"이고, 보너스는 "
+        +incentive+ " %입니다.";
+    }
+    alert(msg);    
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

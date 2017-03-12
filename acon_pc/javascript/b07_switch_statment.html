@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*
+    switch case문..
+    조건이 아니라, 데이터값 자체를 가지고, 해당 case에 맞을 때,
+    처리할 프로세스를 만들어가는 구문을 말한다. 특별히 break;과
+    같이 쓰는데, 프로세스가 break나 나타나기 전까지 계속 진행하는
+    특징을 가지고 있다..
+    형식
+        switch( 비교할 값 ){
+            case 비교할값이 해당내용일경우1 : 처리할 프로세스 break;
+            case 비교할값이 해당내용일경우2 : 처리할 프로세스 break;
+            case 비교할값이 해당내용일경우2 : 처리할 프로세스 break;
+            default : 위의 case에 해당 경우를 제외한 내용 처리.
+        }
+    기본 예제..
+    버튼 클릭시, 해당 버튼에 따라, 불이 켜지는 구역을 설정하는 프로그램..
+*/
+    var choiceBtn = parseInt(prompt("switch버튼을 입력하세요(1~3)","1" ));
+   ;  // 선택된 버튼 번호..
+    var turnOnArea = ""; // 불이 켜지는 구역 설정
+    var isValid=true; // 유효성 여부 check;
+    switch( choiceBtn ){
+        case 1: turnOnArea = "앞쪽 등불들"; break;
+        case 2: turnOnArea = "중간 등불들"; break;
+        case 3: turnOnArea = "뒤쪽 등불들"; break;
+        default : alert("해당 번호는 지정된 입력값이 아닙니다!");
+            isValid=false;
+    } 
+    if( isValid ){
+        alert("선택된 버튼 번호:"+choiceBtn +"\n"+ turnOnArea+" 켜짐!");
+    }
+
+    
+   
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

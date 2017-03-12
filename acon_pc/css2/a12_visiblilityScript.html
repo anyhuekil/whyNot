@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+    table{background-image:url('/clientPrj/img/img02.png');visibility:hidden;}	
+	
+/**/
+</style>
+<script type="text/javascript">
+	function chVisible(obj){
+		// obj.innerHTML : 현재 호출한 객체의 label 출력
+		//alert("호출됨!!"+obj.innerHTML);
+		// 테이블 객체 지정. table객체중에 첫번째 table
+		var tabObj=document.getElementsByTagName("table")[0];
+		// 테이블 객체를 보이지 처리..
+		
+		/*해당 label이 보이게 하세요!! ==> 보이지 않게 하세요(레이블)
+										  보이게 처리
+		  해당 label이 보이지 않게하세요!! ==> 보이게 하세요!!(레이블)
+										  보이지 않게 처리										  
+		*/		
+		if(obj.innerHTML=="보이게 하세요!!"){
+			tabObj.style.visibility="visible";
+			obj.innerHTML="보이지 않게 하세요!!";
+		}else{
+			tabObj.style.visibility="hidden";
+			obj.innerHTML="보이게 하세요!!";			
+		}
+	}
+/*	과제..
+ 	
+ 	keyword등록 [      ]
+ 	등록할 수 있는 keyword[보이기]==> 초기에는 등록가능 keywords 보이지 않다가
+ 									 보이기버튼을 클릭하는 순간, 보이지 처리
+ 									 버튼에 있는 lebel 보이지 않기<-->보이기
+ 	등록가능 keywords!!
+ 	java
+ 	jsp
+ 	c#
+ 	파이션.
+  */	
+	
+</script>
+</head>
+<body>
+	<h1 onclick="javascript:chVisible(this)">보이게 하세요!!</h1>
+	<table width="200" height="200"></table>
+	
+	
+</body>
+</html>

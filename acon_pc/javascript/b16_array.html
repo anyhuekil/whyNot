@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*
+   배열이란?
+        데이터 type가운데, 여러개의 데이터를 하나의 변수에
+        할당 할 수 있는 데이터 type을 말한다.
+    1) 선언..
+        var 배열이름 = [];
+        데이터가 할당되지 않는 공백의 데이터가 만들어 짐..
+*/
+    var goodMen=[];
+    alert( "배열선언(초기):"+goodMen );
+    alert( "배열선언(typeof):"+typeof(goodMen) );
+    // 배열은 object 형태이다..
+/*
+    2) 할당
+        배열이름[index] = 데이터;
+        ex) var array01=[]; array01[0]=25;
+            var friends=[]; friends[0]="홍길동";
+*/ 
+    goodMen[0]="홍길동";
+    goodMen[1]="슈퍼맨";
+    goodMen[2]="스파이더맨";
+    alert("할당된 배열:"+goodMen);
+    // 해당 배열의 내용을 구분자(,)로 나타내고 있음..
+/*
+    3) 선언과 할당..
+        var 배열이름 =[데이터1, 데이터2, 데이터3];
+        ex) var movies=["해빙","로건","아이덴티티"];
+            var pays=[10000, 12000, 15000];
+*/
+    var musics =["KNOCK KNOCK","Fine","첫눈처럼 너에게 가겠다"];
+    var cnts=[25,75,32];
+    
+/*
+    4) 호출..
+        배열이름[index]
+        ex) movies[0]; ==> "해빙" 데이터 로딩
+       변경:배열이름[index]="재심";
+*/
+    alert( musics[0] );
+    musics[1]="봄날";
+/*
+    5) 추가
+        배열이름[마지막index+1]=할당데이터..
+        배열이름.push(할당데이터);
+        ex) pays[3]=17000; // 데이터가 하나더 추가가 됨..
+            pays.push(20000);// 데이터가 추가되어 pays배열은
+                            // 크기가 5
+*/
+    cnts[4]=29;
+    cnts.push(99);
+    alert(cnts);
+ /*
+    6) 배열크기확인 
+        배열이름.length
+        cf)배열크기와 index와의 관계
+            배열크기-1 = 마지막index번호
+        ex) alert(pays.length) ==> 5개가 출력됨.
+*/
+    alert("배열의 크기:"+cnts.length);
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+table 추가 하위 객체..
+caption : 테이블의 부가적인 타이틀이 필요할 때 사용된다.
+thead : 테이블 header를 설정하는 row에 기본적인 상위객체..
+tbody, tfoot
+colgroup : 테이블의 데이터에 대한 정렬처리
+			배경색상등  대한 옵션 설정.
+ -->
+<table align="center" width="300" height="200" border=1>
+	<caption>신상명세서</caption>
+	<colgroup>
+		<col />
+		<!-- 모든 행의 첫번째 컬럼의 
+		배경색상으로 노랑으로 처리-->
+		<col style="background:green"/>
+		<!-- 총3개 컬럼중, 뒤쪽 2개 컬럼에 대한 데이터의
+		속성처리를 동일하게 하겠습니다. -->
+		<col />
+				
+	</colgroup>
+	<thead>
+		<tr><td>이름</td><td>나이</td><td>사는곳</td></tr>
+	</thead>
+	<tbody>
+		<tr><td>홍길동</td><td>25</td><td>서울강남</td></tr>
+	</tbody>
+	<tfoot>
+		<tr><td colspan="3">위 사실이 진실임..</td></tr>
+	</tfoot>
+</table>
+</body>
+</html>

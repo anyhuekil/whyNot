@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+border : div나 table등 테두리에 관련된 속성값을 지정할 수 있다.
+	상세 속성으로
+	border-width : 테두리의 굵기를 설정..
+	border-style : 테두리의 형태를 설정
+	border-color : 테두리의 색상을 저정..
+	한꺼번에 속성지정
+	border: 굵기 형태 색상
+*/
+	.borderClass{
+		width:400px;height:400px;
+		background-color:yellow;
+		margin:20px;
+		padding:10px;
+		border-width:50px;
+		border-style:dotted;
+		border-color:orange;
+		border-radius:50px; /*전체 4모퉁이 옵션설정*/
+		background-image:url('/clientPrj/img/img01.png');
+		/*이미지가 화면보다 작을 때는 반복되는데,
+		이를 반복되지 못하게 처리..
+		background-repeat:no-repeat
+		*/
+		background-repeat:no-repeat;
+		/*배경 이미지 위치 잡기... x축 위치, y축 %로 범위 잡기
+		background-position:xpx,y축상태범위%
+		*/
+		background-position:50% 50%;
+		/*배경 이미지를 확대 축소 하기 :
+		background-size:상대/절대값*/
+		background-size:150%;
+		
+		
+	}
+	.borderClass2{
+		width:400px;height:400px;
+		background-color:yellow;
+		margin:20px;
+		padding:10px;
+		border:20px solid green;
+	}	
+	
+	
+/**/
+</style>
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<div class="borderClass">
+		<h1>오늘도 주말로 달려가고 있습니다.</h1>
+		<h1>오늘도 주말로 달려가고 있습니다.</h1>
+		<h1>즐거운 주말 보내실 거죠?</h1>
+	</div>
+	<div class="borderClass2">
+		<h1>오늘도 주말로 달려가고 있습니다.</h1>
+		<h1>오늘도 주말로 달려가고 있습니다.</h1>
+		<h1>즐거운 주말 보내실 거죠?</h1>
+	</div>	
+	
+	
+	
+</body>
+</html>

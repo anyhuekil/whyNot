@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*
+ function 함수명(){} // 함수명으로 화면단에서나
+ 	다른 함수에 의해 호출되어 처리 된다.
+ 
+ */
+	function call(){
+		alert("함수호출^^");
+/*
+화면단의 element의 데이터를 접근하는 방식..
+ 1. form객체의 하위객체들..
+	form name="form접근이름"
+	input name="element의 접근이름"
+	<form
+		<input
+	계층구조화 되어 있으면, 계층구조 형식으로 접근한다.
+	ex) 상위계층이름.하위계층이름.속성
+	input객체의 입력한 내용은 value속성으로 인식을 한다.
+	전체 화면을 나타나는 내용에 대한 객체 : document
+	
+	document.form01.goWhere.value;
+	화면에서 form이름이 form01로 되어 있고,
+	input이름이 gowhere 있는  elements의 속성값 value를 메모리에 가져온다.
+ */	
+ 		var goWhereValue= document.form01.goWhere.value;
+		alert("입력된 가고 싶은 곳:"+goWhereValue);
+	}
+ 	function send(){
+ 		var inputGoWhere=document.form01.goWhere.value;
+ 		document.form01.inputWhere.value=inputGoWhere;
+ 	}
+</script>
+</head>
+<body>
+<form name="form01">
+주말에 가고 싶은 곳:
+<input type="text" name="goWhere" value="입력하세요!!"/><br>
+<input type="button" value="데이터 확인" onclick="javascript:call();"/><br>
+<input type="button" value="데이터 전달" onclick="javascript:send();"/><br>
+주말예약행선지:<input type="text" name="inputWhere"/>
+
+</form>
+</body>
+</html>

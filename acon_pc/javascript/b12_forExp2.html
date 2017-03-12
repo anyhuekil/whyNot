@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+// 확인예제1
+// 1) 1 ~ 10까지 수를 출력하세요..
+//    1   
+//    2
+//    3
+// 2) 해당 단계 마다 합산 결과를 나타내세요.
+//    sum값부터 출력..
+//    문자열에 대한 누적처리 변수를 활용 var show="";
+//                                       show+="+"+cnt;
+//    1 = 1
+//    1 + 2 = 3
+//    1 + 2 + 3 = 6
+    var sum=0;
+    var show="";
+    for(var cnt=1;cnt<=10;cnt++){
+        sum+=cnt; // 누적처리..
+        if(cnt!=1){
+            show+="+";
+        }
+        show+=cnt;
+        console.log(show+"="+sum);
+    }
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

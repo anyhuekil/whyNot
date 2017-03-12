@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+/*
+    ## 이중 반복문..
+    반복문 안에 반복문을 처리하는 것으로 특정 공간안에
+    또 공간이나 프로세스가 처리될 때, 사용한다..
+    for( 가장 외부 loop문 )
+        for( 내부 loop문 )
+*/    
+    var seatNoPrint="";
+    for(var trainNo = 1;trainNo<=7; trainNo++ ){
+        console.log( "기차번호:"+trainNo);
+        seatNoPrint="";
+        for(var seatNo=1;seatNo<=50;seatNo++){
+            seatNoPrint+="좌석번호:"+seatNo+", ";
+        }
+        console.log(seatNoPrint);
+    }
+/*  구구단
+    for( dan 2 ~ 9 )
+        for( cnt 1 ~ 9)
+            dan * cnt = (dan*cnt)
+    
+*/
+  //-->
+  </script>
+
+
+ </head>
+ <body>
+  
+ </body>
+</html>

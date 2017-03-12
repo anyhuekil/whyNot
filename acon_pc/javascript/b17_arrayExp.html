@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+  /*
+    배열 확인 예제..
+    1. 좋아하는 책이라는 제목으로
+        favBooks를 선언하고 데이터 3개를 할당
+ */
+    var favBooks=[];
+    favBooks[0]="정의";
+    favBooks[1]="세상을 보는 지혜";
+    favBooks[2]="소피의 세계";
+
+ //   2. weekendPlans 라는 배열을 선언+할당으로 하세요..(3개)
+    var weekendPlans=["javascript연습","친구와 만남","여행"];
+ //   3. 일정계획이 변경되었습니다.
+ //      weekendPlans의 두번째 데이터를 변경하고 확인하세요..
+    weekendPlans[1]="영화관람";
+    alert(weekendPlans);
+//    4. 좋아하는 책과 일정계획
+//        데이터를 index를 통한 추가와 push를 통한 추가를
+//        하고 출력하세요..
+    favBooks[3]="군주론";
+    // index는 배열의 크기보다 -1작으므로 index를 통한 추가는
+    // 배열크기로 설정해도 무방하다.
+    favBooks[favBooks.length]="사기";
+    weekendPlans.push("주말계획");
+    alert(favBooks);
+    alert(weekendPlans);
+//    5. 각 배열의 데이터 건수를 출력하세요.
+    alert("배열크기1:"+favBooks.length);
+    alert("배열크기2:"+weekendPlans.length);
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+  <!--
+  /*
+    확인예제..
+    놀이공원에 가서...
+    나이를 입력하세요..prompt
+    ==> 예외에 대한 처리.. 입력범위나, null, 공백처리.
+        ==> 유효한 입력이 아닙니다.
+    0~4미만 : 무료
+    4이상 8미만 : 50%할인,  50% ==> 할인금액:원금 * 0.5 
+                                    총금액: 원금 - 할인금액
+    8이상 18미만 : 30%할인,  30% ==> 원금 * 0.3
+    18이상 65미만 : 할인 없음.
+    65이상 : 무료
+    입장료 50000원.
+    입장료가 할인율인 @@@% 적용되어 @@@@원 입니다.
+*/
+    var pay = 50000;
+    var discount=0.0;
+    var introPlayPark="놀이공원에 가서...\n나이를 입력하세요!";
+    var inputStrAge = prompt(introPlayPark,"0");
+    
+    var msg="";
+    if( inputStrAge==null || isNaN( inputStrAge) ){
+        msg="유효한 입력이 아닙니다.";
+    }else{
+        // parseInt() : 문자를 정수, 실수를 정수
+        var inputAge=parseInt( inputStrAge );
+        if( inputAge < 0 ){
+             msg="유효한 입력이 아닙니다.";
+        }else if( inputAge < 4 || inputAge >= 65 ){
+            discount=1.0;
+        }else if( inputAge < 8  ){
+            discount=0.5;
+        }else if( inputAge < 18  ){
+            discount=0.3;
+        }else{
+            discount=0.0;
+        }
+        // 정수 * 실수 ==> 실수 ==parseInt통해서 ==> 정수로 절삭처리
+        var tot=parseInt(pay-(pay*discount));
+        msg+="입장료 "+pay+"원";
+        msg="입장료가 할인율인 "+parseInt(discount*100)+"% 적용되어 "+tot+"원 입니다";
+    }
+    alert( msg );
+  //-->
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

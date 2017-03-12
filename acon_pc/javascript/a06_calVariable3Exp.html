@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script>
+/*  
+    복합대입연산자 : 대입연산자에서 변수자신에서 데이터를 더 추가
+    감소 처리하는 연산자를 말한다. 변수를 최소한 쓰기 위해서 활용한다.
+    var count=1;
+    해당 변수를 1씩 더하는 처리를 할 때,
+    count =count + 1;
+    count +=1;
+    // 변수 +=증가할 내용..
+    var show="안녕하세요!";
+    show+=" 홍길동입니다!!\n";
+    show+=" 좋은 날 되세요!";
+*/
+    var count=1;
+    //해당 변수를 1씩 더하는 처리를 할 때,
+    count =count + 1;
+    count +=1;
+    //alert("변수count:"+count);
+    // 변수 +=증가할 내용..
+    var show="안녕하세요! ";
+    show+=" 홍길동입니다!!\n";
+    show+=" 좋은 날 되세요!";
+    //alert(show);
+// 복합 대입연산자  +=, -=, *=, /=, %= 
+// 증감 연산자 : 데이터가 1씩 증가하거나 감소할 때, 쓰이는 연산자.
+// 변수++ : 현재 처리하는 라인이 끝나는 다음 프로세스 부터 데이터 증가 
+// ++변수 : 현재 처리하는 라인의 프로세스에서 바로 데이터를 증가 처리
+//변수--;
+//    주로, 증감 연산자는 loop문(반복문)에서 유용하게 데이터를 증가
+//    감소하는데 처리된다.
+    count=0;
+    /*
+    alert("#현재 count:"+count);
+    alert("현재 ++count:"+(++count));
+    alert("현재 count++:"+(count++));
+    alert("#현재 count:"+count);
+    alert("현재 --count:"+(--count));
+    alert("현재 count--:"+(count--));
+    */
+/*
+    undefined 자료형..
+     해당데이터를 선언하지 않고 다름 함수를 이용해서 호출할려고 할 때,
+     나타나는 에러 코드..
+*/    
+ //   alert(typeof(go));
+ //   alert(go);
+    var number;
+ //   alert(typeof(number)); // 해당 data Type이 정해지지 않아서 undefined
+                           // 로 처리되어 나타남.
+/*
+    여러가지 입력 형태..
+    1) alert("경고창내용"); : 경고내용을 출력하는 것으로 해당 문자열을
+       경고창과 함께 출력을 한다.
+    2) confirm("메시지내용") : 해당 메세지를 보고, 입력하는 버튼
+        확인/취소가 있으면 이 값에 따라 true값과 false값을 가져온다..
+        루프문(반복문)에서는 계속 여부를 check할 때, 주로 활용 된다..
+*/
+    //var isMale= confirm("당신은 남자입니까?");
+    //alert( "남자인지 여부:"+isMale);
+    //if( isMale ){
+   //     alert("반갑습니다! gentle man이시군요!");
+   //}else{
+    //    alert("어서오세요! pretty lady이시군요!");   
+   // }
+/*
+    데이터 값을 입력받아서, 정답인지 여부를 출력하는 내용을
+    처리하고자 한다..
+    첫번째 값 : 25  - 변수 선언 및 할당 alert
+    두번째 값 : 27  - 변수 선언 및 할당 alert
+    두 값은 동일한 값입니까?
+        확인 ==> 오답입니다.
+        취소 ==> 정답입니다.
+    1) 변수 선언 및 할당
+    2) alert() 첫번째 값, 두번째 값 표시..
+    3) confirm()으로 내용 메시지 처리
+    4) 분기문(if)에 의해서 확인/취소에 따라 다른 메시지 alert()처리.
+*/
+    var num01Val=25;
+    var num02Val=25;
+    var isCorrect=num01Val==num02Val;
+    //alert("첫번째 값 : "+num01Val);
+    //alert("두번째 값 : "+num02Val);
+    /*
+    var inputResult=confirm("두 값은 동일한 값입니까?");
+    if(isCorrect==inputResult){
+        alert("정답입니다");
+    }else{
+        alert("오답입니다");
+    }
+    */
+/* default : 초기 값..
+   var inputData=prompt("메시지내용", "입력할 default값");
+   확인을 클릭하면, 하단에 입력된 데이터를 받아오지만,
+   취소를 클릭하면, null값(공백데이터)를 가져온다..
+*/
+  //  var inputData=prompt("오늘 기분이 어떠하신지?","봄날이라서...");
+  //  alert("입력된 데이터는 "+inputData);
+/*
+   확인예제
+   가장 좋아하는 계절을 입력하세요..
+   입력받은 데이터에 따라..
+    계절에 맞는 음악 title을 출력합니다.
+    ex) 가을 ==> 시월의 마지막밤..
+         봄  ==>  봄이 오면
+         여름 ==> 여름밤 피크닉 
+         겨울 ==> 하얀 겨울
+    1) prompt 창으로 가장 좋아하는 계절 입력..
+    2) 입력 받은 데이터에 따라 해당 message내용을 정리..
+        if()를 활용해서.
+        취소 클릭시, null ==> 데이터를 입력하세요..
+        계절별 음악 naver 검색
+        해당 계절에 맞는 음악title 출력..
+*/
+    var inputSeason=prompt("계절별 듣고 싶은 노래","봄");
+    // 취소를 클릭시, 
+    if(inputSeason==null){
+        alert("데이터 입력이 없습니다.");
+    }else if(inputSeason=="봄"){
+        alert("봄의 음악:봄이 오면");
+    }else if(inputSeason=="여름"){
+        alert("여름의 음악:여름밤 피크닉");
+    }else if(inputSeason=="가을"){
+        alert("가을의 음악:시월의 마지막밤");
+    }else if(inputSeason=="겨울"){
+        alert("겨울의 음악:하얀 겨울");
+    }else{
+       alert("계절은 봄, 여름, 가을, 겨울만 입력가능합니다!");    
+    }
+    // 예외 데이터를 입력했을 때, 처리 내용..
+    /*
+    if(inputSeason!=null&&
+       inputSeason!="봄"&&inputSeason!="여름"&&
+       inputSeason!="가을"&&inputSeason!="겨울"){
+       alert("계절은 봄, 여름, 가을, 겨울만 입력가능합니다!");
+    }
+    */
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>
