@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>css2/a11_dataCtrollExp</title>
+
+<style type="text/css">
+	h1{
+		text-align:center;
+	}
+	h2{
+		text-align:center;
+	}
+	h3{
+		text-align:center;
+	}
+	table{
+		margin:auto;
+		border: solid;
+	}
+	caption{
+		font-size: 20px;
+		padding-bottom: 12px;
+		text-align: center;
+	}
+	
+	article{
+		width: 500px;
+		padding: 5px;
+		margin: 0 auto;
+		border-style: outset;
+	}
+	.selH4css{
+		font-size : 20px;
+		margin: 20px 5px;
+		font-weight: normal;
+	}
+	.selColor{
+	}
+	.inputSelText{
+		font-size: 20px;
+	}
+
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+<!-- 본문 
+
+/* 숙제!!
+ 	색상과 글자입히기..
+ 	
+ 	글자색 선택 [select option] - 빨,주,노,초,파,남,보
+ 	입력할 내용 :[      ]
+ 	[확인]
+    @@@@@@@@@@  : 확인을 클릭시, 해당 배경색에 입력할 내용에 입력한 글자 내용
+    				표시..
+ */
+ 
+	클로징 -->
+<body>
+	<header>
+		<h1>색상과 글자 입히기</h1>
+		<h3>css2/a11_dataCtrollExp</h3>
+	</header>
+		<br/><hr/>
+	
+	<nav>
+	</nav>
+	
+	<section>
+		<h2>색상과 글자를 선택 후 디자인된 글 출력하기</h2>
+		<article>
+			<span class="selH4css">&nbsp;&nbsp;&nbsp;색선택 : </span>
+				<select id="selColor">
+					<option selected="selected">색상</option>
+					<option value="red">빨강</option>
+					<option value="orange">주황</option>
+					<option value="yellow">노랑</option>
+					<option value="green">초록</option>
+					<option value="blue">파랑</option>
+					<option value="navy">남색</option>
+					<option value="purple">보라</option>
+				</select>
+			<br/><br/>
+			<span class="selH4css">&nbsp;&nbsp;&nbsp;글입력 : </span>
+				<input class="inputSelText" type="text" name="selText" value="글자를 입력해 주세요"/>
+			<br/><br/>
+			<span class="selH4css">출력하기 : <input class="inputSelText" type="button" name="outputButton" value="색글자 나와라~ 뚝!딱!"/></span>
+		</article>
+		
+	</section>
+	
+	<aside>
+	</aside>
+
+	<footer>
+		<br/><hr/>
+		<h1>END</h1>
+		<hr/><hr/><br/><br/>
+	</footer>
+
+</body>
+</html>
