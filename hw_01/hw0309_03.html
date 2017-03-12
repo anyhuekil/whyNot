@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/css/a19_notSelector</title>
+
+<style type="text/css">
+	h1{text-align:center;}
+	h2{text-align:center;color: white;}
+	table{margin:auto; border: solid;}
+	caption{font-size: 20px; padding-bottom: 12px; text-align: center;}
+	div{margin:auto; padding: 10px 20px; width: 620px; background-color: black;}
+	li{width:70px; text-align:center; font-size: 15px;background-color:gold;}
+	li:HOVER{color:white; background-color:orange;font-weight: bold;}
+	li:active{color:#980000; background-color:white;font-weight: bold;}
+	#lineWidth li{float:left; list-style:none; padding:20px;}
+	#lineWidth li:FIRST-CHILD{border-radius:10px 0 0 10px;}
+	#lineWidth li:LAST-CHILD{border-radius:0 10px 10px 0;}
+	#lineHeight li{list-style:none; padding:15px;}
+	#lineHeight li:FIRST-CHILD{border-radius:10px 10px 0 0;}
+	#lineHeight li:LAST-CHILD{border-radius:0 0 10px 10px;}
+	#lineHeight{background-color:#5D5D5D; display:inline-block; width: 140px;}
+	#showhw0309c{position:absolute; background-color:gray;display:inline-block; width: 400px; height: 282px;}
+	#idiframehw0309c{width:100%; height:100%;}
+	a:visited{color:black;}
+	a{text-decoration:none; color:black}
+
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+
+
+<body>
+<h1>홈페이지 메뉴 구성</h1>
+<br/><hr/>
+<h2>환영합니다!!</h2>
+<div id="lineWidth">
+<ul>
+	<li><span><a href="http://acornacademy.co.kr" target="iframehw0309c">HOME</a></span></li>
+	<li><span><a href="http://www.w3schools.com" target="iframehw0309c">인사</a></span></li>
+	<li><span><a href="http://www.naver.com" target="iframehw0309c">총무</a></span></li>
+	<li><span><a href="https://ko.wikipedia.org" target="iframehw0309c">자재관리</a></span></li>
+	<li><span><a href="http://www.w3schools.com" target="iframehw0309c">관리자</a></span></li>
+</ul>
+<br/><br/><br/><br/><br/>
+</div>
+<hr/>
+
+<div >
+<div id="lineHeight">
+<ul>
+	<li><span><a href="http://acornacademy.co.kr" target="iframehw0309c">HOME</a></span></li>
+	<li><span><a href="http://www.w3schools.com" target="iframehw0309c">인사</a></span></li>
+	<li><span><a href="url/../hwList_01.html" target="iframehw0309c">총무</a></span></li>
+	<li><span><a href="https://ko.wikipedia.org" target="iframehw0309c">자재관리</a></span></li>
+	<li><span><a href="url/../a_hwEXE.html" target="iframehw0309c">관리자</a></span></li>
+</ul>
+</div>
+<div id="showhw0309c">
+	<iframe id="idiframehw0309c" name="iframehw0309c"></iframe>
+</div>
+</div>
+
+<br/>
+<hr/>
+<h1>END</h1>
+<hr/>
+<br/><br/>
+
+</body>
+</html>
