@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/html/a15_form.html</title>
+<style type="text/css">
+
+	h1{text-align: center;}
+	h2{text-align: center;}
+	table{margin:auto; width: 320px; border: 1px solid lightgreen;
+	color: lightgreen; font-weight: bold;}
+	td{width: 100%;}
+	#naverWindow{margin:auto; background-color: green; width:350px; height: 408px;}
+	#naverTitle{text-align:center; color:darkgreen; text-shadow:2px 2px 2px rgb(228,247,186);}
+	
+</style>
+</head>
+<body>
+
+<h1>회원가입 처리화면</h1>
+<br><hr>
+<div id="naverWindow">
+<h1 id="naverTitle">NAVER</h1>
+	<table>
+		<tr><td align="center">아이디</td><td><input type="text" name="joinId" value="아이디"/></td><td></td></tr>			
+		<tr><td align="center">비밀번호</td><td><input type="password" name="joinPass01" value="비밀번호"/></td><td></td></tr>	
+		<tr><td align="center">비밀번호확인</td><td><input type="password" name="joinPass02" value="비밀번호 재확인"/></td><td></td></tr>
+	</table>
+	<br/>
+	<table>
+		<tr><td align="center">이름</td><td>
+			<input type="text" name="joinName" value="이름"/></td></tr>			
+		<tr><td align="center">성별</td><td>
+			<input type="button" name="joinGender" value="남자"/>			
+			<input type="button" name="joinGender" value="여자"/></td></tr>			
+		<tr><td align="center">생일</td><td>
+			<input type="date" name="joinBirth" value="생년월일"/></td></tr>
+		<tr><td align="center">본인확인</td><td>
+			<input type="email" name="joinEmail" value="E-mail"/></td></tr>
+	</table>
+	<br/>
+	<table>
+		<tr>
+			<td align="center">휴대폰</td>
+			<td><input type="tel" name="joinPhone" value="전화번호"/></td>
+			<td><input type="button" name="joinCheckPho" value="인증"/></td>
+		</tr>
+		<tr>
+			<td align="center">인증번호</td>
+			<td><input type="number" name="joinCode" value="인증번호"/></td>
+			<td><input type="button" name="joinCheckNum" value="확인"/></td>
+		<tr><td colspan="3" align="center"><input type="button" name="joinConfirm" value="가입하기"/></td>
+		</tr>
+	</table>
+</div>
+<hr/>
+<h1 align="center">END</h1>
+<hr/>
+<br/><br/>
+</body>
+</html>

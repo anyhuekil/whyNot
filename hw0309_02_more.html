@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/css/a12_inputFocus</title>
+
+<style type="text/css">
+	
+	h1{text-align:center;}
+	h2{text-align:center;}
+	table{margin:auto; background-color:maroon; color:white; font-weight:bold; font-size: 20px; padding:10px; border-style: outset;}
+	caption{font-size: 20px; padding-bottom: 12px; text-align: center;}
+	input{font-size: 18px; background: maroon; color: gray; border: 0px;}
+	input[type=button]{font-size: 18px; background: maroon; color: white; border: none; border-style:outset;}
+	input:FOCUS{color:white;}
+	.loginWindow01{margin: 0 auto; padding: 20px; width: 320px; background-color: darkred;}
+	#inputStateCSS{color: red; text-align: center;}
+	
+</style>
+
+<script type="text/javascript">
+
+	function chageInput(inValue){
+		if (inValue.value=="ID를 입력해주세요"
+			|| inValue.value=="비밀번호를 입력해주세요"){
+			inValue.value="";
+		}
+	}
+	var stateNum=0;
+//	var aaa=document.getElementById("ruleA");
+//	var testA=document.windowSecond.ruleA.style;
+//	 aaa.style.visibility="hidden";
+	function logSamePass() {
+		if(document.windowFirst.inputLoginId.value=="qwe"
+			&& document.windowFirst.inputLoginPass.value=="123"){
+			stateNum=1;
+//			document.windowSecond.ruleA.visibility="visible";
+		}else {
+			stateNum=2;
+			alert("ID와 PASSWORD를 확인해주세요!")
+		}
+	}
+	
+//로그인 상태 함수
+	function funState() {
+		if (stateNum==1) {
+			document.windowFirst.inputLoginState.value="로그인 성공!";
+			
+		}else if (stateNum==2) {
+			document.windowFirst.inputLoginState.value="로그인 정보를 확인하세요";
+		}else if (stateNum==3) {
+			alert("진행1")
+		}else if (stateNum==4) {
+			alert("진행2")
+		}else if (stateNum==5) {
+			alert("남는거")
+		}else if (stateNum==0){
+			document.windowFirst.inputLoginState.value="로그인하세요!!";
+		}else{
+			alert("알수 없는 오류 발생!!")
+		}
+	}
+	
+</script>
+
+</head>
+
+<body onclick="funState();">
+
+<h1>단계별 진행 가능한 로그인 화면</h1>
+<br/><hr/>
+<p align="center">[ ID: qwe ] [ PASS: 123 ]</p>
+<div class="loginWindow01">
+<form name="windowFirst">
+	<table border="1">
+	<caption>로그인 화면 구성</caption>
+	<tr>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID:</td>
+		<td><input type="text" name="inputLoginId" value="ID를 입력해주세요"
+			onclick="chageInput(this);"/></td>
+	</tr>
+	<tr>
+		<td>&nbsp;PASS:</td>
+		<td><input type="password" name="inputLoginPass" value="비밀번호를 입력해주세요"
+			onclick="chageInput(this);" /></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2" align="right"><input type="button" name="inputLoginButton" value="		로그인		"
+			onclick="logSamePass();" />
+		
+		</td>
+	</tr>
+	</table>
+<br/>
+	<table style="border-style: inset;" >
+		<tr><td>&nbsp;&nbsp;상태:	<input type="text" name="inputLoginState" value="로그인하세요" id="inputStateCSS"/></td>
+	</tr>
+	</table>
+</form>
+</div>
+<br/>
+<div id="ruleA">
+
+<!--
+ <form name="windowSecond">
+ -->
+
+<table style="width: 500px">
+ 	<tr>
+ 		<td>필수약관:</td>
+ 		<td>약관에 동의 하십니까?</td>
+ 		<td>
+ 			&nbsp;&nbsp;&nbsp;&nbsp;네<input type="radio"/> 아니요<input type="radio"/>
+ 		</td>
+ 	</tr>
+ </table>
+ 
+ <!-- 
+ </form>
+  -->
+  
+ </div>
+ <div>
+ <form name="windowThird">
+ <table style="width: 500px">
+  	<tr id="ruleB">
+ 		<td>선택약관:</td>
+ 		<td>약관에 동의 하십니까?</td>
+ 		<td>
+ 			&nbsp;&nbsp;YES<input type="checkbox"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK<input type="checkbox"/>
+ 		</td>
+ 	</tr>
+ 	<tr id="ruleB2">
+ 		<td colspan="3" align="center"
+ 			style="font-size: 15px; font-style: italic; font-weight: normal;">
+ 			선택약관에서 checkbox는 테스트용임.</td>
+ 	</tr>
+ </table>
+ </form>
+ </div>
+
+
+<!-- 본문 -->
+
+
+<!--
+/*
+ 확인예제 및 과제..
+ 아래와 같은 로그인 화면을 만들고,
+ 	로그인    -- 입력시 마다, focus하는 곳에서 배경색, 글자색 변경처리
+ ID : [     ]
+PASS : [      ]
+   [로그인]    -- id와 pass가 지정된 내용에 맞을 때, 다음 단계 활성화
+   					future//7777 
+ status :[    ] -- 상태여부(로그인전/로그인성공/1단계/2단계)
+1단계 주제를 입력하세요:[   ]  - 초기 비활성화 ==> 활성화  
+                                document.form01.input01.disabled=false;
+2단계 세부주제를 입력하세요:[   ] - 초기 비활성화 ==> 활성화 
+document.form이름.element이름.value
+ */	
+ 
+클로징 -->
+<br/>
+<hr/>
+<h1>END</h1>
+<hr/>
+<br/><br/>
+
+
+
+
+</body>
+</html>

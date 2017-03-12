@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/css/a01_css_start</title>
+
+<style type="text/css">
+	h1{text-align:center;}
+	table{margin:auto; border: solid;}
+	caption{font-size: 20px; padding-bottom: 3px; text-align: center;}
+	#welcome{ padding: 2px 20px; margin: 10px auto; width: 300px; background-color: lightgray}
+	.cssTitle{background-color: yellow; color: blue;}
+	.cssCheckbox{text-align: center;}
+	.cssProduct{background-color: pink;}
+	.cssBuyNum{background-color: yellow; text-align: right;}
+	
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+
+
+<body>
+
+<h1>쇼핑물품 CSS처리</h1>
+<br/><hr/>
+<div id="welcome">
+	<h2>어서오세요! *^^*</h2>
+	<h2>즐거운 쇼핑 되시길♥</h2>
+</div>
+<br/>
+<table border="1">
+	<caption>판매물품 현황</caption>
+	<tr class="cssTitle">
+		<th>Check</th><th>물건명</th><th>가격</th><th>갯수</th>
+	</tr>
+	<tr>
+		<td class="cssCheckbox"><input type="checkbox"/></td>
+		<td class="cssProduct">사과</td>
+		<td>3000</td>
+		<td><input type="number" class="cssBuyNum"/></td>
+	</tr>
+	<tr>
+		<td class="cssCheckbox"><input type="checkbox"/></td>
+		<td class="cssProduct">딸기</td>
+		<td>5000</td>
+		<td><input type="number" class="cssBuyNum"/></td>
+	</tr>
+	<tr>
+		<td class="cssCheckbox"><input type="checkbox"/></td>
+		<td class="cssProduct">바나나</td>
+		<td>8000</td
+		><td><input type="number" class="cssBuyNum"/></td>	
+	</tr>
+	<tr>
+		<td colspan="4"><input type="button" value="				구		매				"/></td>
+	</tr>
+</table>
+<br/>
+<hr/>
+<h1>END</h1>
+<hr/>
+<br/><br/>
+
+</body>
+</html>

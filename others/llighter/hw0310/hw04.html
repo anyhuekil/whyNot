@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+		4. 
+			Keyword 등록 [	]
+			등록할 수 있는 keyword[	보이기]
+			등록가능 keyword!!
+			java
+			jsp
+			c#
+			python
+			
+			초기에는 등록가능 keywords 보이지 않다가 보이기
+			버튼을 클릭하는 순간, 보이기 처리버튼에 있는 
+			label 보이지 않기 <-> 보이
+		
+		Object
+		 * 
+		
+		History
+		 * author : Park, Yunha
+		 * Date : 0000-00-00	- v.0.0
+		 
+		Todo
+		 * 
+		 * 
+-->
+<script type="text/javascript">
+	function call(obj) {
+		if(obj.value == "visible") {
+			alert("aa");
+		} else {
+			obj.value == "unvisible");
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>Registable Keyword :</h2>
+	<input type="button" onclick="javascript:call(this);" value="visible"><br>
+	<ul>
+		<li>Java</li>
+		<li>JSP</li>
+		<li>C#</li>
+		<li>Python</li>
+	</ul>
+</body>
+</html>

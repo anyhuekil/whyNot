@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/html/a18_formCalcu</title>
+<style type="text/css">
+
+	h1{text-align:center;}
+	h3{text-align:center;}
+	table{margin:auto; border: solid silver;}
+
+</style>
+
+<script type="text/javascript">
+	function calRecipe(){
+		var movieTitleStr=document.movieCal.movieTitle.value;
+		var moviePriceStr=document.movieCal.moviePrice.value;
+		var moviePricePar=parseInt(moviePriceStr);
+		var moviePeopleStr=document.movieCal.moviePeople.value;
+		var moviePeoplePar=parseInt(moviePeopleStr);
+		var movieCalSum=moviePricePar*moviePeoplePar;
+			document.movieCal.what.value = ("\n["+movieTitleStr
+				+"] 영수증\n\n=====================\n \t총 금액계산\n \t\t"
+				+moviePricePar+"\n\tX\t"+moviePeoplePar
+				+"\n---------------------"+"\n \t\t"
+				+movieCalSum+"\n=====================\n\n \t감사합니다♥\n=====================");
+
+	}
+
+</script>
+
+
+
+</head>
+
+<body>
+<h1>영화관 영수증 계산</h1>
+ <br><hr>
+ <h3>메가박스 영화 관람내용</h3>
+ <form name="movieCal">
+ <table border="1">
+ 	<tr><td>영화제목</td><td><input type="text" name="movieTitle" value="영화는영화다"/></td></tr>
+ 	<tr><td>관람료</td><td><input type="text" name="moviePrice" value="10000원"/></td></tr>
+ 	<tr><td>인원</td><td><input type="text" name="moviePeople" value="2명"/></td></tr>
+ </table>
+  	<br>
+  	<hr/>
+ <h3>관람내용에 따른 영수증 출력</h3>
+ <table>
+  	<caption><input type="button" value="영수증출력" onclick="javascript:calRecipe()"/></caption>
+ 	<tr><td>
+ 		 <textarea rows="20px" cols="20px" name="what"></textarea>
+ 	</td></tr> 
+  </table>
+ </form>
+
+<br/>
+<hr/>
+<h1 align="center">END</h1>
+<hr/>
+<br/><br/>
+
+</body>
+</html>

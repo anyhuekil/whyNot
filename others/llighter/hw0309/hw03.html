@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+	<!-- 
+		3.
+			h1을 이용하여
+			명언 5개를 list하고,
+			2개단위로 다른 색상으로 나타나게 처리 하세요.
+		
+		Object
+		 * 
+		
+		History
+		 * author : Park, Yunha
+		 * Date : 0000-00-00	- v.0.0
+		 
+		Todo
+		 * 
+		 * 
+	 -->
+	 <style type="text/css">
+	 	h1 {
+	 		text-align: center;
+	 		color: grey;
+	 		
+	 	}
+	 	
+	 	h1:NTH-CHILD(2n) {
+			background-color: lightblue;
+		}
+		h1:NTH-CHILD(2n+1) {
+			background-color: lightgreen;
+		}
+		h1:HOVER {
+			background: red;
+			color: white;
+		}
+	 </style>
+<body>
+	<h1>
+		명언 5개
+	</h1>
+	<h1>일찍 일어나기</h1>
+	<h1>운동하기</h1>
+	<h1>공부하기</h1>
+	<h1>놀땐 놀기</h1>
+</body>
+</html>

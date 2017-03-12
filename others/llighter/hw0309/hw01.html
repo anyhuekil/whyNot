@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 
+		1. 아래와 같은 화면을 구성하세요!!
+			(hover, class를 활용하여  1,3,4번에 해당하는 라인은 
+			마우스를 올렸을 때, 배경색상과 글자 색상을 변경하여 보이게 처리하세요.
+			Best food list!!
+			
+			No	이름		가격
+			1	@@@	@@@
+			2	###		###
+			3	!!!		!!!
+			4	^^^		^^^
+			6	&&&		&&&
+		
+		Object
+		 * 
+		
+		History
+		 * author : Park, Yunha
+		 * Date : 2017-03-09	- v.0.0
+		 
+		Todo
+		 * 여러 아이디를 하나로 묶어 스타일을 적용하고 싶은 때는 어떻게 하지?
+		 * 
+-->
+<style type="text/css">
+	h1 { text-align: center; }
+	
+	table {
+		width: 40%;
+		align: "center";
+		
+	}
+	
+	table, td, th { 
+		/* text-align: center; */
+		border: 1px solid black;
+		border-collapse: collapse;
+		/* align center */ 
+	}
+	
+	td, th {
+		padding: 10px;
+		text-align: left;
+	}
+	
+	table tr:NTH-CHILD(2n) {
+		background-color: #eee;
+	}
+	
+	table tr:NTH-CHILD(2n+1) {
+		background-color: #fff;
+	}
+	
+	table th {
+		background-color: black;
+		color: white;
+	}
+	
+	tr.trRule:hover  {
+		color: yellow;
+		background-color: red;
+	}
+	
+	
+	/*
+	tr #tr1 #tr3 #tr4 :hover {
+		color: red;
+		background-color: lightblue;
+	}
+	*/
+</style>
+</head>
+<body>
+	<h1>Best Food List!!</h1>
+	<table align="center">
+		<tr>
+			<th>No.</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		<tr class="trRule" id="tr1">
+			<td>1</td>
+			<td>iPhone 7</td>
+			<td>800</td>
+		</tr>
+		<tr id="tr2">
+			<td>2</td>
+			<td>Galuxy 8</td>
+			<td>700</td>
+		</tr>
+		<tr class="trRule" id="tr3">
+			<td>3</td>
+			<td>G6</td>
+			<td>670</td>
+		</tr>
+		<tr class="trRule" id="tr4">
+			<td>4</td>
+			<td>Backberry</td>
+			<td>300</td>
+		</tr>
+		<tr id="tr5">
+			<td>5</td>
+			<td>iPad</td>
+			<td>900</td>
+		</tr>
+	</table>
+</body>
+</html>

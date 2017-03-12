@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	input {
+		padding: 10px;
+		margin: 10px;
+	}
+	
+	.button {
+		background-color: #4CAF50;
+	    border: none;
+	    color: white;
+	    padding: 10px 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 12px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<!-- 
+		1. 쇼핑몰 회원가입 양식 작성
+		
+		Object
+		 * form 객체  하위내용을 table과 함께 정렬을 효과적으로 사용하여 구성하
+		
+		History
+		 * author : Park, Yunha
+		 * Date : 2017-03-08	- v.1.0
+		 
+		Todo
+		 * form summit시 조건 검사후 정상 처리 여부 판단하기
+		 * 공통적인 속성들 뽑아내서 적용하
+		 
+	 -->
+	 
+	 <h1 align="center">ebay</h1>
+	 <h2 align="center">register</h2>
+	 
+	 <!-- action에 해당하는 페이지와 연결하지는 않았다. -->
+	 <table align="center">
+	 
+	 </table>
+	 <form action="">
+	 	<table align="center" border="10" width="40%">
+	 	
+	 		<!-- Type: CheckBox, default : personal account -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="2">
+		 			<input type="radio" name="customerType" value="personal" 
+		 				checked="checked"/>Personal account
+		 			<input type="radio" name="customerType" value="business"/> Business account
+		 		</td>		
+	 		</tr>
+	 		
+	 		<!-- Type: email -->
+	 		<tr align="center" height="50">
+	 			<td colspan="2">
+	 				<input type="email" name="email" placeholder="Email" size="50"/>
+	 			</td>
+	 		</tr>
+	 		
+	 		<!-- Type: email, Description : reenter email -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="2">
+	 				<input type="email" name="reenteremail" placeholder="Reenter email" size="50"/>
+	 			</td>
+	 		</tr>
+	 		
+	 		<!-- Type: password -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="2">
+	 				<input type="password" name="password" placeholder="Password" size="50"/>
+	 			</td>
+	 		</tr>
+	 		
+	 		<!-- Type: Text, Description: first name, last name -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="1">
+	 				<input type="text" name="firstName" placeholder="First name" size="20"/>
+	 			</td>
+	 			<td colspan="1">
+	 				<input type="text" name="lastName" placeholder="Last name" size="20"/>
+	 			</td>
+	 		</tr>
+	 		
+	 		<!-- Type: tel, Description: tel no -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="2">
+	 				<input type="tel" name="tell" placeholder="Mobile phone" size="50"/>
+	 			</td>
+	 		</tr>
+	 		
+	 		<!-- Type: submit, Description: submit -->
+	 		<tr align="center" height="50" >
+	 			<td colspan="2">
+	 				<input class="button" type="submit" value="SUBMIT"/>
+	 			</td>
+	 		</tr>
+	 	</table>
+	 	
+	 	
+	 </form>
+	 
+</body>
+</html>

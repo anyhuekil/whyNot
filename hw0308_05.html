@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>/css/a06_basicPro</title>
+
+<style type="text/css">
+	h1{text-align:center;}
+	h2{text-align:center;}
+	table{margin:auto; border: solid;}
+	caption{font-size: 20px; padding-bottom: 7px; text-align: center;}
+	#scriptRange{margin:0 auto; padding: 1px 20px; width: 450px;
+				 background-color: black; color: white; font-weight: bold; font-size: 20px;}
+	td{text-align: center; font-size: 25px;}
+	input{text-align: right; font-size: 25px;}
+	input[value="60"]{background-color: red;}
+	input[value="70"]{background-color: blue;}
+	input[value="80"]{background-color: yellow;}
+	input[value="90"]{background-color: green;}
+	
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+
+<body>
+
+<h1>tag속성 및 데이터값에 따른 css적용</h1>
+<br/><hr/>
+
+<div id="scriptRange">
+	<p>	아래와 같은 점수일 때, 배경색 표시.</p>
+	<p>60: 빨강 // 70: 파랑 // 80: 노랑 // 90: 초록 //</p>
+<!-- 추가값을 받아들이지 않음. 	<p>[값을 변경해서 입력해 보세요!!]</p> -->
+</div>
+<hr/>
+
+<table border="1">
+	<caption>과목별 점수</caption>
+	<tr>
+		<td><b>과목명</b></td><td><b>점수</b></td>
+	</tr>	
+	<tr>
+		<td>국어</td>
+		<td><input type="text" value="60" size="1"/></td>
+	</tr>
+	<tr>
+		<td>영어</td>
+		<td><input type="text" value="70" size="1"/></td>
+	</tr>
+	<tr>
+		<td>수학</td>
+		<td><input type="text" value="80" size="1"/></td>
+	</tr>
+	<tr>
+		<td>과학</td>
+		<td><input type="text" value="90" size="1"/></td>
+	</tr>
+	<tr>
+		<td>사회</td>
+		<td><input type="text" value="100" size="1"/></td>
+	</tr>
+</table>
+
+<br/>
+<hr/>
+<h1>END</h1>
+<hr/>
+<br/><br/>
+
+</body>
+</html>
