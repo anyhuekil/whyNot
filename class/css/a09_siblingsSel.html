@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+	계층 구조에서 같은 부모의 같은 level의 하위 객체들과의
+	관계 속에서 selector설정값을 지정할 때, + ~을 활용한다.
+	selector1 + selector2{속성:속성값}
+	selector1 바로 다음에 selector2가 있는 경우에 selector2에 대한
+	속성을 지정할 때 활용..
+*/
+/* h1태그의 바로 뒤에 h2태그가 오면 글자 색상을 red로 설정*/
+	h1 + h2{color:red;}
+/* h1태그의 뒤에 위치한 h2태그 모두는 배경색상을 orange*/
+	h1 ~ h2{background-color:gray;}
+</style>
+</head>
+<body>
+	<h1>GOOD JOB!! 111</h1>
+	<h2>GOOD JOB!! 222</h2>
+	<h2>GOOD JOB!! 333</h2>
+	<h1>GOOD JOB!! 444</h1>
+	<h3>GOOD JOB!! 000</h3>
+	<h2>GOOD JOB!! 555</h2>
+	<h1>GOOD JOB!! 444</h1>
+	<h2>GOOD JOB!! 555</h2>
+	
+
+
+</body>
+</html>

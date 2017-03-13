@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+/*
+배경이미지 호출 처리..
+속성:                속성값
+background-image: url('img명')
+특정태그의 배경이미지를 설정 처리..
+ex)
+전체 화면(body)의 배경이미지를 img01.png로 설정
+*/
+body{background-image:urL('AL1.jpg')}
+table{background-image:url('AL2.jpg')}
+/*
+상대 및 절대 파일에 대한 접근형식..
+1. 기본 : 현재 같은 폴더에 파일(이미지)가 존재할 경우 
+	이미지명을 쓰면 그대로 활용할 수 있다.
+2. 상위경로설정 :
+	../ 상위경로
+	/폴더명지정	
+*/
+#img03Id{background-image:url('../AL003.jpg')}
+#img04Id{background-image:url('abc/AL2.jpg')}
+/*
+4.local file있는 절대경로로 접근하는 방법..
+절대경로에 있는 내용을 배경색상으로 호출한다.
+'C:/Users/acorn/Pictures/img01.png'
+
+5. Web server에 있는 default 경로를 확인하는 방법..
+
+*/
+#img06Id{background-image:url('http://192.168.0.113:8080/clientPrj/img/img02.png')}
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+<body>
+<h1>tag별 배경이미지 설정..</h1>
+<table width="800" height="500"></table>
+<br/>
+<table id="img03Id" width="800" height="500"></table>
+<br/>
+<table id="img04Id" width="800" height="500"></table>
+<br/>
+<h2>웹서버를 이용한 이미지</h2>
+<table id="img06Id" width="800" height="500"></table>
+<br/>
+</body>
+</html>

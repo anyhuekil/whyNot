@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- form은 데이터를 서버에 넘기기위해서 필요 -->
+<center>
+
+<h1>회원가입</h1>
+<table border = "1">
+	<colgroup>
+		<col style="background:gray; color:white"/>
+	</colgroup>
+		<tr><th>ID</th><td><input type="text" name="inId"/></td></tr>
+		<tr><th>이름</th><td><input type="text" name="inName"/></td><tr>
+		<!-- password : 입력시, 글자가 안보게끔 패스워드를 입력하게 처리 -->
+		<tr><th>password</th><td><input type="password" name="inPass"/></td></tr>
+		<tr><th>성별</th><td>
+		남자<input type="radio" name="gender" value="man"/>
+		여자<input type="radio" name="gender" value="woman"/>
+		벌레<input type="radio" name="gender" value="bug"/></td></tr>
+		<!-- radio: 단일 선택할 수 있게 하는 elements
+			name으로 그룹을 선택해서 단일처리 가능..
+		 -->
+		<tr><th>취미</th><td>
+		음악<input type="checkbox" name="hobby" value="music"/>
+		여행<input type="checkbox" name="hobby" value="travel"/><br>
+		게임<input type="checkbox" name="hobby" value="game"/>
+		프로그래밍<input type="checkbox" name="hobby" value="program"/><br>
+		기타<input type="checkbox" name="hobby" value="ect"/></td></tr>
+		<!-- 멀티선택을 가능하게하는 elements. 단, 이름을 동일하게 설정하면 서버단에 배열로 값을 받아서 처리한다. -->
+		<tr><th>사는지역(국내)</th><td>
+			<select name="selloc">
+				<option value="loc1">서울</option>
+				<option value="loc2">경기도</option>
+				<option value="loc3">강원도</option>
+				<option value="loc4">충청도</option>
+				<option value="loc5">경상도</option>
+				<option value="loc6">전라도</option>
+			</select></td></tr>
+<!-- 초기선택값이 있고, 선택적으로 데이터를 확인하게 할때 쓰인다.
+	3개이상 많은 내용 중, 단일 선택 처리에 주로 쓰인다.
+	서버에 전달되는 값
+	...option에 입력되지 않았을때, 표현되는 label값을 value값으로 default 설정된다.
+	보이는 label값과 실제 sever에 전달되는 값이 다를 때는 option의 속성값으로 value값을 지정한다. -->
+
+	<tr><th colspan="2" bgColor="red">위에 입력한 내용이 사실이면 아래 확인 버튼을 클릭하세요!!</th></tr>
+	<tr><th colspan="2" bgColor="white">
+	<input type="button" name="confirm" value="확인" onclick="javascript:alert('감사합니다')"/></th></tr>
+
+		
+</table>
+</center>
+</body>
+</html>

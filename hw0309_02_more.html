@@ -15,6 +15,11 @@
 	input:FOCUS{color:white;}
 	.loginWindow01{margin: 0 auto; padding: 20px; width: 320px; background-color: darkred;}
 	#inputStateCSS{color: red; text-align: center;}
+	/*
+	#windowSecond{visibility: hidden;}
+	*/
+	#windowThird{visibility: hidden;}
+	
 	
 </style>
 
@@ -100,12 +105,8 @@
 </form>
 </div>
 <br/>
-<div id="ruleA">
 
-<!--
- <form name="windowSecond">
- -->
-
+<div id="windowSecond">
 <table style="width: 500px">
  	<tr>
  		<td>필수약관:</td>
@@ -116,14 +117,10 @@
  	</tr>
  </table>
  
- <!-- 
- </form>
-  -->
   
  </div>
- <div>
- <form name="windowThird">
- <table style="width: 500px">
+ <div id="windowThird">
+  <table style="width: 500px">
   	<tr id="ruleB">
  		<td>선택약관:</td>
  		<td>약관에 동의 하십니까?</td>
@@ -137,7 +134,7 @@
  			선택약관에서 checkbox는 테스트용임.</td>
  	</tr>
  </table>
- </form>
+
  </div>
 
 

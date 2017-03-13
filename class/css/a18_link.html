@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+/*
+일반적인 link는 초기 글자 색상이 파랑, 언더라인 처리,
+페이지가 이동된 글자는 보라색으로 처리된다.
+text-decoration : 문자에대한 색상등에 대한 옵션을 처리한다.
+*/
+ a{text-decoration:none;}
+ 
+ /*이동된 글자는 보라색으로 처리된다.==> 노랑색으로 처리 
+ :visited ==> 이동한 후, 색상지정..
+ */
+ a:visited{color:;background:blue;}
+ /*
+	href속성을 문자열 다음에 '-'함께 화면에 출력되도록 하자.
+ 	attr(속성)
+ 	:link ==> link된 상황에서 처리할 내용..	
+  */
+  a:link::after{content: "-" attr(href)}
+  
+</style>
+
+<script type="text/javascript">
+</script>
+
+</head>
+<body>
+<h1>페이지이동!!gogo!!</h1>
+<h2><a href="http://www.naver.com">네이버</a></h2>
+<h2><a href="http://www.google.co.kr">구글</a></h2>
+<h2><a href="http://www.daum.net">네이버로 이동</a></h2>
+<h2><a href="http://www.w3school.com">더삼스쿨</a></h2>
+
+</body>
+</html>
