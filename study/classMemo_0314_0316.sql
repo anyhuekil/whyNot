@@ -9,9 +9,11 @@
 		select nvl(comm,0) from emp;
 -- 	06. 컬럼명 별칭: as 또는 띄어쓰기(' ')활용,
 --		별칭에 한글이나 공백을 넣을경우는 ""(큰따옴표)를 활용
--- 	07. 비교연산자 : = (*), >, <, >=, <=, <>,!=(다를때)
+-- 	07. 비교연산자 : = , >, <, >=, <=, <>,!=(다를때)
 -- 	08. 컬럼명은 대소문자 구분하지 않지만, 데이터는 대소문자 구분한다.
--- 	09. OR연산자 : 둘중하나 만족시 결과값 출력
+--  00. + distinct : 중복값 처리 
+		select distinct job, deptno from emp;
+	-- 	09. OR연산자 : 둘중하나 만족시 결과값 출력
 -- 	10. IN연산자 : IN(A, B, C) == A OR B OR C
 --	11. NOT연산자 : 아닐때,라고 해석하면될듯.
 -- 	12. BETEWEEN AND 연산자: 특정 조건 사이의 데이터 출력
@@ -19,7 +21,7 @@
 -- 	13. like연산자 : ?
 --	14. 와일드카드(%,_) :
 		SELECT ENAME "13,14번 예" FROM EMP WHERE ENAME LIKE '_A%';
--- 	15. 오름차순, 내림차순 : OREDER BY ENMAE ASC/DESC
+-- 	15. 오름차순, 내림차순 : OREDER BY 컬럼 ASC/DESC
 --	 	오름차순 A~, 1~, 시간순~
 		SELECT DEPTNO, SAL, ENAME FROM EMP ORDER BY DEPTNO ASC, SAL DESC;
 -- 	16. DUAL : 데이터 테스트를 위한 오라클 내장객체 한행으로 출력
@@ -96,16 +98,4 @@ select to_number('12345.1','9,999.9') calcu
 from dual;
 
 SELECT substr(hiredate,1,length(hiredate)) FROM EMP;
-
-
-
-
-
-
-
-
-
-
-
-
 

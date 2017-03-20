@@ -37,7 +37,7 @@ from emp;
 
 
 /*
-	과제3) 사원을 부서기준으로 1팀과 2팀으로 나누어서 체육대회를 하기로 햇다.
+	과제3) 사원을 부서기준으로 1팀과 2티으로 나누어서 체육대회를 하기로 햇다.
 	부서번호가 10, 30 ==> 1팀
 			20, 40 ==> 2팀
 	으로 나누고 다음과 같이 출력하세요.
@@ -47,7 +47,7 @@ select
 	deptno "부서번호",
 	ename "사원번호",
 	ename "이름",
-	(mod(deptno+10,20)/10)+1||'팀' "팀명"
+	mod(deptno,20)/10||'팀'
 from emp;
 
 
@@ -58,33 +58,19 @@ from emp;
 	column empinfo
 */
 select
-	ename||
-	'님 입사일 19'||
-	substr(hiredate,1,2)||
-	'년 '||
-	substr(hiredate,4,2)||
-	'월 '||
-	substr(hiredate,7,2)||
-	'일 이며, 현재 연봉은 '||
-	sal||
-	'만원 받고 있습니다.'
-	"column empinfo",
-	hiredate "비교용"
+	ename||'님 입사일'||xxx||'년 '||xxx||'월 '||xxx||'일 이며, 현재 연봉은 '||sal||'만원 받고 있습니다.'
+	"column empinfo"
 from emp;
-
-select hiredate from emp;
-
--- 원본 데이터의 1900년대 기준으로 이 값을 수정하기 위해서는 원본 데이터의 변환이나
--- 추가적인 지식이 필요해보임. 입력정보가 없으므로, 아마 불가능 할것으로 예상!!
-
-select substr(hiredate,1,length(hiredate))  from emp;
 
 /*
 과제 5)
 	substr을 활용하여 JOB이 MAN으로 끝나는 데이터를 출력하세요!!
 	추가)%도 활용해보자~~
 */
-select * from emp where substr(job,1)='MAN';
+select
+	*
+from emp
+where substr(job,1)='MAN';
 
 /*
 	과제 6)
