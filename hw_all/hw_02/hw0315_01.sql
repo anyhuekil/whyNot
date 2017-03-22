@@ -68,36 +68,42 @@ select
 	'일 이며, 현재 연봉은 '||
 	sal||
 	'만원 받고 있습니다.'
-	"column empinfo",
-	hiredate "비교용"
+	"column",
+	hiredate "empinfo"
 from emp;
 
-select hiredate from emp;
+
 
 -- 원본 데이터의 1900년대 기준으로 이 값을 수정하기 위해서는 원본 데이터의 변환이나
 -- 추가적인 지식이 필요해보임. 입력정보가 없으므로, 아마 불가능 할것으로 예상!!
 
-select substr(hiredate,1,length(hiredate))  from emp;
 
 /*
 과제 5)
 	substr을 활용하여 JOB이 MAN으로 끝나는 데이터를 출력하세요!!
 	추가)%도 활용해보자~~
 */
-select * from emp where substr(job,1)='MAN';
+select * from emp where substr(job,-3)='MAN';
+SELECT * FROM EMP WHERE SUBSTR(JOB,LENGTH(JOB)-2)='MAN';
+SELECT * FROM EMP WHERE SUBSTR('##'||JOB,LENGTH(JOB))='MAN';
 
 /*
 	과제 6)
 	입사일이 12월인 데이터를 이름과 입사일을 출력하세요 instr()를 활용
 */
-select
-	ename "이름",
-	hiredate "입사일"
-from emp
-where instr(hiredate, 12, 4, 1);
 
+select ename, hiredate
+from emp
+where instr(substr(hiredate,4,2),'12')=1;
+select
+	ename "이름",hiredate "입사일"
+from emp
+where instr(TO_CHAR(hiredate,'MM'),'12',1, 1)=1;
 
 /*
 	과제7)
 	입사일이 10월인 데이터를 이름과 입사일을 출력하세요 instr()를 활용
 */
+SELECT ENAME "이름", HIREDATE "입사일"
+FROM HIREDATE
+WHERE instr(TO_CHAR(hiredate,'MM'),'12',1, 1)
