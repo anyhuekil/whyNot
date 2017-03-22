@@ -55,41 +55,19 @@ select * from emp where job not like '%ER' and hiredate between 1981/01/01~ 1981
 ex)배열을 줘서 데이터에 다시 번호를 주는 방식:var1:var2(가능한가:var3)
 26. 소문자 대문자를 서로 바꾸는 함수:var1 ex) Hello -> hELLO
 28. instr을 사용할때 알파벳단위만 가능:var1:var2 단어 단위로는 어떻게 :var3:var4:var5
-
-
-0316
 4. trim의 정확한 정의:var1 왜 1단어는 되는데 2자이상안되는가:var2:var3
-5.
+*/
 
 
-
+/* 0322
+01. 서버쿼리? 서브쿼리? 다른거?
+02. IS NOT NULL 은 데이터가 없는거라 평균작업에 포함안됨?
+	EX) 전체 10명 NULL값 4명잇을때, 10명으로 평균? OR 6명으로 평균, 아님 오류남??
 
 */
 
 
 
-
-
-SELECT * FROM EMP;
-
-
-
-
-
-/*
-숙제
-	근무개월수에 따른 차등 보너스 지급
-	가장 오래된 개월~가장 최근에 입사한 개월수
-	1/3 = 30%, 1/3 = 20%, 1/3 = 10% (연봉기준)
-	사원, 입사일, 현재날짜(@@/@@/@@ AM @@시 @@분 @@ 초), 근무개월수, 보너스
-*/	
-
-SELECT MONTHS_BETWEEN(SYSDATE, HIREDATE) 
-FROM EMP ORDER BY MONTHS_BETWEEN(SYSDATE, HIREDATE) DESC;
-
-SELECT MOD(MONTHS_BETWEEN(HIREDATE, ),전체데이터수/3)+1)*0.1||'%' FROM EMP;
-	SELECT substr(hiredate,1,length(hiredate)) FROM EMP;
-	SELECT mod((HIREDATE ORDER by asc),()/3)*3 FROM EMP;
 	
 
 

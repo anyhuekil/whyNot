@@ -1,4 +1,4 @@
-
+-- 	11 start. z01_sql_basic
 /*
 1. DML : Data Maniplulation Language
 1) select : 조회시 사용.
@@ -21,7 +21,8 @@ ex) insert into dept01 values(50,'총무부','서울');
 */
 insert into dept01 values(50,'총무부','서울');
 select * from dept01;
-commit; -- 확정처리, 재접속하거나 다른 사용자도 변경된 데이터를 볼 수 있게.
+commit;
+-- 확정처리, 재접속하거나 다른 사용자도 변경된 데이터를 볼 수 있게.
 /*
 데이터 입력2
 insert into 테이블명(변경할컬럼명1, 변경할 컬럼명2) 
@@ -47,7 +48,7 @@ update dept01
   set dname='인사',
       loc='대전'
 where deptno=60;
-select * from dept01;	  
+select * from dept01;
 -- 확인예제..
 -- select * from emp;
 -- emp01이라는 복사 테이블을 만들고
@@ -60,20 +61,37 @@ select max(empno)+1 from emp01;
 -- 7935
 insert into emp01(empno, ename, job, sal) 
           values(7935, '홍길동','SUPERMAN',5000);
-commit;		  
+commit;
 SELECT * FROM emp01 where empno=7935;
 update emp01
    set mgr=7777,
        hiredate=sysdate,
 	   deptno=40
 where empno=7935;
-/* 숙제
-emp03 복사테이블 생성
-1. 입력  empno의 가장 작은수보다 -1, mgr:cleark의 mgr입력, sal:평균연봉, 
-   comm:전체comm의 합계
-2. 수정 ename:'신길동', job은 SUPERMAN, hirdate는 최근에 입사일+1
-*/
-select * from  emp;
+--  숙제
+-- emp03 복사테이블 생성
+-- 1. 입력  empno의 가장 작은수보다 -1, mgr: CLERK 의 mgr입력, sal:평균연봉,
+--    comm:전체comm의 합계
+select min(empno)-1, avg(sal), sum(comm)
+from EMP03;
+-- 7368, 2073.21, 2200
+select mgr
+from EMP03
+where job='CLERK';
+-- 7902, 7788, 7698, 7782
+INSERT INTO EMP03(EMPNO, SAL, COMM, MGR) VALUES( 7368,2073.21,2200,7902);
+INSERT INTO EMP03(EMPNO, SAL, COMM, MGR) VALUES( 7368,2073.21,2200,7788);
+INSERT INTO EMP03(EMPNO, SAL, COMM, MGR) VALUES( 7368,2073.21,2200,7698);
+INSERT INTO EMP03(EMPNO, SAL, COMM, MGR) VALUES( 7368,2073.21,2200,7782);
+SELECT * FROM EMP03;
+-- 2. 수정 ename:'신길동', job은 SUPERMAN, hirdate는 최근에 입사일+1
+SELECT MAX(HIREDATE)+1
+FROM EMP;
+UPDATE EMP03
+		SET ENAME='신길동',
+		JOB='SUPERMAN',
+		HIREDATE=(SELECT MAX(HIREDATE)+1 FROM EMP03);
+select * from  EMP03;
 /*
 4. delete : 특정 조건의 데이터를 삭제처리하는 구문
 	delete [없음] from 테이블명
@@ -104,14 +122,15 @@ select * from dept01;
 --        commit하고  재접속한 경우와 commit하지 않고 재접속한 경우 데이터의 변경 내용을
 --        확인한다.
 insert into dept01 values(30,'총무','강남');
-rollback;   -- 데이터가 입력되기 전으로 돌아가는 것을 확인할 수 있다.
- insert into dept01 values(50,'인사1','대전1');
+rollback;
+-- 데이터가 입력되기 전으로 돌아가는 것을 확인할 수 있다.
+insert into dept01 values(50,'인사1','대전1');
 -- db접속을 끊는다.
 -- 외부에서 comit하기 전에는 데이터가 변경 원복이 된다.
 -- tool에 따라 autocommit이 발생하는 경우가 있다..
 select * from emp01;
-
-/*
+-- 	12 start. z02_sql_basic
+/* z02_sql_basic.sql
 DDL :data definition language
 테이블 구조 생성, 변경 및 삭제하는 것을 말한다.
 크게..
@@ -142,12 +161,17 @@ DDL :data definition language
 		ex) emp10라는 테이블에 컬럼명 empno 정수형, ename 가변문자형, sal 실수형으로
 			만들고자 한다.			
 */
-	create table emp10( empno number(4), ename varchar2(20), sal number(7,2) );
+create table emp10( empno number(4), ename varchar2(20), sal number(7,2) );
 /*
 과제 login인 하는 화면을 만들고 id와 password을 체크하고, 다음 화면에서
 	id@@@ 님 환영합니다. 남은 point는 @@@ 입니다. 라는 내용이 나타난다고 한다.
 	이에 필요로 하는 테이블과 테이블 구조를 만드세요..
 */
+CREATE TABLE LOGIN(
+	ID VARCHAR2(10),
+	PASSWORD VARCHAR2(15),
+	POINT NUMBER
+);
 /*테이블 구조 변경하기.
 1. 테이블의 새로운 컬럼을 추가 할 때 - add column
 2. 테이블에 컬럼을 수정할 때 - modify column
@@ -159,7 +183,7 @@ ex) emp01에 job이라는 이름으로 가변형문자9가 들어가는 컬럼을 추가한다..
 */
 select * from emp10;
 alter table emp10 add(job varchar2(9));
--- 확인 emp10 날짜형데이터 createDate, 실수형데이터7,3 추가할려고 한다. 
+-- 확인 emp10 날짜형데이터 createDate, 실수형데이터7,3 추가할려고 한다.
 alter table emp10 add(createDate date, sal2 number(7,3));
 /*
 테이블 컬럼 수정
@@ -211,9 +235,8 @@ select * from empexp10;
 */
 alter table dept01 rename to dept10Exp;
 select * from dept10Exp;
-alter table dept10Exp rename column loc to location; 
+alter table dept10Exp rename column loc to location;
 alter table dept10Exp modify location varchar(25);
-
 /*
 ddl로 데이터의 모든 내용 삭제 처리..
 truncate table 테이블명..
@@ -225,9 +248,8 @@ select * from dept10Exp;
 테이블 구조 삭제
 
 */
-
-
-/*
+-- 	13 start. z03_sql_constraint
+/* z03_sql_constraint.sql
 데이터 무결성 제약 조건?
 데이터의 신뢰성의 확보하기 위하여, 테이블 생성시, 컬럼 속성값으로
 지정하는 것을 말한다.
@@ -294,7 +316,6 @@ CREATE TABLE DEPT_REF
    DNAME    VARCHAR2 (14),
    LOC      VARCHAR2 (13)
 );
-
 CREATE TABLE EMP_REF
 (
    EMPNO      NUMBER (4) primary key,
@@ -309,9 +330,9 @@ CREATE TABLE EMP_REF
 --  컬럼 컬럼TYPE references 참조할테이블명(참조할컬럼명)
 insert into DEPT_REF values(20, '총무','경기');
 select * from DEPT_REF;
-insert into EMP_REF(EMPNO, ENAME, DEPTNO) values(1000,'홍길동',10); 
+insert into EMP_REF(EMPNO, ENAME, DEPTNO) values(1000,'홍길동',10);
 select * from EMP_REF;
-insert into EMP_REF(EMPNO, ENAME, DEPTNO) values(1002,'마길동',20); 
+insert into EMP_REF(EMPNO, ENAME, DEPTNO) values(1002,'마길동',20);
 /* 숙제
 참조키 관계에 있는 테이블 구성하기 
 메인테이블  student_main(id, pass, name) :아이디, 패스워드, 이름
@@ -319,6 +340,28 @@ insert into EMP_REF(EMPNO, ENAME, DEPTNO) values(1002,'마길동',20);
   student_main 과 student_point  id로  foreign key 관계를 설정하고,
   student_main에 데이터가 있어야만 student_point를 입력할 수 있게끔 처리
 */
+CREATE TABLE student_main
+(
+   ID VARCHAR2(20) PRIMARY KEY,
+   PASS VARCHAR2(20),
+   NAME  VARCHAR2 (50)
+);
+SELECT * FROM STUDENT_MAIN;
+SELECT * FROM STUDENT_POINT;
+INSERT INTO STUDENT_MAIN VALUES('C001001','7777','홍길동');
+INSERT INTO STUDENT_MAIN VALUES('C001002','7777','신길동');
+INSERT INTO STUDENT_MAIN VALUES('C001003','7777','마길동');
+CREATE TABLE STUDENT_POINT(
+	ID VARCHAR2(20) REFERENCES STUDENT_MAIN(ID),
+	subject VARCHAR2(50),
+	POINT NUMBER
+);
+-- 에러발생
+INSERT INTO STUDENT_POINT VALUES('C001004','국어',70);
+INSERT INTO STUDENT_POINT VALUES('C001004','영어',80);
+INSERT INTO STUDENT_POINT VALUES('C001004','수학',90);
+SELECT * FROM STUDENT_MAIN A, STUDENT_POINT B
+WHERE A.ID = B.ID;
 /*
 check 제약 조건
 입력된는 값을 체크하여 설정된 값 이외의 값이 들어오지 못하게 조건을 설정하는 것을 말한다.
@@ -332,7 +375,7 @@ create table emp04(
 );
 insert into emp04 values(9998,'신길동','D');
 select * from emp04;
-
+-- 	14 start. z04_sql_datadictionary
 /*
 데이터 사전(데이터 dictionary)
 관리자에서 데이터베이스와 관련된 정보를 제공하는 것을 말한다.
@@ -342,7 +385,8 @@ ALL_XXX : 자신 계정 소유 또는 권한을 부여 받은 객체(테이블)의 정보조회
 USER_XXX : 자신의 계정이 소유한 객체 등에 관련 정보 조회.
 */
 select * from user_tables
-where table_name like '%EMP%'; -- 사용자 테이블 관련 정보..
+where table_name like '%EMP%';
+-- 사용자 테이블 관련 정보..
 /*
 제약조건 확인하기..
 user_constraints에서 각 테이블의 무결성 제약조건에 관련된 내용을 데이터
@@ -358,3 +402,61 @@ C : check, not null
 */
 select * from user_constraints
 where table_name like '%DEPT%';
+-- 	15 start. z05_sql_index
+/*
+인덱스란?
+데이터에 빠르게 접근하는 것을 도와 줌으로서 데이터베이스의 성능 향상에 도움을 주는 객체
+1) 장점
+- 검색 속도가 빨라진다.
+- 시스템에 걸리는 부하를 줄여서 시스템 전체 성능을 향상시킨다.
+2) 생성시점
+- 설계(논리설계, 물리설계), 테이블 생성, 데이터 입력, 생성
+- 운영단 데이터 부하시 생성
+3) 사용 여부
+- 테이블의 행의 수가 많은 때.(데이터 건수)
+- where 문으로 index에 해당 컬럼이 많이 사용될 때.(조회문에 사용한다)
+	ps) 테이블에 입력, 수정, 삭제가 자주 일어 나면 사용하지 않는 것일
+		일반적이다.
+- 검색 결과가 전체 데이터의 2~4%정도일 때.
+	ex) 1000만건이 데이터가 있는 인사정보 있는 경우에 검색을 20~40만건  안에
+	    데이터를 로딩해서 사용될 때 index를 처리함. 
+4) 인덱의 단점
+- 인덱스를 위한 추가 공간이 필요
+- 인덱스를 생성하는데 시간이 걸린다.		
+*/
+/*
+인덱스 생성 예제 만들기.
+1. 복사테이블 만들기
+create table EMP_IDX_EXP
+AS
+SELECT * FROM EMP;
+2. 인덱스 처리할 컬럼 지정.
+EMP_IDX_EXP에서 EMPNO를 INDEX로 지정
+3. 인덱스 생성(해당테이블에 인덱스 매핑)
+CREATE INDEX 인덱스이름
+ON 생성할테이블명(생성대상컬럼)
+CREATE INDEX INDEX_EMPNO_EMP_IDX_EXP
+ON EMP_IDX_EXP(EMPNO);
+*/
+create table EMP_IDX_EXP
+AS
+SELECT * FROM EMP;
+SELECT * FROM EMP_IDX_EXP;
+-- EMP_IDX_EXP 테이블에 EMPNO에 INDEX를 설정한다.
+CREATE INDEX INDEX_EMPNO_EMP_IDX_EXP
+ON EMP_IDX_EXP(EMPNO);
+-- 인덱스 삭제
+-- DROP INDEX 인덱스이름.
+DROP INDEX INDEX_EMPNO_EMP_IDX_EXP;
+/*
+확인예제..
+DEPT 테이블 복사본 DEPT_IDX_EXP 만들고, 
+인덱스 이름은 IDX_DEPTNO_DEPT로 해서 생성, 확인 및 삭제 처리..
+
+*/
+SELECT * FROM DEPT;
+CREATE TABLE DEPT_IDX_EXP
+AS SELECT * FROM DEPT;
+CREATE INDEX IDX_DEPTNO_DEPT
+ON DEPT_IDX_EXP(DEPTNO);
+SELECT * FROM IDX_DEPTNO_DEPT;
