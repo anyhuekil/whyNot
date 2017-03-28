@@ -13,3 +13,9 @@
 			ps) 테이블에 입력, 수정, 삭제가 자주 일어나면 사용하지 않는것이 일반적.
 	
 */
+
+CREATE INDEX INDEX_EMPNO_EMP_IDX_EXP
+	ON EMP_IDX_EXP(EMPNO ASC)
+	TABLESPACE EXP_TAB_SPACE;
+	
+	
