@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+</style>
+ 
+
+<script src="../text/jquery-1.10.2.js">
+</script>
+
+
+<script type="text/javascript">
+
+
+// $ : jquery 라는 약자..
+// $(document) : jquery에서 document객체(body)를 쓰겠습니다.
+// $(document).read() : jquery에서 화면이 로딩한 후에 처리할 내용을 선언하겠습니다.
+// $(document).read(함수) : 로딩한 후, 처리할 함수를 지정하겠습니다.
+	$(document).ready(function(){
+		//화면을 body끝까지 인식한 후, 처리할 내용 선언..
+		$("h1").css("color","blue");
+		// h1객체에 css로 글자 색상을 파랑으로 처리하겠습니다.
+		});
+
+
+$(document).ready(function(){
+	$("h1").attr("align","center");
+	$("h1").css("background","orange");
+	$("h1:even").css("color","white");
+	$("h1:odd").css("color","tomato");
+});
+
+
+
+function gogogo() {
+	var pr= document.elemetById.buyCash.value
+	
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+
+<div><input id="buyCash" type="number">
+</div>
+<div onclick="gogogo()">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
