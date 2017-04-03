@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+
+
+
+</style>
+<script type="text/javascript">
+
+
+// 각 자릿수 전역변수 선언.
+var cpNum1;
+var cpNum2;
+var cpNum3;
+
+
+// 초기 3개의 숫자 생성(0불가,같은숫자 불가) // 각 자릿수 추출할 수 있는 좋은 함수가 있나?
+function setPass(){
+	while(1){
+		rdNum = parseInt(Math.random()*1000);
+		cpNum1 = parseInt(rdNum/100);
+		cpNum2 = parseInt((rdNum-(cpNum1*100))/10);
+		cpNum3 = parseInt(rdNum-(cpNum1*100)-(cpNum2*10));
+		if (cpNum1 != 0){
+			if(cpNum1!=cpNum2 && cpNum1!=cpNum3 && cpNum2!=cpNum3){
+				break;
+			}
+		}
+	}
+	document.getElementById('showPass').innerHTML = rdNum+','+cpNum1+','+cpNum2+','+cpNum3;
+}
+
+// var cpPass = [cpNum1,cpNum2,cpNum3];
+	
+
+	
+
+
+</script>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+</head>
+<body>
+<div onclick="setPass()"><h1>숫자나와라뚝딱!</h1></div>
+<div><h2 id="showPass"></h2></div>
+
+
+
+<div><input id="inputPass" type=text></div>
+
+
+
+
+</body>
+</html>
