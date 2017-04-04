@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪accountBook</title>
+<style type="text/css">
+
+
+
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+<script type="text/javascript">
+/**/
+$(document).ready(function(){
+	
+});
+
+	
+var nowDate = new Date();
+
+var allAccbook=['no0','no34','no63','no23','no12','no42'];
+allAccbook[0]=['a','a','admin',0,'record']; // no00값
+allAccbook[1]=[34,'박윤하1','박윤하',100,'record']; // no34값
+allAccbook[2]=[63,'배재현1','배재현',50,'record'];	// no63값
+allAccbook[3]=[23,'서정효1','서정효',40000,'record'];
+allAccbook[4]=[12,'서종원1','서종원',2,'record'];
+allAccbook[5]=[42,'신관용1','신관용',77,'record'];
+
+/*
+for (var idx=0;idx<allAccbook.length;idx++){
+	allAccbook[idx][4] = ['num','date','input','output','totmoney'];
+	if(idx==allAccbook.length-1){
+
+//	alert(allAccbook[idx][4]);  // 확인용 알럿
+	}
+}
+*/
+/*
+allAccbook[1][1]=[1000000,'dateRecored']; // 서종원(name)[0]값
+allAccbook[1][1][1]=['date','input','output','totMoney']; // dateRecored[0]값
+
+allAccbook[2][1]=[1000000,'dateRecored'];
+allAccbook[2][1][1]=['date','input','output','totMoney'];
+
+allAccbook[3][1]=[400000000,'dateRecored'];
+allAccbook[3][1][1]=['date','input','output','totMoney'];
+
+allAccbook[4][1]=[5000,'dateRecored'];
+allAccbook[4][1][1]=['date','input','output','totMoney'];
+
+allAccbook[5][1]=[50000,'dateRecored'];
+allAccbook[5][1][1]=['date','input','output','totMoney'];
+*/
+
+/*
+var abNum=12;
+var abPass='서종원1';
+var inputMoney;
+var outputMoney;
++대출 추가 가능
+var record0;
+*/
+
+var logIdx;
+var logIn;
+//가계부 번호:abNum, 가계부비밀번호:abPass, 이름:abName, 
+function AccountBook(abNum,abPass){ //,input,output,record0)뺏음
+	this.abNum=abNum;
+	this.abPass=abPass;
+	this.allAccbook=function(){
+// 망함. allAccbook[4] = no12가 아닌 아래 배열을 출력함.
+		for(var logIdx=0;logIdx<allAccbook.length;logIdx++){
+			if(abNum==allAccbook[logIdx][0] && abPass==allAccbook[logIdx][1]){
+				logIn=logIdx; //boolean을 쓸수 잇나?
+				break;
+//				logIdx=logIdx;
+//				alert(allAccbook[logIdx]);
+			}else{ //뭐 더쓸필요잇나?
+//				logIn="fail";
+			}
+		}
+		if (logIn==logIdx){
+			alert(allAccbook[logIdx][2]+"님 환영합니다.");
+			
+			
+			// 이안으로 입출금 내역이 들어가는게 맞다고 봄.하지만, 로그인 잠금을 풀고 밖의 일을 보는것도 맞는듯..
+			
+			
+		}
+		else{
+			alert("가계부번호와 비밀번호를 확인해주세요.");
+//			logIn="checkNOandPASS_01";
+//			allAccbook[logIdx]="checkNOandPASS_02";
+		}
+//		alert(allAccbook[logIdx][3]);
+	}
+//	alert(allAccbook[logIdx][3]); // 위에선 되는데 아래선 안된다??
+/*	
+	this.accInput=function(inputMoney){
+		allAccbook[logIdx][3]=+inputMoney; //=+를 쓸까 고민은 해봣는데, 어떤게 더 효과적일지 모르겟음.; + 0원일때 보니 어쩔수없이 =+방향으로 가야됨.;
+		alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+allAccbook[logIdx][3]+
+			'\n입금:'+inputMoney+'\n------------------\n총액:'+(allAccbook[logIdx][3]+inputMoney));
+		return allAccbook[logIdx][3];
+	}
+	
+	this.accOutput=function(outputMoney){
+		if (allAccbook[logIdx][3]>=outputMoney){
+			allAccbook[logIdx][3]=-outputMoney;
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+allAccbook[logIdx][3]+
+					'\n출금:'+outputMoney+'\n------------------\n총액:'+(allAccbook[logIdx][3]-outputMoney));
+			return allAccbook[logIdx][3];
+		}else if(allAccbook[logIdx][3]<outputMoney && allAccbook[logIdx][3]>0){
+			allAccbook[logIdx][3]=-allAccbook[logIdx][3];
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+allAccbook[logIdx][3]+
+					'\n출금:'+allAccbook[logIdx][3]+'\n------------------\n총액:'+(allAccbook[logIdx][3]-allAccbook[logIdx][3])+
+					'\n** 잔액부족 **\n희망 출금액:'+outputMoney+'\n실제 출금액:'+allAccbook[logIdx][3]);
+			return allAccbook[logIdx][3];
+		}else{
+			alert("돈맡겨놨냐??? 입금부터해라잉?");
+		}
+
+	}
+*/
+/*	
+	this.accInput=function(inputMoney){
+		allAccbook[logIdx][3]+=inputMoney; //=+를 쓸까 고민은 해봣는데, 어떤게 더 효과적일지 모르겟음.; + 0원일때 보니 어쩔수없이 =+방향으로 가야됨.;
+		alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+(allAccbook[logIdx][3]-inputMoney)+
+			'\n입금:'+inputMoney+'\n------------------\n총액:'+allAccbook[logIdx][3]);
+//		return allAccbook[logIdx][3]; 없어도되나?? 무슨의미지? 위에쓸라고 넣었는데.;;
+	}
+	
+	this.accOutput=function(outputMoney){
+		if (allAccbook[logIdx][3]>=outputMoney){
+			allAccbook[logIdx][3]-=outputMoney;
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+(allAccbook[logIdx][3]+outputMoney)+
+					'\n출금:'+outputMoney+'\n------------------\n총액:'+allAccbook[logIdx][3]);
+//			return allAccbook[logIdx][3];
+		}else if(allAccbook[logIdx][3]<outputMoney && allAccbook[logIdx][3]>0){
+			var exCharge = allAccbook[logIdx][3]; // =-가 안되서 써야됨.;ㅠ
+			allAccbook[logIdx][3]-=allAccbook[logIdx][3];
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+exCharge+
+					'\n출금:'+exCharge+'\n------------------\n총액:'+allAccbook[logIdx][3]+
+					'\n** 잔액부족 **\n희망 출금액:'+outputMoney+'\n실제 출금액:'+exCharge);
+//			return allAccbook[logIdx][3];
+		}else{
+			alert("돈맡겨놨냐??? 입금부터해라잉?");
+		}
+	}
+// [logIdx][4] = record 이용할것임. 
+*/
+	var inputMoney=0;
+	var outputMoney=0;
+	
+	this.accInOutput=function(inputMoney,outputMoney){
+		var logIdx=logIn; // 전역변수에 대한 이해부족???
+		var exCharge = allAccbook[logIdx][3]; // =-가 안되서 써야됨.;ㅠ
+		if ((allAccbook[logIdx][3]+inputMoney)>=outputMoney){
+			allAccbook[logIdx][3]+=inputMoney; //=+를 쓸까 고민은 해봣는데, 어떤게 더 효과적일지 모르겟음.; + 0원일때 보니 어쩔수없이 =+방향으로 가야됨.;
+			allAccbook[logIdx][3]-=outputMoney; //위에꺼랑 합칠방법잇음?
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+exCharge+'\n입금:'+inputMoney+'\n출금:'+outputMoney+
+					'\n------------------\n총액:'+allAccbook[logIdx][3]);
+
+//	allAccbook[idx][4] = ['num','date','input','output','totmoney']; 위에서 사용한 데이터
+			allAccbook[logIdx][4][0].push=("num"); // 횟차 넣는 방법 모르겠음.; 본인의 배열이몇번째인지 확인하는 함수??있음?
+			allAccbook[logIdx][4][1].push=(nowDate);
+			allAccbook[logIdx][4][2].push=(inputMoney);
+			allAccbook[logIdx][4][3].push=(outputMoney);
+			allAccbook[logIdx][4][4].push=(allAccbook[logIdx][3]);
+			
+			
+			
+//		return allAccbook[logIdx][3]; 없어도되나?? 무슨의미지? 위에쓸라고 넣었는데.;;
+		}else if ((allAccbook[logIdx][3]+inputMoney)<outputMoney && (allAccbook[logIdx][3]+inputMoney)>0){
+			allAccbook[logIdx][3]+=inputMoney;
+			allAccbook[logIdx][3]-=allAccbook[logIdx][3];
+			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+exCharge+'\n입금:'+inputMoney+'\n출금:'+(exCharge+inputMoney)+
+					'\n------------------\n총액:'+allAccbook[logIdx][3]+
+					'\n** 잔액부족 **\n희망 출금액:'+outputMoney+'\n실제 출금액:'+(exCharge+inputMoney));
+//			return allAccbook[logIdx][3];
+
+			allAccbook[logIdx][4][0].push=('num'); // 횟차 넣는 방법 모르겠음.; 본인의 배열이몇번째인지 확인하는 함수??있음?
+			allAccbook[logIdx][4][1].push=(nowDate);
+			allAccbook[logIdx][4][2].push=(inputMoney);
+			allAccbook[logIdx][4][3].push=((exCharge+inputMoney));
+			allAccbook[logIdx][4][4].push=(allAccbook[logIdx][3]);
+		}else{
+			alert("돈맡겨놨냐??? 입금부터해라잉?");
+		}
+	}
+// [logIdx][4] = record 이용할것임. 
+	this.accRecord=function(showRecord){
+	// showRecord =>0.잔고조회     1.전체     2.최근3회     3.최근거래     4.기록삭제
+		var logIdx=logIn; // 전역변수에 대한 이해부족???
+		var showRecord;
+		if (showRecord==0){
+			alert(allAccbook[logIdx][2]+'님 현재 잔액은\n총'+(allAccbook[logIdx][3]*10000)+'원 입니다.');
+		}else if(showRecord==1){
+			alert(allAccbook[logIdx][4][0][0]+"?????");
+			alert(allAccbook[logIdx][4][0][1]+"?????");
+			alert(allAccbook[logIdx][4][0][2]+"?????");
+			alert(allAccbook[logIdx][4][0][3]+"?????");
+			alert(allAccbook[logIdx][4][0][4]+"?????");
+			for(var idx=0;idx<allAccbook[logIdx][4][0].length;idx++){
+				alert('콘솔로그를 확인하세요.');
+				console.log(idx+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==2 && allAccbook[logIdx][4][0].length>3){ // 초기값을 특정이름으로 줬기때문에 3보다 큰게 아닌 4보다 큰것
+			alert('콘솔로그를 확인하세요.');
+			for(var idx=(allAccbook[logIdx][4][0].length-3);idx<allAccbook[logIdx][4][0].length;idx++){
+	
+				console.log(idx+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==2 && allAccbook[logIdx][4][0].length<=3){
+			alert('입출금 내역이 3건 이하입니다. 해당내용만 출력합니다.');
+			alert('콘솔로그를 확인하세요.');
+			for(var idx=1;idx<allAccbook[logIdx][4][0].length;idx++){
+				console.log(idx+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==3){ // 초기값을 특정이름으로 줬기때문에 3보다 큰게 아닌 4보다 큰것
+			alert('콘솔로그를 확인하세요.');
+			var idx=allAccbook[logIdx][4][0].length-1;	
+				console.log(idx+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+		}else if(showRecord==4){
+			allAccbook[logIdx][4][0]=[];
+			allAccbook[logIdx][4][1]=[];
+			allAccbook[logIdx][4][2]=[];
+			allAccbook[logIdx][4][3]=[];
+			allAccbook[logIdx][4][4]=[];
+		
+		}else{
+			alert('입력오류');
+		}
+		
+	}
+}
+var test001=new AccountBook(12,'서종원1');
+test001.allAccbook();
+test001.accInOutput(12,0);
+test001.accInOutput(0,10);
+test001.accInOutput(0,10);
+test001.accInOutput(0,10);
+test001.accInOutput(2,12);
+
+test001.accRecord(1);
+/*
+test001.accRecord(2);
+test001.accRecord(3);
+test001.accRecord(4);
+test001.accRecord(1);
+test001.accInOutput(12,0);
+test001.accRecord(0);
+test001.accInOutput(0,10);
+test001.accRecord(1);
+test001.accRecord(2);
+test001.accRecord(3);
+*/
+
+
+//전체 배열 확인하는 방법은???
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
