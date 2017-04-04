@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+
+/*
+1. 변수 선언..
+var 변수명;
+2. 데이터할당.
+변수명 = 실제데이터;
+*/
+	var name01;
+	// 변수명, 식별자 선언 규칙
+	// 1. 내장된 키워드를 사용해서는 안 된다.
+	//    ex) break, if, for, else 등..
+	// 2. 숫자로 시작해서는 안된다.
+	//    ex) 1student(X), 23name (X), name01(O), call20(O)
+	// 3. 특수 문자는 $, _만 선언할때 활용이 가능하다.
+	//    ex) #123(X), %himan(X), good**(X), $number01(O),_name(O))
+	// 4. 공백 문자를 포함 할 수 없다.
+	//    ex) var good product(X), var list line(X)
+	// 식별자를 가독성을 위한 관례
+	// 1. 생성자 함수는 항상 대문자로 시작하여 사용한다.
+	//    var obj01 = new Product();  - Product
+	// 2. 변수, 인스턴스, 함수, 메서드의 이름은 항상 소문자로 시작합니다.
+		  var num01=52;
+	//	  var obj01 = new Fruit(); // 인스턴스(obj01) - 객체의 참조변수.
+	// 3. 여러 단어의 합성어는 식별자의 각 단어의 첫 글자를 대문자로 합니다.
+		  var fruitCnt; var personName; var goodPay;
+
+	/*
+	데이터의 유형..
+	1. 문자
+	2. 숫자(정수, 실수형)
+	3. 객체
+	4. 배열..	
+	*/		
+		var name02="홍길동";
+		var name03='신길동'; // "",'' 사이에 데이터를 할당..
+		var age = 25;
+		var weight= 65.5; // 숫자는 할당하는 순간 데이터 유형이 된다.
+		var isTrue=true, isFalse=false; //  boolean 데이터 처리..
+		var person={};// 객체형에 대한 선언..초기 type 할당
+		person.name="마길동";
+		person.age=25; // 이름과 나이 할당..
+		// 객체명.속성  지정 및 할당이 가능하고, 재 활용이 가능하다.
+		//alert(person.name);
+		//alert(person.age);
+/* 확인예제..
+	가지고 있는 책이라는 객체를 선언하고,
+	책의 구입시기, 책제목을 속성값으로 하여, alert()으로 출력하세요..
+*/		
+		var book={};
+		book.buyDays="2017/3/05";
+		book.title="정의론";
+		//alert(book.buyDays); alert(book.title);
+/*
+활용되는 이스케이프 문자..
+alert()에서, prompt에서 화면 label내용을 처리할 때,
+\n  : 줄바꿈 처리,
+\t  : 탭간격 처리..
+\'  : 작은따옴표 출력
+\"  : 큰따옴표 출력.
+*/ 		
+		var show ="안녕하세요!\n오늘의 과제\t @@@?";
+		show+="\'된장찌개\'입니다..\n";
+		show+="\"백종원\"표라서 더 맛있겠죠?";
+//		alert(show);
+		console.log(show); 	
+//크롬에서 console.log :출력내용 처리 줄바꿈 처리표시..
+//크롬  --> 메뉴(오른쪽 상단) --> 도구 더보기 --> 개발도구
+/*
+숫자 및 연산자..
+2532, 433.222
++, - , *, /, %(나머지 연산자)
+
+*/
+	var num01=25;
+	var num02=27.5;
+	var sum=num01+num02;
+	console.log(num01+" + "+num02+" = "+ sum);
+	var modSum=25%7;
+	console.log(25+" % "+7+" = "+ modSum);
+/* 확인예제..
+	변수  appleCnt 25, orangeCnt 72
+	사칙연산 및 % 연산 처리 결과를 출력 하세요..
+		25 + @@ = @@
+		25 - @@ = @@
+		25 * @@ = @@
+		25 / @@ = @@
+		25 % @@ = @@
+*/ 	
+	var appleCnt = 25;
+	var oragneCnt = 72;
+	console.log(appleCnt+" + "+oragneCnt+ " = "+(appleCnt+oragneCnt));
+	console.log(appleCnt+" - "+oragneCnt+ " = "+(appleCnt-oragneCnt));
+	console.log(appleCnt+" * "+oragneCnt+ " = "+(appleCnt*oragneCnt));
+	console.log(appleCnt+" / "+oragneCnt+ " = "+(appleCnt/oragneCnt));
+	console.log(appleCnt+" % "+oragneCnt+ " = "+(appleCnt%oragneCnt));
+/*
+논리 연산
+boolean 55>25, 
+비교연산자 >=, <=, !=(다르면 true), ==(동일하면 true)
+if( 비교 연산자 ){
+	 true일 때, 처리
+}else{
+	 false일 때, 처리	 
+}
+*/	
+	if(253<25){
+		console.log("253<25 ?"+(253<25));
+	}else{
+		console.log("253<25 ?"+(253<25));		
+	}
+/* 비교연산자와 논리 연산자 혼합 내용
+	범위를 지정해서 처리할 때, 필요..
+	점수가..60이상이고 100이하면 합격 처리..
+	point >= 60   ;110, 1200..포함..
+	point <= 100   : 0, 7, 55 포함.
+	and 조건으로 두가지 내용을 다 포함한 내용으로 처리..
+	&& 기호로 연결 처리..
+	if( point >= 60 && point <= 100)
+	점수가 0점 미만이거나 100초과인 경우, 유효한범위가 
+	아님..
+	or조건으로 두가지 조건중 하나만 포함되더라도 처리ㅣ.
+	|| 기호로 연결 처리..
+	if( point < 0 || point >100 )
+	
+*/ 
+	var point = 70;
+	if( point >= 60 && point <= 100){
+		console.log("합격입니다.");
+	}
+	if( point < 0 || point >100 ){
+		console.log("점수의 범위가 유효하지 않습니다.");
+	}
+/*
+확인예제..
+	구매비용 비교. 2000000이하만 구매가능.
+		구매비용 buypoint 
+		50000~ 100000 사이일 때, VIP 고객 3%할인
+		100000초과 200000 사이일때, VVIP 고객 5%할인
+		0미만  이거나 200000 초과시 유효한 비용처리 아님.표시
+		
+*/		
+		
+		
+// 02 없음. 01 추가?
+		
+/*
+ 객체란?
+   자바스크립트에서 여러가지 속성값을 가진 구조를 활용
+   하여 프로그래밍의 보다 효과적으로 하기 위해서 사용
+   된다.
+ 예를 들어, 사람이라는 객체에는 여러 속성을 가지고 있다.
+ 속성:이름, 나이, 생김새, 기억  
+ 메서드 또는 기능(움직일수 있는) : 달리다(), 보다(), 
+ 프로그래밍을잘하다()
+ --> 자바스크립트에서는 주로 함수로 쓰이고 있다.
+ 속성과 메서는 상호작용을 하면서, 특정한 목적인 정보를 효과적으로
+ 처리 하는 객체를 만들 수 있다.
+ */
+// 객체를 선언하다!!
+	var person;
+// 객체를 할당하다..:자바스크립의 특징상 할당하는 data type에 따라서
+// 해당 변수의 데이터 형식이 지정된다.
+// 객체는   { }로 초기에 할당해서 type을 지정한다.
+//        cf)주의 자바에서는 배열로 인식!
+	person ={};
+// 객체에 속성지정하기
+// 속성이란? 객체에 포함한 고유의 데이터를 할당하기위한 변수를 말한다.
+//     또한 특징으로 볼 수 있어서, 이 데이터에 따라서 메서드(함수)에
+//     영향을 미칠 수 있다.
+// ex) 예를 들어 사람의 속성에 이름이하는 속성을 가지면, 이 이름으로
+//     다른 사람과 관계에 있어서 불려지는 것과 또는 다른 곳으로 전입/전출
+//    하는데, 또는 행정서류에 기입하는 내용이 달라지게 된다. 그 만큼
+//    속성값에 따라서 다른 처리를 하는 것을 말한다.
+// ex) tag의 h1이라는 객체에 속성이 align이 있는데, 이 align에 값이
+//     center, left, right에 따라서 화면에서 보여지는 것이 달라지게
+//    된다.
+// 속성지정하기..
+// 1) 객체명.속성명 = 데이터..  
+//    객체에 특정한 속성에 속성값을 할당한다.
+//    ex) 사람이라는 person 객체에  name 이라는 이름 정하고,
+//        문자열로 "홍길동"이라는 데이터를 할당하고자 하면 아래와 같이
+//        처리하면 된다..
+		person.name="홍길동";
+//    객체는 여러 속성을 가질 수 있다.. 동일한 객체에서 속성을 정의해서
+//    또다른 데이터를 할당 하는 것을 말한다.
+//   ex) person객체에 age라는 속성 새로 만들고 여기에 데이터가 29를
+//    할당한다..
+		person.age=29;  //다른 유형의 데이터를 할당할 수 있다.
+//    속성은 이렇게 한번 할당되면, 객체이름.속성 으로 호출하여 활용
+//    될 수 있다..
+//       console 로그에 출력.. console.log("출력 처리..");	
+		console.log("person의 이름은 "+person.name);
+		console.log("person의 나이는 "+person.age);
+//	2) 객체 선언과 동시에 속성 설정하기..
+//     객체는 생성 이후에,ex) var person={}; (생성) 
+//     속성 설정할 수 있지만,  person.name="홍길동"  (속성 설정 데이터할당)
+//     한꺼번에 생성과 속성선언과 할당을 할 수 있다..
+//     json(javascript Object Notation)형식으로.. 속성-값...
+//     형식은  var 객체명 = {속성:속성값,속성2:속성값2,};	
+//     ex) person를 json 형식으로 속성과 속성값을 지정해보자..
+		var person2 = { name : "홍길동", age:29, loc:"서울 강남" };
+//     이렇게 정의 객체는 객체명.속성으로 접근해서 활용할 수 있다..
+//     활용한다는 말은 호출하는 것 뿐만아니라, 재할당하는 것도 처리 된다는
+//     말이다..
+//     호출은 person2의 객체에 name이라는 이름으로 호출하여 사용될 수 있다.
+      	console.log("person2의 이름:"+ person2.name);
+      	console.log("person2의 나이:"+ person2.age);
+      	console.log("person2의 사는 곳:"+ person2.loc);
+//     이름을 변경하고자 한다..
+       	person2.name="신길동";
+       	console.log("person2의 이름:"+ person2.name);
+       	/*  확인예제..
+        객체명은 favorProduct로 하고,
+    	속성으로 물건명, 가격, 물건을구입내지취득한장소
+    	1) 객체 생성후, 속성값 지정.
+    	2) 객체 생성과 함께 속성값 지정..
+    	console.log로 출력하세요..
+
+    */       	
+ 		var favorProduct1={};
+ 		favorProduct1.pname="내방의 PC";
+ 		favorProduct1.price=1500000;
+ 		favorProduct1.getLoc="G마켓";
+ 		console.log("## 내가 좋아하는 물건들 ##");
+ 		console.log("물건1 이름:"+favorProduct1.pname);
+ 		console.log("물건1 가격:"+favorProduct1.price);
+ 		console.log("물건1 구매한 곳:"+favorProduct1.getLoc);
+ 		var favorProduct2={pname:"핸드폰",price:700000,getLoc:"통신판매상"};
+ 		console.log("물건2 이름:"+favorProduct2.pname);
+ 		console.log("물건2 가격:"+favorProduct2.price);
+ 		console.log("물건2 구매한 곳:"+favorProduct2.getLoc);
+ /*
+ 	배열
+ 	 	선언 : 
+ 	 		var 배열이름;
+ 		배열데이터 type 지정과 할당..
+ 			배열이름 = []; ex) var fruits=[];
+ 		데이터할당..
+ 			index : 배열을 접근하기 위한 고유 번호 0부터 시작..
+ 			배열이름[index]= 데이터;
+ 			ex) fruits[0] = "사과"; fruits[1] = "바나나";
+ 			    fruits[2] = "딸기";
+ 		배열의 갯수 : 배열이름.length;
+ 		배열의 선언, 데이터 할당..
+ 			var 배열이름 =[데이터1, 데이터2, 데이터3];
+ 			ex) var books=["html5","javascript","자바"];
+ 				books[0], books[1]			    
+ */
+ 		var books=["html5","javascript","자바"];
+ 		console.log("도서 1번째:"+books[0]);		
+ 		console.log("도서 2번째:"+books[1]);		
+ 		console.log("도서 3번째:"+books[2]);
+ 		books[2]="jsp";
+ 		console.log("도서 3번째(변경후):"+books[2]);
+ 		// 반복문을 통한 호출...
+ 		// books.length : 배열의 크기..
+ 		console.log("\tfor문을 통한 배열데이터 출력!!!");
+ 		for(var idx=0;idx<books.length;idx++){
+ 		//   초기값 idx=0 부터 시작해서 idx가 books의 크기보다 1적게.
+ 		//	 왜냐하면 index의 최종번호는 배열의 크기보다 1적기 때문에..
+ 		//    0, 1, 2 까지..   idx++ : 증가 연산자..
+ 			console.log("도서 "+(idx+1)+"번째 "+books[ idx] );
+ 		}
+ /* 확인예제..
+ 	1) weekendPlans이라는 배열을 만들고,
+ 		배열 객체 생성과 할당 처리해서..
+ 		반복문으로  화면단에 다음과 같이 출력하세요..
+ 			~~ 주말 계획 ~~
+ 				제목                                  시간       인원
+ 			1. 1차 프로젝트 쫑파티..    
+ 			2. 등산
+ 			3. Full sleeping day!!^^
+ */		
+ 		var weekendPlans=["1차 프로젝트 쫑파티..","등산","Full sleeping day!!^^"];
+ 		console.log("~~ 주말 계획 ~~");
+ 		for(var idx=0;idx<weekendPlans.length;idx++){
+ 			console.log((idx+1)+". "+weekendPlans[ idx ]);
+ 		}
+ /*  단일 배열은 단일 데이터만 출력해서 활용할 수 있다.. 
+ 	일때,  제목과 시간 인원이라는 속성 가진 객체단위 배열을 활용하면,
+ 	효과적으로 list를 처리할 수 있다..
+ 	1. 배열객체를 만들려면 단위 객체를 먼저 만들어야 한다..
+ 		1) 속성값이 무엇인지를 확인..
+ 	2. 단위를 배열에 할당처리..
+ 	3. 배열객체를 수정, 추가 등록, 삭제 할 수 있어야 한다..
+ */		
+ // 단위객체의 속성  및 속성값 설정하기..
+ // title, times, togethers
+ 	var weekPlan01 ={title:"1차 프로젝트 쫑파티",
+ 					times:"오늘 저녁(3/30)",
+ 					togethers:5};
+ 	var weekPlan02 ={title:"등산",
+					times:"토(4/1)",
+					togethers:4}; 		
+ 	var weekPlan03 ={title:"Full sleeping day!!^^",
+						times:"3/31",
+					togethers:1};
+ // 배열객체 선언과 할당
+ 	var weekendPlan2=[];
+//  index 번호로 할당..  배열이름[index-0부터]=할당할 객체..
+	weekendPlan2[0]=weekPlan01;// 배열에 객체가 할당된 상황..
+	weekendPlan2[1]=weekPlan02;
+	weekendPlan2[2]=weekPlan03;
+/*  배열 객체의 속성을 접근해서 호출하기...
+ 	 weekendPlan2[0]  ==> 실제들어가 있는 객체..weekPlan01
+ 	weekPlan01.title로 해당 속성의 title을 호출했듯이..
+ 	weekendPlan2의 할당된 첫번째 객체의 title을 호출할려면..
+ 	weekendPlan2[0].title로 호출하면 된다..
+ 
+ */
+ // 각각의 데이터 호출 할려면..
+ 	console.log("@@@ 배열 객체 첫번째 데이터 출력 @@@");
+ 	console.log(weekendPlan2[0].title+":"
+ 			+weekendPlan2[0].times+":"
+ 			+weekendPlan2[0].togethers);
+ // 두번째 데이터, 세번째 데이터를 호출할려면?
+//  err) 	weekendPlan2.title[1] (X)...
+//   객체배열이기에  배열명[index].속성값 설정..
+  	console.log(weekendPlan2[1].title+":"
+ 			+weekendPlan2[1].times+":"
+ 			+weekendPlan2[1].togethers);	 
+ 	console.log(weekendPlan2[2].title+":"
+ 			+weekendPlan2[2].times+":"
+ 			+weekendPlan2[2].togethers); 
+ /* 확인 예제...
+ 	변수로 favorMovies : 가장 좋아하는 영화~~
+ 		 title   관람일     관람장소
+ 	배열 객체 3개를 만들고, 데이터를 할당한 후에  출력하세요..
+ */
+ 	var movie01={title:"미녀와 야수", seeDay:"3/16", seeLoc:"롯데시네마"};
+ 	var movie02={title:"프리즌", seeDay:"3/23", seeLoc:"CGV"};
+ 	var movie03={title:"공각기동대", seeDay:"3/29", seeLoc:"메가박스"};
+ 	var favorMovies=[];
+ 	favorMovies[0]=movie01;
+ 	favorMovies[1]=movie02;
+ 	favorMovies[2]=movie03;
+ 	console.log("가장 좋아하는 영화");
+ 	console.log(favorMovies[0].title+"\t"+favorMovies[0].seeDay+"\t"
+ 			+favorMovies[0].seeLoc); 
+ 	console.log(favorMovies[1].title+"\t"+favorMovies[1].seeDay+"\t"
+ 			+favorMovies[1].seeLoc); 
+ 	console.log(favorMovies[2].title+"\t"+favorMovies[2].seeDay+"\t"
+ 			+favorMovies[2].seeLoc); 
+
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+// 04
+
+// 함수 정의...
+function plus(num01, num02){ // 입력값 num01, num02로 지정
+	var sum = num01 + num02; // 프로세스 처리: 합산처리
+	return sum; // 함수를 호출했을 때, 결과값 return
+}
+// 함수 호출..
+plus(25, 27); // 정의된 함수에 순서에 맞게 값이 입력되고..
+// num01에는 25,  num02에는 27이 입력..
+// sum에는 25와 27이 합산된 내용이 저장
+// return에 sum이 있으므로 이 함수값은 52가 된다..
+// plus(25, 27);는 현재 메모리에 52라는 숫자가 있는 상황..
+// 원하는 출력형식을 지정해서 출력 처리하면 된다.
+// 1. 변수로 할당..
+// 2. alert이나 console.log라는 출력 함수를 통해서 처리해야지 화면에
+//    볼 수 있다.
+var result = plus(25, 27); // 함수의 결과값을 메모리에 할당.
+alert(result); // 결과값을 출력 처리..
+// 브라우저에 확인하기..
+// clientPrj/WebContent/javascript_re/a04_function/a01_function.html
+
+
+function minus(num01, num02){
+	var sum =num01-num02;
+	return sum;
+}
+var result=minus(25, 24);
+//alert(result);
+console.log(result);
+function multi(num01, num02){
+	var sum =num01 * num02;
+	// @@ * @@ = @@
+	var strRst = num01+ " * " + num02 + " = " +sum;
+	// 식자체를 문자열로 return 처리 됨.
+	return strRst;
+}
+var result2 = multi(2,3);
+console.log(result2);
+
+		
+//함수변수 선언과 할당.
+//
+var show01=function(showStr){
+	alert("입력받은 내용 alert으로 출력"+showStr);
+	// return은 있는 경우 : 값을 통해서 결과값을 변수를 처리해야 할경우.
+	// return이 없는 경우 : 프로세스만 있는 굳이 결과값으로 변수를 할당
+	//                   할 필요가 없는 경우..
+};
+//정의 된 함수변수 호출..
+//함수명(function에 정의된 입력값)
+show01("Good week start!!!");
+//"Good week start!!!"이 showStr에 할당이 되고, 그 내용이 출력이 된다.
+
+var introMyfamily=function (mem01, mem02, mem03,
+		                    mem04, mem05){
+	var show="우리 가족들을 소개합니다.\n"; // \n 줄바꿈
+	// show에서 +=하면 문자 누적처리..
+	show+="아버지 "+mem01+","; 
+	show+="어머니 "+mem02+","; 
+	show+="나 "+mem03+","; 
+	show+="형1 "+mem04+","; 
+	show+="형2 "+mem05+" 으로 되어 있습니다.";
+	alert( show );  // 현재문자열을 alert으로 출력처리..
+};
+introMyfamily("홍상직","옥영향","홍길동","홍귀동","홍일동");
+
+
+
+var isMale = confirm("남자입니까?");
+//isMale에는 true/false값이 할당 되어 있구나!!
+//alert(isMale);
+if( isMale ){
+	// true일 때,
+	alert(" gentleman 이리로 오십시요!! ");
+}else{
+	// false일 때..
+	alert(" pretty lady 이 쪽입니다!");
+}
+
+
+var isAM=confirm("지금 오전입니까?");
+if(isAM){
+	alert("Good morning!! 좋은 하루 시작하세요!!");
+}else{
+	alert("Good job!! 활기찬 오후 되시길!!");
+	
+}
+
+
+var ran=Math.random();
+alert( parseInt(ran*10) );
+// 실행시 마다 다른 값 발생..
+
+
+
+// 임의의 1~6
+// R= Math.random()   0.0 <= R < 1.0
+// *n : 가지수
+// +k : 시작 숫자..
+// parseInt : 정수로 변환
+// 1에서부터 6까지   n:6,  k:1
+// paseInt(R*6)+1;
+// 화면이 호출될 때마다, 임의의 값을 할당 처리.
+var num01 = parseInt(Math.random()*6)+1;
+var num02 = parseInt(Math.random()*6)+1;
+var sum=num01+num02;
+alert(num01+"+"+num02+"="+sum);
+var isOver10=confirm("합산이 10이상?");
+// 확인을 누르고, 실제값이 10이상이면..
+// Win 
+// isOver10이 true이고, sum>=10 이면 조건 처리
+if( isOver10 && sum>=10 ){
+	alert("Win!!");
+}else{
+	alert("Lost!!");
+}
+		
+var teamName1=prompt("팀이름을 정하세요","홍팀");
+//alert("입력한 팀이름:"+teamName);
+var games=["가위","바위","보"];
+var ranIdx1 = parseInt(Math.random()*3);
+alert(teamName1+":"+games[ranIdx1] );
+var teamName2=prompt("팀이름을 정하세요","청팀");
+var ranIdx2 = parseInt(Math.random()*3);
+alert(teamName2+":"+games[ranIdx2] );
+/* 과제)해당 팀에 대한 승패 
+	  @@@ 팀 승
+	   무승부
+*/
+
+
+//setTimeout(함수, 시간); 시간이후에 처리할 내용. 
+setTimeout(function(){
+	alert("3초가 지났습니다.")
+	
+},3000);
+function call(){
+	alert("2초가 지남!!!")		
+}
+// 정의된 함수를 호출 처리..
+setTimeout(call,2000);
+// 2초 후에 call함수 호출, 3초 후에 함수 3초가 지났습니다. 호출..
+
+
+$(document).ready(function(){
+	 setTimeout(function(){
+		 //  해당객체를 지정
+		 var showObj=document.getElementsByTagName("h1")[0];
+		 // 배경 색상을 지정
+		 showObj.style.backgroundColor="pink";
+		 // 해당 부분에 출력처리..
+		 showObj.innerHTML="시험 종료!!!";	 		 
+	 },10000); //시간이 10000 ==> 10초...
+	
+});
+
+
+$(document).ready(function(){
+	var tab01=document.getElementById("tab01");
+	// 초기 이미지가 로딩..
+	var imgs=["img01.png","img02.png","img03.png"];
+	var idx=0;
+	tab01.style.backgroundImage="url('../../img/"+imgs[idx]+"')";
+	
+	// setInterval(반복함수, 반복할시간(1/1000))
+	// inter01 전역변수에 반복함수 할당..
+	inter01=setInterval(function(){
+		document.getElementsByTagName("h1")[0].innerHTML=(idx+1)+"초";
+		// cnt%3 = 1, 2, 0, 1,2,0
+		tab01.style.backgroundImage="url('../../img/"+imgs[idx%3]+"')";
+		idx++;		
+	},1000);
+});
+function stopInter(){
+	// 중지 처리변수에.. 
+	alert("중지!!");
+	clearInterval(inter01);
+}
+		  
+		  
+		  
+
+
+
+
+</script>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gogo</title>
+<style type="text/css">
+
+
+
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+		
+});
+
+//객체 함수 선언..
+/*
+function Student(){
+	this.name="서종원";
+}
+
+var student01 = new Student();
+alert("student01객체의  name 속성값은 "+student01.name);
+*/
+
+/*
+function ElectricProd(name,category,price){
+	this.name=name;
+	this.category=category;
+	this.price=price;
+}
+var elecprod01 = new ElectricProd('냉장고','를','부탁해')
+alert("elecprod01객체의 이름속성값은 "+elecprod01.name+"이고, 카테고리는"+elecprod01.category+"이며, 가격은"+elecprod01.price+"이다.");
+var elecprod02 = new ElectricProd('TV','거실','100원')
+alert("elecprod02객체의 이름속성값은 "+elecprod02.name+"이고, 카테고리는"+elecprod02.category+"이며, 가격은"+elecprod02.price+"이다.");
+*/
+/*
+function CoffeeShop(kind,price,number,taste){
+	this.kind=kind;
+	this.price=price;
+	this.number=number;
+	this.taste=taste;
+	this.sum=price*number;
+	this.grade=Math.floor(price*taste/1000);
+}
+
+var coffeeOrder0 = new CoffeeShop("아메리카노",2500,10,2);
+var coffeeOrder1 = new CoffeeShop("카라멜마키야또",4500,7,3);
+var coffeeOrder2 = new CoffeeShop("바닐라라떼",5000,2,6);
+var coffeeOrder3 = new CoffeeShop("에스프레소",2500,6,4);
+
+
+for (idx=0; idx<4; idx++){
+	alert(eval('coffeeOrder'+idx).kind+", 가격:"+eval('coffeeOrder'+idx).price);
+}
+*/
+var a1122 = 100;
+var ttt = (eval("a"+"11"+"22"));
+alert (ttt);
+
+
+/*
+function Friend(name){
+	   this.name=name; // 이객체의 전역변수 name할당
+	   this.introFriend=function(fname){ // 입력값
+	      console.log("나의 이름은"+this.name); // 공통출력, 프로세스
+	      console.log("친구소개 친구이름은"+fname);
+	      return "리턴됨"; // 정의하지 않아도 됨   
+	   }
+	}
+
+	var friend01 = new Friend("홍길동"); // 전역변수 this.name에 홍길동 할당
+	var retMsg = friend01.introFriend(); // 메서드로 정의된 입력값에 합당한 데이터를 전달 fname= 김친구
+	// 현재 return되는 데이터를 정의하고 있기 때문에
+
+	alert("리턴되는 값:"+retMsg);
+	console.log(friend01);
+*/
+/*
+var AB = 100;
+alert(AB);
+alert(("A"+"B"));
+*/
+
+
+//자판기 객체 선언해놓기
+// 물건명가 가격이 있는 함수 객체선언
+/*
+function SellerBox(product, price){
+	this.product=product; // 파는 물건명 setting
+	this.price=price;
+	this.insTotMn=0;
+	this.insertMoney=function(inMoney){
+		this.insTotMn+=inMoney;
+		console.log("##"+this.product+"자판기###");
+		console.log("현재금액:"+this.insTotMn);
+	}
+	this.clickButton=function(){
+		var retVal="111금액부족";
+		var retVal2="222현재금액:"+this.insTotMn;
+		if (this.insTotMn >= this.price){
+			this.insTotMn -= this.price;
+			retVal2="22222구매완료, 남은잔액:"+this.insTotMn;			
+			retVal="111커피나옴!"
+		}else{
+			console.log("잔액이 부족함!!")
+		}
+		return retVal+retVal2;
+	}
+}
+var box01=new SellerBox("아메리카노",1500);
+box01.insertMoney(500);
+box01.insertMoney(500);
+box01.insertMoney(500);
+var resultMsg = box01.clickButton();
+console.log(resultMsg);
+*/
+
+//지갑 설정 : 날짜, 소유자이름, 초기 금액
+
+
+
+
+/*
+
+function DailyMoneyPocket(pocketOwner,changeInMoney,changeOutMoney){
+	this.pocketOwner=pocketOwner;
+	this.changeDate=changeDate;
+	this.cntMoney = 0;
+	
+	this.changeInMoney=changeInMoney;
+	this.changeOutMoney=changeOutMoney;
+	
+	this.checkOwner=function(){
+		for (idx=0; idx<pOn.length; idx++){
+			if (pocketOwner==pOn[idx])
+			
+		}
+		
+	}
+	
+	this.poketInMoney=function(){
+		cntMoney+=changeInMoney;
+		console.log(changeInMoney"원이 입금되었습니다. \n현재잔액:"+cntMoney+"원 입니다.")
+	}
+	
+	this.poketOutMoney=function(){
+		if (cntMoney>=changeOutMoney){
+			cntMoney -= changeOutMoney;
+			console.log(changeOutMoney+"원을 출금하여"+cntMoney+"원이 남았습니다.");
+		}else{
+			console.log("잔액이 부족합니다.")
+		}
+	}
+}
+
+
+
+
+
+
+*/
+// 소유자 이름확인
+// 입금
+// 지출
+// 기록
+
+/* 봉인
+
+
+var nowDate = new Date();
+var allAccbook=['no00','no34','no63','no23','no12','no42'];
+allAccbook[0]=['admin9','admin']; // no00값
+allAccbook[1]=['박윤하1','박윤하']; // no34값
+allAccbook[2]=['배재현1','배재현'];	// no63값
+allAccbook[3]=['서정효1','서정효'];
+allAccbook[4]=['서종원1','서종원'];
+allAccbook[5]=['신관용1','신관용'];
+
+allAccbook[1][1]=[1000000,'dateRecored']; // 서종원(name)[0]값
+allAccbook[1][1][1]=['date','input','output','totMoney']; // dateRecored[0]값
+
+allAccbook[2][1]=[1000000,'dateRecored'];
+allAccbook[2][1][1]=['date','input','output','totMoney'];
+
+allAccbook[3][1]=[400000000,'dateRecored'];
+allAccbook[3][1][1]=['date','input','output','totMoney'];
+
+allAccbook[4][1]=[5000,'dateRecored'];
+allAccbook[4][1][1]=['date','input','output','totMoney'];
+
+allAccbook[5][1]=[50000,'dateRecored'];
+allAccbook[5][1][1]=['date','input','output','totMoney'];
+
+
+
+var poketOwnerNo = [];
+//번호, 이름, 현재금액, 지출기록.
+poketOwnerNo[0]=[34,'박윤하1','박윤하',1000000,'dateRecord'];
+poketOwnerNo[0][5]= new Array;
+poketOwnerNo[0][5].push(nowDate);
+
+
+
+var abNum='no12';
+var abPass='서종원1';
+var input=95000;
+var output=120000;
+*/
+
+//가계부 번호:abNum, 가계부비밀번호:abPass, 이름:abName
+// function AccountBook(abNum,abPass,input,output,record1){
+//	this.abNum=abNum;
+//	this.abPass=abPass;
+//	this.allAccbook=function(){
+/* 망함. allAccbook[4] = no12가 아닌 아래 배열을 출력함.
+		for(idx=0;idx<allAccbook.length;idx++){
+			if(abNum==allAccbook[idx] && abPass==allAccbook[idx][0]){
+				alert(allAccbook[idx][1]+"님 환영합니다.");
+			}else{
+				alert("가계부번호와 비밀번호를 확인해 주세요.");
+			}
+		}
+		alert("뭐야1");
+//	}
+	alert(allAccbook.length);
+	alert(allAccbook[4][0]);
+	alert(allAccbook[4]);
+*/
+// }
+
+
+//console.log(poketOwnerNo[0][4][0]);
+/*
+poketOwnerNo[1]=[,5000000,''];
+poketOwnerNo[2]=[,400000000,''];
+poketOwnerNo[3]=[,500,''];
+poketOwnerNo[4]=[,1000,''];
+
+console.log(poketOwnerNo[0][0]);
+*/
+
+//현재금액은 cntMoney
+/*
+function DailyMoneyPoket(poketNo,inputMoney,outputMoney){
+	this.checkOwner=function(){
+		for (idx=0; idx<poketOwnerNo.length;){
+			if (poketNo==poketOwnerNo[idx]){
+				this.cntMoney=poketOwnerNo[idx].cntMoney
+				this.poketRecord=poketOwnerNo[idx].poketRecord
+			}
+		}	
+	}
+	
+}
+*/
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

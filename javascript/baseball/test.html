@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//	문제 숫자 정하기. 		좀 더 깔끔하게 다듬을 수 있을 듯.
+	var number=[];
+	number[0]=Math.floor( Math.random()*10 );
+	do{number[1]=Math.floor( Math.random()*10 );}
+		while(number[0]==number[1])	
+	do{number[2]=Math.floor( Math.random()*10 );}
+		while(number[2]==number[1] || number[2]==number[0] )
+	do{number[3]=Math.floor( Math.random()*10 );}
+		while(number[3]==number[2] || number[3]==number[1] || number[3]==number[0] )
+			console.log(number);
+	
+// 공격횟수(count), 스트라이크(strike), 볼(ball), 아웃(out) 변수 정의.
+	var count = 0;
+	var strike = 0;
+	var ball = 0;
+	var out = 0;
+// 공격버튼 클릭시 함수 시작.	
+	function attack(){
+// 예측 숫자 배열화	
+		var guess = [document.getElementsByTagName("input")[0].value,
+			   	     document.getElementsByTagName("input")[1].value,
+			         document.getElementsByTagName("input")[2].value,
+			         document.getElementsByTagName("input")[3].value];
+		strike = 0;
+		ball = 0;
+		count++;	// 클릭시마다 공격횟수 카운팅
+		for( var i=0; i<4; i++ ){
+		// 문제(number) 배열수 정의	
+			for( var j=0; j<4; j++ ){
+			// 예측 숫자(guess) 배열수 정의	
+				if( number[i] == guess[j] ){
+				// 조건(1). 배열 숫자가 같을 경우	
+					if( i == j ){
+					//조건(2). 배열 숫자가 같고 자리도 동일할 경우(스트라이크)	
+						strike++;
+					}else{
+					//조건(2). 배열 숫자는 같지만 자리가 다를 경우(볼)	
+						ball++;
+					} 			// 조건(2)문 END.
+				} 			// 조건(1)문 END.
+			} 			// 예측 숫자 배열 수 정의문 END.
+		} 
+		 // 화면 호출처리문 시작.
+		 if(strike==4){
+		 // 숫자를 전부 맞출 경우. 승리.
+		 	 count=10;
+			 console.log("홈런!!! "+(count)+"번 만에 맞추셨습니다");
+		 }else if(strike==0 && ball==0){
+		 // 스트라이크, 볼이 없으면 아웃처리. out++는 매번 아웃시 카운팅.
+			 out++;
+			 console.info(count+"회. "+out+"아웃");
+		 }else if(count>=10){
+		 // 공격횟수가 9회 초과일 경우 게임끝. 패배.
+			 console.error("9회말 경기종료! 패배하셨습니다.! 숫자는 "+number+"였습니다.");
+		 }else{
+		 // 9회 이하 스트라이크+볼 있으면 결과 호출.	 
+			 console.info(count+"회. "+guess+" : "+strike+"스트라이크 "+ball+"볼 "+out+"아웃");
+		 }	// 화면 호출 처리문 END.
+	}	// 공격버튼 클릭 함수문 END.
+	
+/*
+ 추가필요
+1. 쓰리아웃이면 바로 게임패배(else if로 넣었는데 안됨)
+	else if(out==3){
+		console.error(out+"아웃. 패배하셨습니다.");
+	}
+2. 새로시작 버튼도 추가하려 했는데 console창 history가 삭제가 안됨.
+	console.clear()로는 불가.
+3. input창에 숫자외 문자 및 빈칸 입력시 실행 못하게. 
+4. input창에 중복값 입력 못넣게
+이 정도면 완벽할듯
+*/
+</script>
+<style type="text/css">
+	input{width:50px; height:50px; text-size:12px; text-align:center;}
+</style>
+
+</head>
+<body>
+	<input type="text" maxlength="1">
+	<input type="text" maxlength="1">
+	<input type="text" maxlength="1">
+	<input type="text" maxlength="1"><br><br>
+	<input type="button" value="공격" onclick="javascript:attack()">
+
+</body>
+</html>

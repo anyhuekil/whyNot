@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+
+
+
+</style>
+<script type="text/javascript">
+/*
+함수객체 : Calculator
+입력값 : num01, num02 3,4
+메서드: plus(), minus(), multi(), dic(); 를 통해서 각 기능별로 출력처리
+	ex)@@@ + @@@ = @@@ 3+4=7 return 값은 결과값 (7)
+	ex) var result = cal01.plus();
+*/
+
+
+
+function Calculator(num1,num2){
+	var result = 0;
+	this.num1=num1;
+	this.num2=num2;
+	this.plus=function(){
+		var result = num1+num2;
+	}
+	this.minus=function(){
+		var result = num1-num2;
+	}
+	this.multi=function(){
+		var result = num1*num2;
+	}
+	this.div=function(){
+		var result = num1/num2;
+		
+	}
+	return result;
+}
+
+var cal01 = new Calculator(3,4);
+var retMsg = cal01.plus();
+console.log(retMsg);
+
+
+
+
+
+</script>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+</head>
+<body>
+
+</body>
+</html>
