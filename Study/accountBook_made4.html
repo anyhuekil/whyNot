@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪accountBook</title>
+
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+<script type="text/javascript">
+/**/
+$(document).ready(function(){
+	
+});
+
+	
+var nowDate = new Date();
+
+var allAccbook=['no0','no34','no63','no23','no12','no42'];
+allAccbook[0]=['a','a','admin',0,'record']; 
+allAccbook[1]=[56,'박윤하1','박윤하',100,'record']; 
+allAccbook[2]=[78,'배재현1','배재현',50,'record'];
+allAccbook[3]=[90,'서정효1','서정효',40000,'record'];
+allAccbook[4]=[12,'서종원1','서종원',2,'record'];
+allAccbook[5]=[34,'신관용1','신관용',77,'record'];
+
+
+var accChecknum=[];
+var accCheckdate=[];
+var accCheckinput=[];
+var accCheckoutput=[];
+var accChecktotmoney=[];
+
+for (var idx=0;idx<allAccbook.length;idx++){
+	allAccbook[idx][4] = [accChecknum,accCheckdate,accCheckinput,accCheckoutput,accChecktotmoney];
+	if(idx==allAccbook.length-1){
+	}
+}
+
+var logIdx;
+var logIn;
+/*
+var abNum = document.getElementById('inputLoginnum').value;
+var abPass =document.getElementById('inputLoginpass').value;
+var whyNotlog=new AccountBook(abNum,abPass);
+*/
+//가계부 번호:abNum, 가계부비밀번호:abPass, 이름:abName, 
+var abNum;
+var abPass;
+function AccountBook(abNum,abPass){
+	this.abNum=abNum;
+	this.abPass=abPass;
+	this.allAccbook=function(){
+// 망함. allAccbook[4] = no12가 아닌 아래 배열을 출력함.
+		for(var logIdx=0;logIdx<allAccbook.length;logIdx++){
+			if(abNum==allAccbook[logIdx][0] && abPass==allAccbook[logIdx][1]){
+				logIn=logIdx; //boolean을 쓸수 잇나?
+				break;
+			}else{ //뭐 더쓸필요잇나?
+			}
+		}
+		if (logIn==logIdx){
+			document.getElementById("whyWelcome").innerHTML = allAccbook[logIdx][2];
+			//alert(allAccbook[logIdx][2]+"님 환영합니다.");
+			document.getElementById("whyNotcntMoney").innerHTML = allAccbook[logIdx][3];
+			//현재 잔고
+		}
+		else{
+			alert("가계부번호와 비밀번호를 확인해주세요.");
+		}
+		return;
+	}
+	var inputMoney=0;
+	var outputMoney=0;
+	
+	this.accInOutput=function(inputMoney,outputMoney){
+		nowDate = new Date();
+		logIdx=logIn; // 전역변수에 대한 이해부족???
+		var exCharge = allAccbook[logIdx][3]; // =-가 안되서 써야됨.;ㅠ
+		if ((allAccbook[logIdx][3]+inputMoney)>=outputMoney){
+			allAccbook[logIdx][3]+=inputMoney;
+			allAccbook[logIdx][3]-=outputMoney;
+			document.getElementById("whyNotcntMoney").innerHTML = allAccbook[logIdx][3];
+			document.getElementById("whyNotshowinput").innerHTML = inputMoney;
+			document.getElementById("whyNotshowoutput").innerHTML = outputMoney;
+			document.getElementById("whyNotTransaction1").innerHTML = "거래해 주셔서 감사합니다.";
+//			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+exCharge+'\n입금:'+inputMoney+'\n출금:'+outputMoney+
+//					'\n------------------\n총액:'+allAccbook[logIdx][3]);
+			allAccbook[logIdx][4][0].push('num');
+			allAccbook[logIdx][4][1].push(nowDate);
+			allAccbook[logIdx][4][2].push(inputMoney);
+			allAccbook[logIdx][4][3].push(outputMoney);
+			allAccbook[logIdx][4][4].push(allAccbook[logIdx][3]);
+//		return allAccbook[logIdx][3]; 없어도되나?? 무슨의미지? 위에쓸라고 넣었는데.;;
+		}else if ((allAccbook[logIdx][3]+inputMoney)<outputMoney && (allAccbook[logIdx][3]+inputMoney)>0){
+			allAccbook[logIdx][3]+=inputMoney;
+			allAccbook[logIdx][3]-=allAccbook[logIdx][3];
+			document.getElementById("whyNotcntMoney").innerHTML = allAccbook[logIdx][3];
+			document.getElementById("whyNotshowinput").innerHTML = inputMoney;
+			document.getElementById("whyNotshowoutput").innerHTML = (exCharge+inputMoney);
+			document.getElementById("whyNotTransaction1").innerHTML =
+				'****** 잔액부족 ******\n희망 출금액:'+outputMoney+'\n실제 출금액:'+(exCharge+inputMoney)+'거래해 주셔서 감사합니다.';
+//			alert(allAccbook[logIdx][2]+'님 (단위:만원)\n잔액:'+exCharge+'\n입금:'+inputMoney+'\n출금:'+(exCharge+inputMoney)+
+//					'\n------------------\n총액:'+allAccbook[logIdx][3]+
+//					'\n** 잔액부족 **\n희망 출금액:'+outputMoney+'\n실제 출금액:'+(exCharge+inputMoney));
+			allAccbook[logIdx][4][0].push('num'); // 횟차 넣는 방법 모르겠음.; 본인의 배열이몇번째인지 확인하는 함수??있음?
+			allAccbook[logIdx][4][1].push(nowDate);
+			allAccbook[logIdx][4][2].push(inputMoney);
+			allAccbook[logIdx][4][3].push((exCharge+inputMoney));
+			allAccbook[logIdx][4][4].push(allAccbook[logIdx][3]);
+		}else{
+			document.getElementById("whyNotcntMoney").innerHTML = allAccbook[logIdx][3];
+			document.getElementById("whyNotTransaction1").innerHTML += '****** 잔액부족 ******\n 출금할 수 없습니다.\n안녕히 가세요.';
+		}
+		return;
+	}
+	this.accRecord=function(showRecord){
+	// showRecord =>0.잔고조회     1.전체     2.최근3회     3.최근거래     4.기록삭제
+		nowDate = new Date();
+		logIdx=logIn; // 전역변수에 대한 이해부족???
+		var showRecord;
+		document.getElementById("whyNotcntMoney").innerHTML = allAccbook[logIdx][3];
+		if (showRecord==0){
+			document.getElementById("whyNotTransaction2").innerHTML = 
+				allAccbook[logIdx][2]+'님 현재 잔액은\n총'+(allAccbook[logIdx][3]*10000)+'원 입니다.';
+//			alert(allAccbook[logIdx][2]+'님 현재 잔액은\n총'+(allAccbook[logIdx][3]*10000)+'원 입니다.');
+		}else if(showRecord==1){
+			document.getElementById("whyNotTransaction2").innerHTML = '';
+			for(var idx=0;idx<allAccbook[logIdx][4][0].length;idx++){
+				document.getElementById("whyNotTransaction2").innerHTML += 
+					'num1'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------';
+//				alert('콘솔로그를 확인하세요.');
+//				console.log('num1'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+//					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+//					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==2 && allAccbook[logIdx][4][0].length>=3){ 
+//			alert('콘솔로그를 확인하세요.');
+			document.getElementById("whyNotTransaction2").innerHTML = '';
+			for(var idx=(allAccbook[logIdx][4][0].length-3);idx<allAccbook[logIdx][4][0].length;idx++){
+				document.getElementById("whyNotTransaction2").innerHTML +=
+					'num21'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------';
+//				console.log('num21'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+//					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+//					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==2 && allAccbook[logIdx][4][0].length<3){
+//			alert('입출금 내역이 3건 이하입니다. 해당내용만 출력합니다.');
+//			alert('콘솔로그를 확인하세요.');
+			document.getElementById("whyNotTransaction2").innerHTML = '입출금 내역이 3건 이하입니다.\n해당내용만 출력합니다.';
+			for(var idx=0;idx<allAccbook[logIdx][4][0].length;idx++){
+				document.getElementById("whyNotTransaction2").innerHTML +=
+					'num22'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------';
+					
+//				console.log('num22'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+//					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+//					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+			}
+		}else if(showRecord==3){ 
+			document.getElementById("whyNotTransaction2").innerHTML = '';
+//			alert('콘솔로그를 확인하세요.');
+			var idx=allAccbook[logIdx][4][0].length-1;
+				document.getElementById("whyNotTransaction2").innerHTML +=
+					'num3'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------';
+//				console.log('num3'+'회차\n일자:'+allAccbook[logIdx][4][1][idx]+
+//					'\n입금:'+allAccbook[logIdx][4][2][idx]+'만원\n출금'+allAccbook[logIdx][4][3][idx]+
+//					'만원\n잔액:'+allAccbook[logIdx][4][4][idx]+'만원\n--------------------');
+		}else if(showRecord==4){
+			document.getElementById("whyNotTransaction2").innerHTML = 
+				'--------------------\n입출금내역을 모두 삭제합니다.\n--------------------';
+//			alert("--------------------\n입출금내역을 모두 삭제합니다.\n--------------------");
+//			console.log("--------------------\n입출금내역을 모두 삭제합니다.\n--------------------");
+			allAccbook[logIdx][4][0]=[];
+			allAccbook[logIdx][4][1]=[];
+			allAccbook[logIdx][4][2]=[];
+			allAccbook[logIdx][4][3]=[];
+			allAccbook[logIdx][4][4]=[];
+		}else{
+			alert('입력오류');
+		}
+	}
+	return;
+}
+
+
+var whyNotbook= new AccountBook(abNum,abPass);
+function whyNotLogbtn(){
+	abNum=document.getElementById('whyNotLoginnum').value;
+	abPass=document.getElementById('whyNotLoginpass').value;
+	whyNotbook.allAccbook();
+}
+
+function whyNotInOutbtn(){
+	inputMoney=document.getElementById('whyNotinput').value;
+	outputMoney=document.getElementById('whyNotoutput').value;
+	whyNotbook.accInOutput(inputMoney,outputMoney);
+}
+
+function whyNotRecord0(){
+	whyNotbook.accRecord(0);
+}
+function whyNotRecord1(){
+	whyNotbook.accRecord(1);
+}
+function whyNotRecord2(){
+	whyNotbook.accRecord(2);
+}
+function whyNotRecord3(){
+	whyNotbook.accRecord(3);
+}
+function whyNotRecord4(){
+	whyNotbook.accRecord(4);
+}
+
+
+
+/*
+	test001.accInOutput(12,0);
+	test001.accInOutput(0,10);
+	test001.accInOutput(0,10);
+	test001.accInOutput(0,10);
+	test001.accInOutput(2,12);
+	test001.accRecord(1);
+	test001.accRecord(2);
+	test001.accRecord(3);
+	test001.accRecord(4);
+	test001.accRecord(1);
+	test001.accInOutput(12,0);
+	test001.accRecord(0);
+	test001.accInOutput(0,10);
+	test001.accRecord(1);
+	test001.accRecord(2);
+	test001.accRecord(3);
+*/
+
+
+
+</script>
+<style type="text/css">
+
+*{border: 1px dashed red;}
+
+html,body{box-sizing:border-box;}
+*,*:AFTER,*:BEFORE {box-sizing: inherit;}
+*{margin:0px; padding:0px;}
+
+.whyContain{padding:0px}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+body{background-color:#f2f2f2;overflow:auto;}
+#mainTable{width:900px;margin:0 auto;}
+#header{width:100%;height:100px;float:left;}
+#leftControl{width:29.99%;height:700px;float:left;}
+#righttopView{width:69.99%;height:100px;float:left;}
+#rightbottomView{width:69.99%;height:600px;float:left;}
+#footer{width:100%;height:100px;float:left;}
+
+#whyNotTransaction1{width:100%;height:100px;}
+#whyNotTransaction2{width:100%;height:500px;}
+
+</style>
+</head>
+<body>
+
+<div id="mainTable" class="whyContain">
+	<div id="header">
+  		<div>1</div>
+  	</div>
+	<div id="leftControl">
+ 		<div>Number<input id="whyNotLoginnum" type="text">[56,78,90,12,34]</div>
+ 		<div>PassWD<input id="whyNotLoginpass" type="text">[+1]</div>
+ 		<div onclick="whyNotLogbtn()">로그인!BTN</div>
+ 		<div>---</div>
+ 		<div>입금<input id="whyNotinput" type="text">만원</div>
+ 		<div>출금<input id="whyNotoutput" type="text">만원</div>
+ 		<div onclick="whyNotInOutbtn()"></div>
+ 		<div>---</div>
+ 		<div onclick="whyNotRecord0()">(0.잔고조회)</div>
+ 		<div onclick="whyNotRecord1()">(1.전체조회)</div>
+ 		<div onclick="whyNotRecord2()">(2.최근3회)</div>
+ 		<div onclick="whyNotRecord3()">(3.최근내역)</div>
+ 		<div onclick="whyNotRecord4()">(4.기록삭제)</div>
+	</div>
+	<div id="righttopView">
+  		<div>[<span id="whyWelcome"></span>]님 환영합니다</div>
+  		<div>현재 잔액:[<span id="whyNotcntMoney"></span>]</div>
+  		<div>입금:<span id="whyNotshowinput"></span>만원////출금:<span id="whyNotshowoutput"></span>만원</div>
+	</div>
+	<div id="rightbottomView">
+		<div>거래내역<div id="whyNotTransaction1"></div></div>
+		<div>거래내역List<div id="whyNotTransaction2"></div></div>
+	</div>
+	<div id="footer">
+		<div>4</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

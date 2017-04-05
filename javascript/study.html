@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+
+*/
+
+/**/
+</style>
+<script src="http://code.jquery.com/jquery-1.10.2.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+});
+// window.open("url/file명","이름","옵션(옵션1=옵션1값,)")
+function openWin(width,height,idx,opt){
+	// idx로 선택된 site가 open될 수 있게..
+	// list[0], list[1]...
+	var list=["http://movie.naver.com/",
+		      "http://www.ollehmusic.com/",
+		      "http://game.daum.net/"];
+	window.open(list[idx],"win01","width="+width
+			                    +",height="+height+","+opt);
+	
+}
+function openWin2(sel){
+	// 사용자 정의로 화면이 나타나는 창 열기(script)
+	var winname = window.open("","","width=300, height=200");
+	// 윈도이름.document.... --화면을 script로 나타낸다.
+	if(sel=="인사") 
+	winname.document.write("<h1 align='center'>인사정보</h1>");
+	if(sel=="캘린더")
+	winname.document.write("<h1 align='center'>캘린더정보</h1>");
+}
+function openWin3(sel){
+	var resource="";
+	if(sel=="인사") resource="a03_subWin.html"
+	if(sel=="캘린더") resource="a04_subWin.html"
+	var winname = window.open(resource,"","width=300, height=200");
+}
+</script>
+</head>
+<body>
+<h1 align="center">좋아하는 사이트 연결</h1>
+<h2 align="center" onclick="javascript:openWin(400,400,0,'')">영화</h2>
+<h2 align="center" onclick="javascript:openWin(300,200,1,'')">음악</h2>
+<h2 align="center" onclick="javascript:openWin(600,400,2,'menubar=yes')">게임</h2>
+<h1 align="center" onclick="javascript:openWin2('인사')" >인사정보 list</h1>
+<h1 align="center" onclick="javascript:openWin2('캘린더')" >캘린더</h1>
+<h1 align="center" onclick="javascript:openWin3('인사')" >인사정보 list(자원)</h1>
+<h1 align="center" onclick="javascript:openWin3('캘린더')" >캘린더(자원)</h1>
+
+1<input type="text" id="ename01">
+</body>
+</html>

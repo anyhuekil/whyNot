@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+<script type="text/javascript">
+/**/
+$(document).ready(function(){
+/*	
+	var h1obj= document.createElement("h1");
+	var title01=document.createTextNode("반갑습니다!! 오늘도 마무리를 위해")
+	h1obj.appendChild(title01);
+	document.body.appendChild(h10bj);
+*/	
+	var tableBox=document.createElement("div");
+	var trBox01=document.createElement("div");
+	var tdBox11=document.createElement("div");
+	var tdBox12=document.createElement("div");
+	var trBox02=document.createElement("div");
+	var tdBox21=document.createElement("div");
+	var tdBox22=document.createElement("div");
+	var text11=document.createTextNode("DOM");
+	var text12=document.createTextNode("구조");
+	var text21=document.createTextNode("마스터");
+	var text22=document.createTextNode("^^");
+	
+	tdBox11.appendChild(text11);
+	tdBox12.appendChild(text12);
+	tdBox21.appendChild(text21);
+	tdBox22.appendChild(text22);
+	trBox01.appendChild(tdBox11);
+	trBox01.appendChild(tdBox12);
+	trBox02.appendChild(tdBox21);
+	trBox02.appendChild(tdBox22);
+	tableBox.appendChild(trBox01);
+	tableBox.appendChild(trBox02);
+	document.body.appendChild(tableBox);
+	
+});
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+
+
+
+
+</body>
+</html>
