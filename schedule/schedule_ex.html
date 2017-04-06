@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪schedule</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+body{background-color:#f2f2f2}
+
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-1.12.4.js">
+</script>
+<script type="text/javascript">
+/**/
+$(document).ready(function(){
+	
+});
+
+function createCalendar(){
+	//달력을 만들것임
+	var calendarMonth=document.createElement('div');
+	var calendarWeek=[];
+	// 위에 선행으로 시작요일(=monthStartday)과, 총 날짜(monthTotdays) 입력해줘야됨.
+	// 가장 긴 조건: 1일이 7번째 시작으로 31일짜리. 가장짧은 조건: 1일이 1번째 시작으로 28일 끝 
+	// 그냥 다 무시하고 5줄짜리 만들꺼임.;
+	for (var idx=0;idx<6;idx++){
+		calendarWeek[idx]=document.createElement('div');
+	}
+	// 요일을 위한 1줄
+	var calendarDayname=[];
+	for (var idx=0;idx<7;idx++){
+		calendarDayname[idx]=document.createElement('div');
+	}
+	//최대 35일까지 가능한 5줄!
+	var calendarDay=[];
+	for (var idx=0;idx<35;idx++){
+		calendarDay[idx]=document.createElement('div');
+	}
+	var calendarDaynamein=[
+		document.createTextNode("월"),
+		document.createTextNode("화"),
+		document.createTextNode("수"),
+		document.createTextNode("목"),
+		document.createTextNode("금"),
+		document.createTextNode("토"),
+		document.createTextNode("일")
+		];
+	for (var idx=0;idx<7;idx++){
+	 	calendarDayname[idx].appendChild(calendarDaynamein[idx]);
+	}
+//	요일이 들어간div(dayname)을 week 첫라인에 넣고, 나머지(day) 35개 day를 week2번째 줄부터 7개씩 넣는다.
+			//요일라인을 넣는다.
+	for (var idx=0;idx<7;idx++){
+		calendarWeek[0].appendChild(calendarDayname[idx]);
+	}
+	// 위에 요일줄을 넣엇기때문에 week의Math.floor(idx/7)는 1부터 시작.
+	for (var idx=0;idx<35;idx++){
+		calendarWeek[Math.floor(idx/7)+1].appendChild(calendarDay[idx]);
+	}
+	
+	for (var idx=0;idx<6;idx++){
+		calendarMonth.appendChild(calendarWeek[idx]);
+	}
+	document.body.appendChild(calendarMonth);
+	
+}
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<h1 onclick="createCalendar()">달력</h1>
+<!-- 
+<div>헤더</div>
+<div>왼페이지
+	<div>타이틀</div>
+	<div>월,시작일,윤달,</div>
+	<div class="calendarMonth">
+		<div class="calendarWeek">
+			<div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div><div>일</div>
+		</div>
+		<div class="calendarWeek">
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+			<div class="calendarDay"></div>
+		</div>
+	</div>
+	<div>아래 추가글</div>
+</div>
+<div>오른페이지
+	<div></div>
+</div>
+ -->
+
+
+</body>
+</html>

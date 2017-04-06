@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪study</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+#blank01:hover{background:gray;}
+{}
+
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js">
+</script>
+<script type="text/javascript">
+/**/
+$(function(){
+
+	$("*").css({"margin":"0","padding":"0"});
+	$("#martCover").css({"text-align":"center"});
+	$("#happyMart").css({"background-color":"blue","color":"gold","border":"10px solid green",
+		"display":"inline-block","width":"200px"});
+	$('#blank01').css({"height":"20px"});
+	$('#tableBox').css({"width":"1000px"});
+	$('#tableTr').css({"width":"1000px"});
+});
+function a(){ //< 온마우스오버로 html에서 해논거
+	$(".test01 .test02:hover").css({"color":"gold","background":"black"});
+	}
+</script>
+</head>
+<body>
+	<div class="test01" onmouseover="a()" style="width:300px">test01
+		<div class="test02">test02</div>
+		<div class="test02">test02</div>
+		<div class="test02">test02</div>
+		<div class="test02">test02</div>
+	</div>
+	<div id="martCover">
+		<div id="happyMart">행복마트</div>
+		<div id="blank01">공백</div>
+		<div class="tableBox">테이블
+			<div class="tableTr">tr
+				<div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div>
+			</div>
+			<div class="tableTr">tr
+				<div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div>
+			</div>
+			<div class="tableTr">tr
+				<div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div>
+			</div>
+			<div class="tableTr">tr
+				<div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div><div class="tableTd">td</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
