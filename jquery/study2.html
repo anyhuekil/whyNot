@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪study2♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+.calBoxtop{font:30px bold; text-align:center;border:2px solid black;background:#292929;color:#f7f7f7}
+.calBoxtopTitle div{font:15px bold;background:#141414;width:24.99%;display:inline-block;float:left;}
+.calBoxtopVal div{width:24.99%;display:inline-block;float:left;}
+.calBox{font:30px bold; text-align:center;border:2px solid black;background:#292929;color:#f7f7f7}
+.calBoxbottom{display:block;font:30px bold; text-align:center;border:2px solid black;background:#292929;color:#f7f7f7;}
+.calBoxbottom div{font:30px bold; text-align:center;border:2px solid black;background:#292929;color:#f7f7f7;}
+
+
+.inlineB{display:inline-block;border-spacing:0;}
+.quizBox{width:100px;border-bottom:4px solid gold}
+
+/*
+.boxNone{border:none 0px;}
+*/
+
+#quizNum01{border-bottom-color:#356ADA;color:#356ADA;}
+#quizNum02{border-bottom-color:#356ADA;color:#356ADA;}
+#quizOperator{border-bottom-color:#08AA37;color:#08AA37;}
+#quizEqual{border-bottom-color:#F1AF22;color:#F1AF22;}
+#quizAnswer{border-bottom:4px solid #D82220;}
+#quizAnswer2{color:#D82220;height:100%;width:95px;
+	background-color:#292929;font-size:30px;}
+
+#whyKeycode{width:}
+#whySpendtime{}
+#whyCountdown{}
+#whyScore{}
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js">
+</script>
+<script type="text/javascript">
+/**/
+$(function(){
+	
+});
+
+var rdOperator = Math.floor(Math.random()*4);
+var textOperator;
+function rdOperatorBtn() {
+	if (rdOperator==0){
+		textOperator="+";
+	}else if (rdOperator==1){
+		textOperator="-";
+	}else if (rdOperator==2){
+		textOperator="*";
+	}else if (rdOperator==3){
+		textOperator="/";
+	}else{
+		alert("연산자생성오류");
+	}
+}
+
+
+function quiz1() {
+	$(".inNum:focus").val("");
+}
+
+
+function myFunction(event) {
+    var x = event.keyCode;
+    document.getElementById("keyCode").innerHTML = x;
+}
+
+document.addEventListener("keypress", whyKeyDown);
+function whyKeyDown(why) {
+	var why = event.which || event.keyCode;
+	document.getElementById("whyKeycode").innerHTML = why;
+	/*
+    if(.keyCode == 39) {
+        rightPressed = true;
+    }
+    else if(e.keyCode == 37) {
+        leftPressed = true;
+    }
+    if(e.keyCode == 40) {
+        downPressed = true;
+    }
+    else if(e.keyCode == 38) {
+        upPressed = true;
+    }
+    */
+}
+
+
+</script>
+</head>
+<body>
+<div class="calBoxtop">
+	<div class="calBoxtopTitle">
+		<div>KeyCode</div>
+		<div>Time</div>
+		<div>CountDown</div>
+		<div>Score</div>
+	</div>
+	<div class="calBoxtopVal">
+		<div id="whyKeycode">###</div>
+		<div id="whySpendtime">##:##</div>
+		<div id="whyCountdown">##:##</div>
+		<div id="whyScore">###점</div>
+	</div>
+</div>
+<div class="calBox">
+	<div class="inlineB quizBox" id="quizNum01">###</div>
+	<div class="inlineB quizBox" id="quizOperator">+ - * /</div>	
+	<div class="inlineB quizBox" id="quizNum01" >###</div>
+	<div class="inlineB quizBox" id="quizEqual">=</div>
+	<div class="inlineB quizBox" id="quizAnswer"><input id="quizAnswer2" type="text" value="???"></div>
+</div>
+<div class="calBoxbottom">
+	<div>결과</div>
+	<div>문제시작</div>
+	<div>기록삭제</div>
+</div>
+
+
+</body>
+</html>
