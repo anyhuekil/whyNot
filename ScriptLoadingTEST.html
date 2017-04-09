@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪whyNot: ScriptLoadingTEST</title>
+<style type = "text/css">
+*{margin:0;padding:0;}
+*{box-sizing:border-box;}
+*:AFTER,
+*:BEFORE{box-sizing:inherit;}
+div:AFTER,div:BEFORE,div div:AFTER,div div:BEFORE,div div div:AFTER,div div div:BEFORE
+	{content:"";display:table;clear:both}
+body{background:#141414;display:block;}
+div{background:black;display:block;width:600px;margin:auto;padding:20px 0px;}
+div div{background:black;color:#f7f7f7;width:70%;padding:5px 10px;
+	border-top:2px solid #356ADA;border-bottom:2px solid #356ADA;}
+div div div{border:none;width:100%}
+h2{color:#08AA37;text-align:center;}
+h3:NTH-CHILD(2n+1){width:79.999%;display:inline-block;float:left;}
+h3:NTH-CHILD(2n+0){width:19.999%;display:inline-block;float:left;}
+h5{width:99.999%;color:grey;}
+
+
+/*
+*{border:1px dotted red;}
+*/
+</style>
+<script src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+<!-- 제이쿼리 버전차이에 따른 onload 위치 확인 가능!!
+<script src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+ -->
+<script>
+console.log("************* START => HEAD *************");
+// ------- 스크림트 마지막에 같은이름 존재해서 실행 안됨
+function testCall(){	
+	console.log("CALL => TOP");
+}
+console.log("location => CALL => TOP");
+//=============================================
+
+
+//------- 함수를 부르기 전까지 실행되지 않음
+function notCall1(){
+	console.log("!!!!!!!!!!!!\nnotCall1()(1/2)\n!!!!!!!!!!!!");
+}
+function notCall2(){
+	console.log("!!!!!!!!!!!!\nnotCall2()(2/2)\n!!!!!!!!!!!!");
+}
+function testOnload(){
+	console.log("!!!!!!!!!!!!\nCALL => testOnload2()\n!!!!!!!!!!!!")
+}
+console.log("location => NotCALL()");
+//=============================================
+	
+
+//------- 함수내에서 부를 함수 생성.
+function testIn(){
+	console.log("CALL => IN_HEAD");
+}
+console.log("location => IN_HEAD");
+//=============================================
+
+
+//------- 더 밑의 window.onload가 있기때문에 작동 안함
+window.onload = function notCall1(){
+	console.log("!!!!!!!!!!!!\nwindow.onload(1/5)\n!!!!!!!!!!!!");
+}
+window.onload = function notCall2(){
+	console.log("!!!!!!!!!!!!window.onload(2/5)\n!!!!!!!!!!!!");
+}
+window.onload = function testOnload(){
+	console.log("!!!!!!!!!!!!window.onload(3/5)\n!!!!!!!!!!!!");
+}
+console.log("location => window.onload(3/5)");
+//=============================================
+
+
+//------- 더 밑의 $(window).on와 상관없이 작동함	
+$(window).on('load',function notCall1(){
+        console.log("CALL => $(window).on('load'..)(1/5)" );
+});
+$(window).on('load',function testOnload(){
+    console.log("CALL => $(window).on('load'..)(2/5)" );
+});
+$(window).on('load',function testOnload2(){
+	console.log("=====================================\nCALL => $(window).on('load'..)(3/5)\n-------------------------------------");
+	testCheck();
+	testIn();
+	testIn2();
+	testCall();
+//	testOnload2(); // 무한루프!!
+	console.log("=====================================");
+});
+console.log("location => $(window).on(3/5)");
+//=============================================
+	
+	
+//------- $관련 함수 1번라인
+$(document).ready(testCall());
+console.log("location => $_111");
+
+$(document).ready(function() {
+	testCheck();
+	testCall();
+	console.log("CALL => $F()_111");
+});
+$(document).ready(function testCall() {
+	testCheck();
+	console.log("CALL => $F name()_111");
+});
+console.log("location => $F_111");
+//=============================================
+
+
+//------- ANONYMOUS 함수 1번라인
+//------- A type : !F(msg){}(MSG);
+//------- B type : (F(msg){})(MSG);
+//------- C type : (F(msg){}(MSG));
+//------- D type : D = D{}; (head,body)
+//------- E type : E = E{}; (head)
+//------- F type : F = F{}; (body,함수내부console.log삭제)
+!function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS A(1)");
+(function(msg){
+	console.log(msg);
+ }
+)("CALL => ANONYMOUS B(1)");
+(function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS C(1)")
+);
+D = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS D(1)");
+	msg = x+y;
+	console.log("READ => console.log D(1)")
+	return msg;
+}
+console.log(D);
+console.log(D());
+E = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS E(1)");
+	msg = x+y;
+	console.log("READ => console.log E(1)")
+	return msg;
+}
+console.log(E);
+console.log(E());
+//delete D;						//메모리 줄이기 위한 delete. 나중에 부를 필요 없을때 사용하는듯.
+//console.log(D());				//delete D; 이후는 오류남.
+console.log("location => ANONYMOUS_(1)");
+//=============================================
+
+
+//------- $관련 함수 2번라인
+$(document).ready(testCall());
+console.log("location => $_222");
+$(document).ready(function() {
+	testCheck();
+	testCall();
+	console.log("CALL => $F()_222");
+});
+$(document).ready(function testCall() {
+	testCheck();
+	console.log("CALL => $F name()_222");
+});
+console.log("location => $F_222");
+//=============================================	
+	
+
+//------- ANONYMOUS 함수 2번라인
+!function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS A(2)");
+(function(msg){
+	console.log(msg);
+ }
+)("CALL => ANONYMOUS B(2)");
+(function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS C(2)")
+);
+D = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS D(2)");
+	msg = x+y;
+	console.log("READ => console.log D(2)")
+	return msg;
+}
+console.log(D);
+console.log(D());
+E = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS E(2)");
+	msg = x+y;
+	console.log("READ => console.log E(2)")
+	return msg;
+}
+console.log(E);
+console.log(E());
+console.log("location => ANONYMOUS_(2)");
+//=============================================
+
+
+//---------- 동일함수는 마지막것으로 덮어씀 + 스크립트 기준으로 내부것만 실행
+function testCall(){
+	testIn();
+//	testIn2();			//  BODY에서 선언된 함수 호출 불가능.
+//	testCheck();		//  BODY에서 선언된 함수 호출 불가능.
+//	testCall();			// 	무한루프 돌아감;;
+	console.log("CALL => BOTTOM");
+}
+console.log("location => CALL => BOTTOM");	
+//=============================================
+
+	
+//------- 더 밑의 $(window).on와 상관없이 작동함
+$(window).on('load',function(){
+        console.log("CALL => $(window).on('load'..)(4/5)" );
+});
+console.log("location => $(window).on(4/5)");
+//=============================================
+	
+	
+//------- 마지막 window.onload 이것만 작동.
+window.onload = function testOnload(){
+	console.log("=====================================\nCALL => window.onload(4/4)\n-------------------------------------");
+	testCheck();
+	testIn();
+	testIn2();
+	testCall();
+	console.log("=====================================");
+}
+console.log("location => window.onload(4/4)");
+//=============================================
+
+console.log("*************** END => HEAD *************");
+/* 결론
+ *	순서
+	0. <script>단위로 먼저읽어야 할 <script> 위쪽에 배치해야함!!
+		<script>단위 기준
+		1. function(){ }
+		2. console.log , alert 등 내부 명령어.
+			$(제이쿼리)도 내부 명령어 등급.
+		3.
+ *	<script>단위로 읽어짐
+		=> <script src ="jquery-3.2.1.js">를 가장 위에 놓아야함.
+		ex) <script src ="jquery-3.2.1.js">를 아래쪽에 위치시켰을때,
+				상위 <script>에서 $(제이쿼리)실행 불가능!
+ *
+ *  기본script ->$function() -> onload
+ 
+ *	기본적인 script 읽음.
+ 	ex) alert, console.log, function() 등
+
+ *	
+ *
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *	window.onload = function
+	가장 나중에 읽힘
+	함수와 같이 중복 안됨. 마지막것만 읽어옴.
+ */
+
+
+</script>
+</head>
+<body>
+<br>
+<div>
+	<div>
+		<h2>---------- HEAD START ----------</h2>
+		<div><h3>♪ testCall()(TOP)</h3><h3 onclick="testCall()">[클릭]</h3></div>
+		<div><h3>♪ notCall1()</h3><h3 onclick="notCall1()">[클릭]</h3></div>
+		<div><h3>♪ notCall2()</h3><h3 onclick="notCall2()">[클릭]</h3></div>
+		<div><h3>♪ testIn()</h3><h3 onclick="testIn()">[클릭]</h3></div>
+		<div><h3>♪ testOnload2()</h3><h3 onclick="testOnload2()">[클릭]</h3></div>
+		<div><h5> ♬ testOnload2() 오류: 선언되지 않았기때문에!!???</h5></div>
+		<div><h3>♪ Anonymous D() (1)</h3><h3 onclick="D()">[클릭]</h3></div>
+		<div><h3>♪ Anonymous D() (2)</h3><h3 onclick="D()">[클릭]</h3></div>
+		<div><h5> ♬ Anonymous D() 2개: 같은함수지만  콘솔 각각 생성됨</h5></div>
+		<div><h3>♪ Anonymous E()</h3><h3 onclick="E()">[클릭]</h3></div>
+		<div><h5> ♬ Anonymous E() (2)생성: (2)번이 마지막이기때문에</h5></div>
+		<div><h5> ♬ Anonymous all() : 함수출력안함 콘솔만 불러옴 (왜??)</h5></div>
+		<div><h3>♪ testCall()(BOTTOM)</h3><h3 onclick="testCall()">[클릭]</h3></div>
+		<h2>----------- HEAD END -----------</h2>
+	</div>
+	<br/>
+	<div>
+		<div><h2>---------- BODY START ----------</h2></div>
+		<div><h3>♪ testOnload()</h3><h3 onclick="testOnload()">[클릭]</h3></div>
+		<div><h5> ♬ testOnload2() 오류: 선언되지 않았기때문에!!???</h5></div>
+		<div><h3>♪ testIn2()</h3><h3 onclick="testIn2()">[클릭]</h3></div>
+		<div><h3>♪ testCheck()</h3><h3 onclick="testCheck()">[클릭]</h3></div>
+		<div><h3>♪ Anonymous F()</h3><h3 onclick="F()">[클릭]</h3></div>
+		<div><h5> ♬ Anonymous F() 무반응: 콘솔 없음 and 익명함수</h5></div>
+		<div><h3>♪testCall()(BODY)</h3><h3 onclick="testCall()">[클릭]</h3></div>
+		<div><h2>----------- BODY END -----------</h2></div>
+	</div>
+</div>
+<br>
+<script type="text/javascript">
+console.log("************* START => BODY *************")
+
+
+//---------- BODY쪽에 함수 생성
+function testIn2(){
+	console.log("CALL => IN_BODY");
+}
+console.log("location => In_BODY");
+function testCheck(){
+	console.log("CALL => Check_BODY");
+}
+console.log("location => Check_BODY");
+//=============================================
+
+
+//------- $관련 함수 3번라인
+$(document).ready(testCall());
+console.log("location => $_333");
+$(document).ready(function() {
+	testCheck();
+	testCall();
+	console.log("CALL => $F()_333");
+});
+$(document).ready(function testCall() {
+	testCheck();
+	console.log("CALL => $F name()_333");
+});
+console.log("location => $F_333");
+//=============================================
+
+//------- ANONYMOUS 함수 3번라인
+!function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS A(3)");
+(function(msg){
+	console.log(msg);
+ }
+)("CALL => ANONYMOUS B(3)");
+(function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS C(3)")
+);
+D = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS D(3)");
+	msg = x+y;
+	console.log("READ => console.log D(3)")
+	return msg;
+}
+console.log(D);
+console.log(D());
+F = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS F(3)");
+	msg = x+y;
+	return msg;
+}
+console.log(F);
+console.log(F());
+console.log("location => ANONYMOUS_(3)");
+//=============================================
+
+	
+//------- $관련 함수 4번라인
+$(document).ready(testCall());
+console.log("location => $_444");
+$(document).ready(function() {
+	testCheck();
+	testCall();
+	console.log("CALL => $F()_444");
+});
+$(document).ready(function testCall(){
+	testCheck();
+	console.log("CALL => $F name()_444");
+});
+console.log("location => $F_444");
+//=============================================
+	
+	
+//------- ANONYMOUS 함수 4번라인
+!function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS A(4)");
+(function(msg){
+	console.log(msg);
+ }
+)("CALL => ANONYMOUS B(4)");
+(function(msg){
+	console.log(msg);
+ }("CALL => ANONYMOUS C(4)")
+);
+D = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS D(4)");
+	msg = x+y;
+	console.log("READ => console.log D(4)")
+	return msg;
+}
+console.log(D);
+console.log(D());
+F = function(msg){
+	var x = ("CALL => ");
+	var y = ("ANONYMOUS F(4)");
+	msg = x+y;
+	return msg;
+}
+console.log(F);
+console.log(F()+"CL_F(4)");
+console.log("location => ANONYMOUS_(4)");
+//=============================================
+
+	
+//---------- 같은이름의 함수는 마지막것만 읽음.
+function testCall(){
+//	testIn();
+//	testIn2();
+	console.log("CALL => BODY");
+}
+console.log("location => CALL => BODY");
+//=============================================
+
+	
+//------- 더 밑의 $(window).on와 상관없이 작동함
+$(window).on('load',function(){
+        console.log("CALL => $(window).on('load'..)(3/3)" );
+});
+//=============================================
+
+	
+console.log("*************** END => BODY *************")
+</script>
+</body>
+</html>
