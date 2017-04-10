@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>Insert title here</title>
 <style type = "text/css">
 /*
@@ -248,5 +249,207 @@ pokemons.push(new Pokemon(4, "jhMon", 45, 22, 2));
 <h3 id= "attackOptions_jb">공격하기</h3>
 <h3 id= "bagOptions_jb">가방뒤져보기</h3>
 <h3 id= "runAway_jb">도망치기!</h3>
+=======
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+td { font-size: 50; text-align: center; width:5%; padding:0; margin:0;}
+#tableMoving{}
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script>
+var defaultIdx=0;
+
+$(document).ready(function(){
+   var autoMove = document.querySelector("#autoMove01");
+   var defaultScore=0;
+   var score01= document.querySelector("#score01");
+   var tds = document.querySelectorAll("td");
+   tds[defaultIdx].style.backgroundColor="royalblue";
+
+   
+   this.onkeydown=function(){
+      
+
+      
+      if(event.keyCode==37 ){
+         document.querySelector("#autoMove01").innerHTML="1";
+         tds[defaultIdx].style.backgroundColor="";
+         
+         if(defaultIdx%15==0){
+            tds[defaultIdx].style.backgroundColor="royalblue";
+         }else{
+            tds[defaultIdx=(defaultIdx-1)].style.backgroundColor="royalblue";
+            autoMove01.innerHTML="1";
+         }
+      }
+      if(event.keyCode==38){
+         document.querySelector("#autoMove01").innerHTML="2";
+         tds[defaultIdx].style.backgroundColor="";
+         if(defaultIdx<15){
+            tds[defaultIdx].style.backgroundColor="royalblue";
+         }else{
+            tds[defaultIdx=(defaultIdx-15)].style.backgroundColor="royalblue";
+            autoMove01.innerHTML="2";
+         }
+      }
+      if(event.keyCode==39){
+
+         document.querySelector("#autoMove01").innerHTML="3";
+         tds[defaultIdx].style.backgroundColor="";
+         if(defaultIdx%15==14){
+            tds[defaultIdx].style.backgroundColor="royalblue";
+         }else{
+            tds[defaultIdx=(defaultIdx+1)].style.backgroundColor="royalblue";
+            autoMove01.innerHTML="3";
+         }
+      }
+      if(event.keyCode==40){
+
+
+         document.querySelector("#autoMove01").innerHTML="4";
+         tds[defaultIdx].style.backgroundColor="";
+         if(defaultIdx>209){
+            tds[defaultIdx].style.backgroundColor="royalblue";
+         }else{
+            tds[defaultIdx=(defaultIdx+15)].style.backgroundColor="royalblue";
+            autoMove01.innerHTML="4";
+         }
+      }
+      
+      switch(autoMove.innerHTML){
+      case "1" :
+         var move01 = setInterval(function(){
+            tds[defaultIdx].style.backgroundColor="";
+            tds[defaultIdx=(defaultIdx-1)].style.backgroundColor="royalblue";
+         }, 1000);
+         clear
+         break;
+      case "2" :
+         var move02 = setInterval(function(){
+            tds[defaultIdx].style.backgroundColor="";
+            tds[defaultIdx=(defaultIdx-15)].style.backgroundColor="royalblue";
+         }, 1000);
+         break;
+      case "3" :
+         var move03 = setInterval(function(){
+            tds[defaultIdx].style.backgroundColor="";
+            tds[defaultIdx=(defaultIdx+1)].style.backgroundColor="royalblue";
+         }, 1000);
+         break;
+      case "4" :
+         var move04 = setInterval(function(){
+            tds[defaultIdx].style.backgroundColor="";
+            tds[defaultIdx=(defaultIdx+15)].style.backgroundColor="royalblue";
+         }, 1000);
+         break;
+      }
+      
+      
+      
+      
+   }
+
+   
+   /*
+   var move01 = setInterval( function(){
+      
+      console.log(autoMove.innerHTML);
+      switch(autoMove.innerHTML){
+      case "1" :
+         tds[defaultIdx].style.backgroundColor="";
+         tds[defaultIdx=(defaultIdx-1)].style.backgroundColor="royalblue";
+      
+         break;
+      case "2" :
+         tds[defaultIdx].style.backgroundColor="";
+         tds[defaultIdx=(defaultIdx-15)].style.backgroundColor="royalblue";
+   
+         break;
+      case "3" :
+         tds[defaultIdx].style.backgroundColor="";
+         tds[defaultIdx=(defaultIdx+1)].style.backgroundColor="royalblue";
+
+         break;
+      case "4" :
+         tds[defaultIdx].style.backgroundColor="";
+         tds[defaultIdx=(defaultIdx+15)].style.backgroundColor="royalblue";
+
+         break;
+      }
+      }, 1000);
+   */
+
+   
+
+   
+   
+   
+});
+/*   
+   setInterval( function(){
+      var ri=parseInt(Math.random()*25)
+      tds[ri].innerHTML="체크";
+   }, 10000);
+*/
+
+
+
+
+   
+
+
+
+
+
+</script>
+<script type="text/javascript">
+/**/
+$(function(){
+	
+});
+
+
+</script>
+</head>
+<body>
+
+<h2 id="autoMove01">0</h2>
+   <h1 style="display:inline" id="title01">스코어 : </h1>   
+   <h1 id="score01">0</h1>
+   <h1 id="check01">먹이를 찾아라</h1>
+
+   <table id="tableMoving" align="center" width="400pt" height="400pt" border>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>   
+   </table>
+
+
+
+
+>>>>>>> 0bdfa0adcd82c15966feef89383c2ff8c64cd3bf
 </body>
 </html>

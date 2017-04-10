@@ -2,6 +2,7 @@ $(document).ready(function(){
 	
 });
 
+<<<<<<< HEAD:schedule/js/schedule_exe.js
 // ë³€ìˆ˜ ì„¤ì • .. ì „ì²´ ë‚ ì§œ, ë…„,ì›”,ì¼,ìš”ì¼
 var whyDateVal; 
 var whyYear; //ìˆ«ìí˜•íƒœ
@@ -20,6 +21,11 @@ if(!String.prototype.whyLpad){
 (function(){
 	setDate();
 }());
+=======
+// 4¿ù, ½ÃÀÛ:Åä¿äÀÏ, À±´Ş¾Æ´Ô.
+
+// ³¯Â¥ ÀÔ·Â : whyDateSelect (type=date)
+>>>>>>> 0bdfa0adcd82c15966feef89383c2ff8c64cd3bf:made/schedule/js/schedule_exe.js
 
 //ì‹œì‘ or ë°›ëŠ” ë‚ ì§œì— ë”°ë¼ ë°ì´í„° ì…‹íŒ…
 function setDate(val){

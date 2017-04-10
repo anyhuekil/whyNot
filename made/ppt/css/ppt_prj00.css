@@ -1,0 +1,54 @@
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+
+/* 개인 설정 시작*/
+body{
+	display:block;
+	}
+header{
+	width:99.999vw;
+	height:50px;
+	display:block;
+	}
+nav{
+	width:350px;
+	height:99.999vh;
+	display:none;
+	}
+section{
+	width:99.999vw;
+	height:99.999vh;
+	overflow:hidden;
+	overflow:auto;
+	background:#292929;
+	color:#f7f7f7;	
+}
+article{
+	width:95%;
+	height:99vh;
+	margin:0 auto;
+	background:#141414;
+	color:#f7f7f7;
+}
+aside{
+	width:99.999vw;
+	height:99.999vh;
+	overflow:hidden;
+	overflow:auto;
+}
+
+
+
+
+
+
+
+*{border: 1px dotted red;}
