@@ -2,9 +2,9 @@ $(document).ready(function(){
 	
 });
 
-// 4ì›”, ì‹œì‘:í† ìš”ì¼, ìœ¤ë‹¬ì•„ë‹˜.
+// 4¿ù, ½ÃÀÛ:Åä¿äÀÏ, À±´Ş¾Æ´Ô.
 
-// ë‚ ì§œ ì…ë ¥ : whyDateSelect (type=date)
+// ³¯Â¥ ÀÔ·Â : whyDateSelect (type=date)
 
 /*
 function whySetCalendar(){
