@@ -1,37 +1,215 @@
+
+
+
+<!DOCTYPE html>
 <html>
 <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script>
-    $( document ).ready(function() {
-    	alert("( document ).ready");
-        console.log( "document loaded" );
-    });
+<meta charset="EUC-KR">
+<title>test2</title>
+<style type="text/css">
+#worm_map{
+    height : 250px;
+    width : 250px;
+    border-collapse: collapse;
+}
+
+</style>
+
+<script type="text/javascript">
+var worm = [0,1,2];
+var apple_pos = new xy_position(0,0);
+var worm_interval;
+var worm_speed=500;
+var worm_direction='right';
+var score = 0;
+worm[0] = new xy_position(0,0);
+worm[1] = new xy_position(1,0);
+worm[2] = new xy_position(2,0);
+
+//up=38, left=37, down=40,right=39
+
+document.addEventListener("keydown", function(event){
+    if(event.which == '38') worm_direction = 'up';
+    else if(event.which == '37') worm_direction = 'left';
+    else if(event.which == '40') worm_direction = 'down';
+    else if(event.which == '39') worm_direction = 'right';
+    
+});
+
+ function xy_position(x,y){
+     this.x=x;
+     this.y=y;
+     }
  
-    $( window ).on( "load", function() {
-    	alert("window ).on( 'load'");
-        console.log( "window loaded" );
-    });
-    $( document ).ready(function() {
-    	alert("( document ).ready2");
-        console.log( "document loaded2" );
-    });
-    </script>
+function start_worm(){
+    create_apple();
+    worm_interval = setInterval(move_worm,worm_speed);    
+    }
+    
+function create_apple(){
+    apple_pos.x = Math.floor(Math.random() * 10);
+    apple_pos.y = Math.floor(Math.random() * 10);
+    display_all();
+    score += 1;
+    document.getElementById("score").value = score;
+    }
+
+function display_all(){
+    
+    clean_map();
+    document.getElementById("map"+apple_pos.y+apple_pos.x).style.backgroundColor = "red";
+    for(var i=0;i<worm.length;i++)
+    document.getElementById("map"+worm[i].y+worm[i].x).style.backgroundColor = "yellow"; //worm의 위치값을 받아와서 표시하기
+    //document.getElementById("map"+worm[1]).style.backgroundColor = "yellow";
+    //document.getElementById("map"+worm[0]).style.backgroundColor = "yellow";
+}
+
+function move_worm(){
+    //사과먹고 길이+1 구현
+    var buffer_x, buffer_y;
+    if(worm[worm.length-1].x == apple_pos.x && worm[worm.length-1].y == apple_pos.y){        
+        worm[worm.length] = new xy_position(worm[worm.length-1].x,worm[worm.length-1].y);
+        worm_speed -= 50;
+        clearInterval(worm_interval);
+        start_worm();
+        console.log(worm_speed);
+        //if(worm_speed == 300) 추가구현.
+            //bulkup_worm;
+        }
+        
+    //방향성을 가지고 움직이기
+    if(worm_direction == 'right'){
+        buffer_x = worm[worm.length-1].x;
+        buffer_y = worm[worm.length-1].y;
+        worm[worm.length-1].x =parseInt(worm[worm.length-1].x)+1;
+        for(var i=0;i<worm.length-2;i++){            
+            worm[i].x =worm[i+1].x;
+            worm[i].y =worm[i+1].y;
+            chk_crash(i);
+            }
+        worm[i].x = buffer_x;
+        worm[i].y = buffer_y;
+        end_worm();
+        }
+    
+    else if(worm_direction == 'left'){
+        buffer_x = worm[worm.length-1].x;
+        buffer_y = worm[worm.length-1].y;
+        worm[worm.length-1].x =parseInt(worm[worm.length-1].x)-1;
+        for(var i=0;i<worm.length-2;i++){            
+            worm[i].x =worm[i+1].x;
+            worm[i].y =worm[i+1].y;
+            chk_crash(i);
+            }
+        worm[i].x = buffer_x;
+        worm[i].y = buffer_y;
+        end_worm();
+        }
+    
+    else if(worm_direction == 'down'){
+        buffer_x = worm[worm.length-1].x;
+        buffer_y = worm[worm.length-1].y;
+        worm[worm.length-1].y =parseInt(worm[worm.length-1].y)+1;
+        for(var i=0;i<worm.length-2;i++){            
+            worm[i].x =worm[i+1].x;
+            worm[i].y =worm[i+1].y;
+            chk_crash(i);
+            }
+        worm[i].x = buffer_x;
+        worm[i].y = buffer_y;
+        end_worm();
+        }
+    
+    else if(worm_direction == 'up'){
+        buffer_x = worm[worm.length-1].x;
+        buffer_y = worm[worm.length-1].y;
+        worm[worm.length-1].y =parseInt(worm[worm.length-1].y)-1;
+        for(var i=0;i<worm.length-2;i++){
+            worm[i].x =worm[i+1].x;
+            worm[i].y =worm[i+1].y;
+            chk_crash(i);
+            }        
+        worm[i].x = buffer_x;
+        worm[i].y = buffer_y;
+        end_worm();
+        }    
+    
+    display_all();
+
+    }
+
+
+
+function clean_map(){    
+    for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++)
+        document.getElementById("map"+j+i).style.backgroundColor = "white";
+        }
+    }
+        
+//map밖으로 나가면 끝        
+function end_worm(){    
+    if(worm[worm.length-1].x>9 || worm[worm.length-1].x<0 || 
+            worm[worm.length-2].y>9 || worm[worm.length-2].y<0){
+        clearInterval(worm_interval);
+        alert("The End");
+        }
+}
+    
+    //지렁이 머리가 몸에 닿으면 끝
+function chk_crash(present){
+        if(worm[worm.length-1].x == worm[present].x && worm[worm.length-1].y == worm[present].y){
+        clearInterval(worm_interval);
+        alert("The EEEEENd");
+        }
+    }
+
+
+function reset_worm(){
+    score = 0;
+    clearInterval(worm_interval);
+    worm = [0,1,2];
+    apple_pos = new xy_position(0,0);
+    worm_speed=500;
+    worm_direction='right';
+    worm[0] = new xy_position(0,0);
+    worm[1] = new xy_position(1,0);
+    worm[2] = new xy_position(2,0);
+    start_worm();    
+}
+for(var f=0;f<10;f++){
+    document.write('<tr>');
+    for(var g=0;g<10;g++){
+        document.write('<td id=map'+(f)+(g)+'></td>');
+        console.log('<td id=map'+(f)+(g)+'></td>');
+        }
+    document.write('</tr>');
+    }
+
+
+    
+
+</script>
+<script>
+
+</script>
 </head>
 <body>
- <script>
-    $( document ).ready(function() {
-    	alert("( document ).ready BODY");
-        console.log( "document loaded BODY" );
-    });
- 
-    $( window ).on( "load", function() {
-    	alert("window ).on( 'load' BODY");
-        console.log( "window loaded BODY" );
-    });
-    $( document ).ready(function() {
-    	alert("( document ).ready BODY2");
-        console.log( "document loaded BODY2" );
-    });
-    </script>
+
+<input type="button" value="start" onclick="start_worm()">
+<input type="button" value="Reset" onclick="reset_worm()">
+Score : <input type="text" id="score" value="0" size="1">
+
+
+
+<br><br>
+
+<table id="worm_map" border="1" >
+<tbody>
+
+
+
+</tbody></table>
+
 </body>
 </html>
