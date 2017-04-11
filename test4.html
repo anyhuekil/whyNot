@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪what?</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+body{display:block;}
+#goalIn{display:block;background:grey;}
+
+/*
+#goalIn{display:block;background:black;color:white;
+	width:60%;height:300px;
+	margin:50px auto;overflow:auto;}
+*/
+
+
+.tableTr:after,
+.tableTr:before{content:"";display:table;clear:both;}
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js">
+</script>
+<script type="text/javascript">
+/**/
+$(function(){
+	//기본 테이블 넣기.
+	$('#goalIn').html(makeTable());
+	//CSS 입히기
+	cssOn();
+});
+
+
+var garo = 5;
+var sero = 2;
+// 테이블 생성
+function makeTable(){
+	console.log("shit")
+	temp = "";
+	temp += "<div id='title'>adf</div><br><hr>";
+	temp += "<div id='tableLine'>\n\t<div class='tableTh'>\n\t</div>";
+	for (i=0;i<garo;i++){
+		temp += "\n\t<div class='tableTr'>";
+		for(j=0;j<sero;j++){
+			temp += "\n\t\t<div class='tableTd'>A</div>";
+		}
+		temp += "\n\t</div>";
+	}
+	console.log(temp);
+	temp += "</div>"
+	return temp;
+	
+}
+// tr추가 버튼
+// tr추가 함수
+var numTd = 2; 
+function plusTableTd(){
+		console.log("tr추가!")
+		numTd ++;
+		temp ="";
+		temp += "<div class='tableTd'>A</div>";
+		$('.tableTr').append(temp);
+//		$('.tableTr:after,.tableTr:before').css({content:'',display:'table',clear:'both'});
+		$('.tableTr').css({display:'block',width:'90%',margin:'auto'});
+		$('.tableTd').css({display:'block','width':(99.9/numTd)+'%','float':'left',background:'#141414'});
+}
+
+function cssOn(){
+	$('#title').css({});
+	$('#tableLine').css({display:'block',background:'black',color:'white',width:'85%',padding:'50px',margin:'50px auto',overflow:'auto'});
+	$('.tableTh').css({display:'block',background:'#141414',color:'gold',width:'90%',height:'50px',margin:'10px auto'});
+	$('.tableTr').css({display:'block',width:'90%',margin:'auto',padding:'1px 10px'});
+//	$('.tableTr:after,.tableTr:before').css({content:'',display:'table',clear:'both'});
+	$('.tableTd').css({display:'block',width:'50%','float':'left',background:'#141414'});
+}
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<div><input type="button" value="tr추가" onclick="plusTableTd()"></div>
+<div id ="goalIn">
+</div>
+
+</body>
+</html>
