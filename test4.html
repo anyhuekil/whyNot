@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>♪what?</title>
+<title>♪what??</title>
 <style type="text/css">
 body{box-sizing:border-box;}
 *, *:after, *:before{box-sizing:inherit;}
@@ -24,7 +24,9 @@ body{display:block;}
 
 .tableTr:after,
 .tableTr:before{content:"";display:table;clear:both;}
+
 *{border: 1px dotted red;}
+
 </style>
 <script src="http://code.jquery.com/jquery-3.2.1.js">
 </script>
@@ -38,13 +40,13 @@ $(function(){
 });
 
 
-var garo = 5;
-var sero = 2;
+var garo = 5; //테이블을 만들기 위한 가로 칸 갯수
+var sero = 2; //테이블을 만들기 위한 세로 칸 갯수
 // 테이블 생성
 function makeTable(){
 	console.log("shit")
 	temp = "";
-	temp += "<div id='title'>adf</div><br><hr>";
+	temp += "<div id='title'>graiant Titile</div><br>";
 	temp += "<div id='tableLine'>\n\t<div class='tableTh'>\n\t</div>";
 	for (i=0;i<garo;i++){
 		temp += "\n\t<div class='tableTr'>";
@@ -60,12 +62,13 @@ function makeTable(){
 }
 // tr추가 버튼
 // tr추가 함수
-var numTd = 2; 
-function plusTableTd(){
+var numTd = 2;  // 가로칸 갯수
+function plusTableTd(){	
+		temp ="";
 		console.log("tr추가!")
 		numTd ++;
-		temp ="";
 		temp += "<div class='tableTd'>A</div>";
+		$('')
 		$('.tableTr').append(temp);
 //		$('.tableTr:after,.tableTr:before').css({content:'',display:'table',clear:'both'});
 		$('.tableTr').css({display:'block',width:'90%',margin:'auto'});
@@ -73,9 +76,9 @@ function plusTableTd(){
 }
 
 function cssOn(){
-	$('#title').css({});
-	$('#tableLine').css({display:'block',background:'black',color:'white',width:'85%',padding:'50px',margin:'50px auto',overflow:'auto'});
-	$('.tableTh').css({display:'block',background:'#141414',color:'gold',width:'90%',height:'50px',margin:'10px auto'});
+	$('#title').css({background:'linear-gradient(45deg,red,orange,yellow,green,blue,navy,purple)',width:"70%",height:"100px",margin:"1vh auto",});
+	$('#tableLine').css({display:'block',background:'black',color:'white',width:'85%',padding:'20px',margin:'0 auto 20px auto',overflow:'auto'});
+	$('.tableTh').css({display:'block',background:'linear-gradient(45deg,black,#141414,black)',color:'gold',width:'90%',height:'50px',margin:'0 auto 20px auto'});
 	$('.tableTr').css({display:'block',width:'90%',margin:'auto',padding:'1px 10px'});
 //	$('.tableTr:after,.tableTr:before').css({content:'',display:'table',clear:'both'});
 	$('.tableTd').css({display:'block',width:'50%','float':'left',background:'#141414'});
@@ -90,7 +93,9 @@ function cssOn(){
 <body>
 
 <div><input type="button" value="tr추가" onclick="plusTableTd()"></div>
+<div><input type="button" value="내용삽입" onclick="plusText()"></div>
 <div id ="goalIn">
+	
 </div>
 
 </body>
