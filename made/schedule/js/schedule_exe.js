@@ -2,32 +2,29 @@ $(document).ready(function(){
 	
 });
 
-<<<<<<< HEAD:schedule/js/schedule_exe.js
-// ë³€ìˆ˜ ì„¤ì • .. ì „ì²´ ë‚ ì§œ, ë…„,ì›”,ì¼,ìš”ì¼
-var whyDateVal; 
-var whyYear; //ìˆ«ìí˜•íƒœ
-var whyMonth = []; //[ìˆ«ìí˜•(1~12)] 
-var whyDate = []; //[ìˆ«ìí˜•,] 
-var whyDay = []; //[ìˆ«ìí˜•(0~6),xìš”ì¼] 
 
-// Lpadí•¨ìˆ˜ ìƒì„±
+// º¯¼ö ¼³Á¤ .. ÀüÃ¼ ³¯Â¥, ³â,¿ù,ÀÏ,¿äÀÏ
+var whyDateVal; 
+var whyYear; //¼ıÀÚÇüÅÂ
+var whyMonth = []; //[¼ıÀÚÇü(1~12)] 
+var whyDate = []; //[¼ıÀÚÇü,] 
+var whyDay = []; //[¼ıÀÚÇü(0~6),x¿äÀÏ] 
+
+// LpadÇÔ¼ö »ı¼º
 if(!String.prototype.whyLpad){
 	String.prototype.whyLpad = function whyLpad(n, str) { 
 		return Array(n - String(this).length + 1).join(str || '0') + this;
 	}
 }
 
-// ì‹œì‘ì‹œ ë‚ ì§œ ì „ì†¡ìœ„í•œ í•¨ìˆ˜
+
 (function(){
 	setDate();
 }());
-=======
-// 4¿ù, ½ÃÀÛ:Åä¿äÀÏ, À±´Ş¾Æ´Ô.
 
-// ³¯Â¥ ÀÔ·Â : whyDateSelect (type=date)
->>>>>>> 0bdfa0adcd82c15966feef89383c2ff8c64cd3bf:made/schedule/js/schedule_exe.js
 
-//ì‹œì‘ or ë°›ëŠ” ë‚ ì§œì— ë”°ë¼ ë°ì´í„° ì…‹íŒ…
+
+//½ÃÀÛ or ¹Ş´Â ³¯Â¥¿¡ µû¶ó µ¥ÀÌÅÍ ¼ÂÆÃ
 function setDate(val){
 	console.log(val);
 	this.inputDate = (val == null) ? new Date() : new Date(val) ;
@@ -41,7 +38,7 @@ function setDate(val){
 	whyDateVal = yearVal+"-"+monthVal+"-"+dateVal;
 	console.log(whyDateVal);
 	$('#whyDateSelect').val(whyDateVal);
-	whyDay[0] = inputDate.getDay();  //ìš”ì¼ì„ Numí˜•íƒœ ìˆ«ìë¡œ ë°›ìŒ
+	whyDay[0] = inputDate.getDay();  //¿äÀÏÀ» NumÇüÅÂ ¼ıÀÚ·Î ¹ŞÀ½
 	whyDay[1] = (function(){				   
 		switch (whyDay[0]) {
 		    case 0:
@@ -68,14 +65,14 @@ function setDate(val){
 	}());
 	$('#whyDateshow').html(whyDateVal+" ["+whyDay[1]+"]");
 }
-// í´ë¦­ ë²„íŠ¼ì„ ëˆ„ë¥¼ë•Œ, input dateì—ì„œ ì…ë ¥í•œ ë‚´ìš©ì„ ìœ„ë¡œ ë¶€ë¥¸ë‹¤. // ë‚˜ì¤‘ì— ì´ê²ƒ ê¸°ë°˜ìœ¼ë¡œ ìŠ¤ì¼€ì¤„ëŸ¬ ë‹¬ë ¥ ì†Œí™˜í• ì˜ˆì •.
+// Å¬¸¯ ¹öÆ°À» ´©¸¦¶§, input date¿¡¼­ ÀÔ·ÂÇÑ ³»¿ëÀ» À§·Î ºÎ¸¥´Ù. // ³ªÁß¿¡ ÀÌ°Í ±â¹İÀ¸·Î ½ºÄÉÁÙ·¯ ´Ş·Â ¼ÒÈ¯ÇÒ¿¹Á¤.
 $('#whySetCalendar').click (function(){
 	setDate($('#whyDateSelect').val());
 });
 
-//ë‹¬ë ¥ì— ê°ê° ë‚ ì§œë¥¼ ë°°ì—´ë¡œ ì„ ì–¸í•¨.
+//´Ş·Â¿¡ °¢°¢ ³¯Â¥¸¦ ¹è¿­·Î ¼±¾ğÇÔ.
 
-ì—¬ê¸°ì„œë¶€í„° í•˜ë©´ëœë‹¤!!
+¿©±â¼­ºÎÅÍ ÇÏ¸éµÈ´Ù!!
 
 var calendarDayArray = [];
 $('.calendarDay').each(function (idx,item){
@@ -85,12 +82,12 @@ $('.calendarDay').each(function (idx,item){
 console.log(calendarDayArray.length);
 console.log(calendarDayArray[1]);
 
-// whyDay[0] = 0 ì´ë©´, calendarDayArray[0]ë¶€í„° ì±„ìš´ë‹¤.
-// whyDay[0] = 1 ì´ë©´, calendarDayArray[1]ë¶€í„° ì±„ìš´ë‹¤.
+// whyDay[0] = 0 ÀÌ¸é, calendarDayArray[0]ºÎÅÍ Ã¤¿î´Ù.
+// whyDay[0] = 1 ÀÌ¸é, calendarDayArray[1]ºÎÅÍ Ã¤¿î´Ù.
 //
 //
 //
-// whyDay[0] = 6 ì´ë©´, calendarDayArray[6]ë¶€í„° ì±„ìš´ë‹¤.
+// whyDay[0] = 6 ÀÌ¸é, calendarDayArray[6]ºÎÅÍ Ã¤¿î´Ù.
 
 // whyDay[0] + 
 
