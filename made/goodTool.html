@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪#00♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+/**/
+$(function(){
+	//현재 div위치 알아내기.
+	$( "*", document.body ).click(function( event ) {
+		  var offset = $( this ).offset();
+		  event.stopPropagation();
+		  $( "#result" ).text( this.tagName +
+		    " coords ( " + offset.left + ", " + offset.top + " )" );
+		});
+});
+
+
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
