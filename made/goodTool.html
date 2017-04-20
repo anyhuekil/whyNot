@@ -29,6 +29,14 @@ $(function(){
 		});
 });
 
+document.addEventListener("keydown",keyDown);
+
+function keyDown(e){
+	if(e.keyCode){
+		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
+	}
+}
+
 
 </script>
 </head>
