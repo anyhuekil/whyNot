@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪#00♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+/**/
+$(function(){
+	
+});
+
+document.addEventListener("keydown",setBtn);
+
+function setBtn(e){
+//	if(e.keyCode){
+//		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
+//	}
+	if(e.keyCode==48){	//키코드 숫자 0
+		test();
+	}
+	if(e.keyCode==49){	//키코드 숫자 0
+		result();
+	}
+	
+}
+var myArray=[1,2,3,4,5,6,7,8,9,10];
+var rel=0.0;
+function test(){
+	var resultArray=[0,0,0,0,0,0,0,0,0,0];
+	for(idx=0;idx<10;idx++){
+		myArray.sort(function() { return 0.5 - Math.random() });
+		console.log(myArray);
+		for(j=0;j<10;j++){
+			switch (myArray[j]) {
+			case myArray[j]:0
+				resultArray[myArray[j]]++;
+				break;
+			default:
+				console.log("?");
+				break;
+			}
+		}
+	}
+	console.log(resultArray);
+	rel=0.0;
+	for (var i = 0; i < resultArray.length; i++){
+		rel += resultArray[i];
+	}
+		console.log(rel/10);
+}
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

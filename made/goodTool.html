@@ -20,7 +20,7 @@ body{box-sizing:border-box;}
 <script type="text/javascript">
 /**/
 $(function(){
-	//현재 div위치 알아내기.
+//현재 div위치 알아내기.
 	$( "*", document.body ).click(function( event ) {
 		  var offset = $( this ).offset();
 		  event.stopPropagation();
@@ -31,11 +31,24 @@ $(function(){
 
 document.addEventListener("keydown",keyDown);
 
+
+//키코드값 알기
 function keyDown(e){
 	if(e.keyCode){
 		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
 	}
 }
+
+
+// 배열 셔플
+function shuffle(a) {
+    for (let i = a.length; i; i--) {
+        let j = Math.floor(Math.random() * i);
+        [a[i - 1], a[j]] = [a[j], a[i - 1]];
+    }
+}
+//배열 셔플 2 ... 대박..;
+yourArray.sort(function() { return 0.5 - Math.random() });
 
 
 </script>
