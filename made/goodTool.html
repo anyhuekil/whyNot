@@ -47,8 +47,21 @@ function shuffle(a) {
         [a[i - 1], a[j]] = [a[j], a[i - 1]];
     }
 }
-//배열 셔플 2 ... 대박..;
+//배열 셔플 2
 yourArray.sort(function() { return 0.5 - Math.random() });
+
+// 깜빡임 효과
+setInterval(function(){
+	$(".testEle").toggle();
+}, 250);
+
+
+//깜빡임 효과 2 같은듯 다른..
+function blinker() {
+    $('.blink_me').fadeOut(500);
+    $('.blink_me').fadeIn(500);
+    }
+ setInterval(blinker, 1000); 
 
 
 </script>
