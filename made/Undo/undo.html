@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Undo</title>
+<style type="text/css">
+
+html, body {
+    height:100%
+}
+body {
+    color: white;
+    font-family: sans-serif;
+    background: whiteSmoke
+}
+
+hr {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #fff
+}
+a {
+    color:white;
+    text-decoration:none
+}
+
+#items a {
+    float: left;
+    position: relative;
+    display: inline-block;
+    margin: 1px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    color: #12ae53;
+    background: #222
+}
+#items a:hover {
+    background:#2a2a2a
+}
+.hidden {
+    visibility: hidden
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background-color: whiteSmoke;
+    border-bottom: 3px solid #12ae53
+}
+
+</style>
+</head>
+<body>
+
+<div id="first">
+    <button id='undo' disabled>Undo</button>
+    <button id='redo' disabled>Redo</button>
+    <button id='clear' disabled>Clear</button>
+    <input type='range' min='0' max='12' value='0'>
+    <hr>
+    <div id="items">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
+        <a href="#">11</a>
+        <a href="#">12</a>
+    </div>
+</div>
+
+</body>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+/*!
+ * undone.js 0.0.3 - https://github.com/yckart/undone.js
+ * The undo/redo manager for well formed javascript applications.
+ *
+ * Based upon: https://gist.github.com/NoxArt/2692147
+ * Inspired by: http://blog.asgaard.co.uk/2012/11/21/undo-redo-in-javascript
+ *
+ * Copyright (c) 2012 Yannick Albert (http://yckart.com)
+ * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
+ * 2013/03/16
+ **/
+
+var Undone = (function () {
+
+    /**
+    Properties
+    @actions [{name:String, identifier:String, undo:Function, redo:Function}]
+    @current pointer to a current point in history list, all the lower is history and all the higher ones are future
+
+    @param config {Object}
+    */
+    function Undone(options) {
+        this.options = {
+            limit: Infinity,
+            onUndo: function () {},
+            onRedo: function () {},
+            onChange: function () {}
+        };
+        for (var i in options) this.options[i] = options[i];
+
+        this.history = [];
+        this.current = -1;
+    }
+
+
+    /**
+    Stores the action that happened and it's undo callback
+    Caller must ensure undo and redo callbacks turn the model into a proper state
+
+    @param {String} name
+    @param {Function} actionDo - callback describing what's happened, serves as a 'redo' callback
+    @param {Function} actionUndo
+    @optionalParam {String} identifier - identifier, for example name of the mark that has been just added
+    */
+    Undone.prototype.register = function (name, redo, undo, id) {
+        this.clearRedo();
+        this.history.push({
+            name: name,
+            identifier: id || "",
+            undo: undo || redo,
+            redo: redo
+        });
+        this.current++;
+        this.options.onChange.call(this, "register", this.getUndo().length, this.getRedo().length);
+        if (this.options.limit !== Infinity) {
+            while (this.history.length > this.options.limit) {
+                this.history.shift();
+                this.current--;
+            }
+        }
+    };
+
+
+    /**
+    Triggers a given action and stores it as redo
+    
+    Caller must ensure undo and redo callbacks turn the model into a proper state
+    
+    @param {String} name
+    @param {Function} actionDo - callback describing should now happen, serves also as a 'redo' callback
+    @param {Function} actionUndo
+    @optionalParam {String} id - identifier, for example name of the mark that has been just added
+    */
+    Undone.prototype.update = function (name, redo, undo, id) {
+        this.register(name, redo, undo, id || "");
+        return redo();
+    };
+
+
+    /**
+    Undos X steps
+    
+    @optionalParam {Number} steps
+    */
+    Undone.prototype.undo = function (steps) {
+        steps = steps || 1;
+
+        var step = 0;
+        while (step++ < steps) {
+            if (this.history[this.current]) {
+                this.history[this.current--].undo();
+            }
+        }
+
+        this.options.onUndo();
+        this.options.onChange.call(this, "undo", this.getUndo().length, this.getRedo().length);
+    };
+
+
+    /**
+    Redos X steps
+    
+    @optionalParam {Number} steps
+    */
+    Undone.prototype.redo = function (steps) {
+        steps = steps || 1;
+
+        var step = 0,
+            i = 0;
+
+        while (step++ < steps) {
+            if (this.history[this.current + 1]) {
+                this.current++;
+                this.history[this.current].redo();
+            }
+        }
+
+        this.options.onRedo();
+        this.options.onChange.call(this, "redo", this.getUndo().length, this.getRedo().length);
+    };
+
+
+    /**
+    Returns the entries by its index
+    
+    @return [historyStack]
+    */
+    Undone.prototype.goTo = function (val) {
+        return this.history[val];
+    };
+
+
+    /**
+    Returns all entries that can be undo-ed
+    
+    @return [historyStack]
+    */
+    Undone.prototype.getUndo = function () {
+        if (this.current === -1) {
+            return [];
+        } else {
+            return this.history.slice(0, this.current + 1);
+        }
+    };
+
+
+    /**
+    Returns all entries that can be redo-ed
+    
+    @return [historyStack]
+    */
+    Undone.prototype.getRedo = function () {
+        if (this.current + 1 >= this.history.length) {
+            return [];
+        } else {
+            return this.history.slice(this.current + 1, this.history.length);
+        }
+    };
+
+
+    /**
+    Has history entries = can undo?
+    
+    @returns bool
+    */
+    Undone.prototype.hasUndo = function () {
+        return this.current > -1;
+    };
+
+
+    /**
+    Has future entries = can redo?
+
+    @returns bool
+    */
+    Undone.prototype.hasRedo = function () {
+        return this.current + 1 < this.history.length;
+    };
+
+    /**
+    Clear the complete history stack
+    
+    @returns [historyStack]
+    */
+    Undone.prototype.clear = function () {
+        this.current = -1;
+        this.history = [];
+    };
+
+    Undone.prototype.clearRedo = function () {
+        if (this.current + 1 < this.history.length) {
+            this.history.splice(this.current + 1, this.history.length - this.current - 1);
+            return Undone;
+        }
+    };
+
+    return Undone;
+
+})();
+
+
+var undo = $("#undo"),
+    redo = $("#redo"),
+    clear = $("#clear"),
+    input = $("input"),
+    prev = 12;
+
+var undone = new Undone({
+    onChange: function (event, undoLen, redoLen) {
+        console.log(event, undoLen, redoLen)
+        prev = undoLen;
+
+        undo.prop("disabled", !undoLen);
+        redo.prop("disabled", !redoLen);
+        clear.prop("disabled", !undoLen && !redoLen);
+        input.val(undoLen);
+    }
+});
+
+input.on("change", function (e) {
+    undone[prev >= this.value ? "undo" : "redo"]();
+    prev = this.value;
+});
+
+undo.add(redo).add(clear).click(function () {
+    undone[this.id]();
+});
+
+
+$("#items a").click(function () {
+    var self = $(this);
+    undone.update("toggle", function () {
+        self.toggleClass("hidden");
+    });
+
+    return false;
+});
+
+
+$(document).keydown(function (e) {
+    var key = e.which;
+    if (e.ctrlKey) { // ctrl
+        if (key === 90) undone.undo(2); // z
+        if (key === 89) undone.redo(2); // y
+    }
+});
+</script>
+</html>
