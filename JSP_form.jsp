@@ -17,8 +17,9 @@ body{box-sizing:border-box;}
 .whyContain:before{content:"";display:table;clear:both;}
 
 
-
+/*
 *{border: 1px dotted red;}
+*/
 </style>
 <script src="http://code.jquery.com/jquery-3.2.1.js">
 </script>

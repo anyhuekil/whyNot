@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪♪♪♪♪</title>
+<style type="text/css">
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+html,body{height:100%;overflow:hidden;}
+
+.windowFull{
+	overflow:auto;
+	background:#779ECB;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	padding:10px;
+}
+#allTitle{
+	display:inline-block;
+	float:left;
+	width:100%;
+	height:70px;
+	font-size:45px;
+	font-weight:bold;
+	text-align:center;
+	line-height:55px;
+	background:#1f1f18;
+	color:white;
+	border-style:outset; 
+}
+#countBox{
+	display:inline-block;
+	float:left;
+	width:100%;
+	height:50px;
+	background:#1f1f18;
+	border-style:outset;
+}
+#countTime{
+	
+}
+#countBar{
+	
+}
+#winHalf{
+	display:inline-block;
+	float:left;
+	width:calc(100% - 350px);
+	height:calc(100% - 70px);
+	background:#24405e;
+	
+}
+.table{
+	display:inline-block;
+	width:100%;
+	height:calc(100% - 50px);
+	margin:auto;
+	color:#1f1f18;
+	font-size:30px;
+	font-weight:bold;
+	border-style:groove;
+}
+#manual{
+	background:#3f6fa3;
+	width:100%;
+	height:100%;
+	line-height:100%;
+}
+
+/* 조작부분 */
+.sideMenu{
+	display:inline-block;
+	float:left;
+	width:350px;
+	padding:5px 15px;
+	overflow:auto;
+	border-style:groove;
+}
+.welcome{
+	width:100%;
+	height:100%;
+	color:#d8e2ef;
+	font-size:25px;
+	font-weight:bold;
+	text-align:center;
+}
+.sideLine{
+	display:block;
+	width:100%;
+	margin-bottom:20px;
+	overflow:auto;
+}
+.sideTitle,
+.sideBtn{
+	float:left;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	background:#1f1f18;
+	color:gold;
+	margin:5px 0px;
+}
+.sideContents,
+input{
+	display:inline-block;
+	text-align:right;
+	float:left;
+	width:50%;
+	height:40px;
+	background:#3f70a5;
+	line-height:40px;
+	margin:5px 0px;
+	padding:0px 10px;
+}
+input{
+	border:5px solid #3f70a5;
+	background:#779ECB;
+	font-size:25px;
+	color:#cad9ea;
+	text-align:left;
+}
+#scoreVal,
+#levelMaxVal,
+#tdNumVal,
+#sameNumVal,
+#kindsNumVal,
+#boombNumVal,
+#levelInVal,
+#comboVal,
+#pairVal{
+	text-align:center;
+}
+#levelInVal{
+	background:#4e82bc;
+}
+.sideBtn{
+	background:#24405e;
+	color:white;
+}
+	
+
+
+/*
+*{border: 1px dotted red;}
+*/
+</style>
+
+<script src="http://code.jquery.com/jquery-3.2.1.js">
+</script>
+<script type="text/javascript">
+
+/*
+
+1. 테이블을 만든다.
+	- 가로,세로 숫자를 입력한다.
+		var rowNum;	//가로 갯수
+		var colNum;	//세로 갯수
+		var textTable;	// $('.table').html(textTable)을 위한 글자 테이블
+	- 위 세개의 변수로 테이블을 작성한다.
+		=> function createTable(){}
+2. 
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 테이블 생성 -> 레벨 설정 -> 
+
+/**/
+$(document).ready(function(){
+	//입력창(가로,세로,레벨) 클리어	
+	$("input").focus(function(){
+		this.value="";
+	});
+});
+
+// 키보드 조작.
+document.addEventListener("keydown",setBtn);
+
+function setBtn(e){
+	if(e.keyCode){
+		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
+	}
+	if(e.keyCode==48){	//키코드 숫자 0
+		//createTable();
+	}
+	if(e.keyCode==49){ // 키코드 숫자 1 
+		//startGameValue();
+	}
+	if(e.keyCode==50){ // 키코드 숫자 2
+		makeTempArray();
+	}
+	if(e.keyCode==51){ // 키코드 숫자 3
+		startGamePlay();
+	}
+	if(e.keyCode==52){ // 키코드 숫자 4
+		checkRe();
+	}
+	if(e.keyCode==53){ // 키코드 숫자 5
+		tdBlocking();
+	}
+}
+
+
+
+var gameSet = 0; //게임 실행과정을 위한 변수
+/*	기본값 => 0
+	테이블 셋팅끝 => 1			// 여기에 초기값 줘야할듯.
+	레벨 셋팅끝 => 2
+	가상배열 생성 + 테이블 배열 셋팅 끝 => 3
+	타이머 시간끝 => 4
+	플레이시작 => 5
+	레벨클리어 => 6 => 2
+	게임end(win or lose) => 7
+*/
+
+
+//var rowNum;	//가로 갯수
+//var colNum;	//세로 갯수
+//var textTable;	// $('.table').html(textTable)을 위한 글자 테이블
+
+function createTable(){
+	// 기본 테이블 text상태로 작성. 입력창에 숫자를 입력하면, 숫자를 받고 아니면 기본 4를 입력한다.
+	var rowNum = (parseInt($('#rowInVal').val())>0 ? parseInt($('#rowInVal').val()) : 4 )	// 가로 갯수.
+	var colNum = (parseInt($('#colInVal').val())>0 ? parseInt($('#colInVal').val()) : 4 )	// 세로 갯수.
+	var textTable="";	//$('.table').html(textTable)을 위한 글자 테이블
+	for(row=1;row<=rowNum;row++){
+		textTable += '<div class="tr">\n';
+		for(col=1;col<=colNum;col++){
+			textTable += '\t<div class="td"></div>\n';
+		}
+		textTable += '</div>\n';
+	}
+//	console.log(textTable);		<= 콘솔창으로 생긴 테이블 html형식으로 확인 가능.
+	// 새로 생성한 테이블 CSS
+	$('.table').html(textTable);	// 미리 지정해놓은 table자리에 위 텍스트를 넣는다(= html 화면에서 테이블이 생성된다)
+	
+	//테이블 CSS작업.
+	//기본 CSS작업
+	$('.tr').css({height:100/rowNum+'%'});
+	$('.td').css({
+		display:'inline-block',
+		'border-style':'outset',
+		background:'#1f1f18',
+		'float':'left',
+		'text-align':'center',
+		height:'100%',
+		cursor: 'pointer',	//커서 모양 손모양뜨게..(이미지도 가능한거같은데, 시간상 패스)
+		width:100/colNum+'%'});
+	//trHeight = $('.td').height();	// 변수사용하려다가, 굳이 쓸 필요없게 느껴짐.
+	// td의 높이값이 나와야 정해지는 CSS
+	$('.td').css({
+		'line-height':$('.td').height()+'px',
+		'font-size':$('.td').height()/3+'px',
+	});
+	gameSet = 1; //테이블 셋팅끝!
+}
+
+
+
+var tdNum; //테이블 안의 td총 갯수.
+var pairNum=2;	//짝의 갯수
+var level=1; // 레벨 초기값 1
+var kindsNum; // 같은 조각 종류 수
+var noBoombNum;
+var sameNum; // 같은 조각 갯수(최소한 맞춰야할 횟수라고 생각하면된다. 특정 수에서는 횟수가 초과되기도 함.)
+var maxLevel; // 게임 계속 진행시 갈수 있는 최고 레벨
+var lifePoint=5; //기회수
+
+// 스테이지 및 레벨에 따른 및 값 설정.(Stage : 1-1~ n-n => kindsNum(stage)-pairNum(level) 
+function levelSetting(){
+	// 각 필요 값 설정.
+	tdNum = $('.td').length; 		// td 총갯수
+	//pairNum = 2;					// 짝 갯수. // 스테이지와 레벨방식으로 나누려고 했으나, 임시로 2개 고정.
+	//초기 level 설정 1부터시작
+	//level = 1;	//	나중에 추가해보기로.. (parseInt($('#levelInVal').val())>0 && $('#levelInVal').val()<maxLevel ? parseInt($('#levelInVal').val()) : 1)
+	kindsNum = level+1;	//초기 조각의 종류 수 //레벨-1
+	noBoombNum = Math.floor(tdNum/pairNum); // 폭탄을 제외한 칸수 (폭탄은 더이상 페어(짝)를 이루지 못하는 공간에만 생성.)
+	sameNum = Math.floor(noBoombNum/kindsNum) // 같은 수 기본갯수. //
+	maxLevel = Math.floor(tdNum/2)-1;	//maxLevel 설정//테이블 생성기준 // 이렇게 하면 게임이 지루해질꺼같음. 이건 나중에 변동을 줘야함!!
+	//정해진 값 화면에 출력.
+	$('#rowInVal').val(rowNum);		// 가로 갯수
+	$('#colInVal').val(colNum);		// 세로 갯수
+	//페어수
+	$('#levelInVal').val(level);	// 레벨
+	/*
+	$('#tdNumVal').html(tdNum);
+	$('#levelMaxVal').html(maxLevel);	//최고 가능 레벨 화면에 전송
+	$('#sameNumVal').html(sameNum);
+	$('#kindsNumVal').html(kindsNum);
+	$('#boombNumVal').html(tdNum-noBoombNum);
+	*/
+	//lifePoint++ //레벨업마다 +1, 스테이지마다+1
+	gameSet = 2; //레벨 셋팅끝!
+}
+
+
+
+	
+// 가상배열
+var tempArray = [];
+// 총칸에서 짝의수, 종류수, 같은 조각수, 폭탄수를 셋팅하기 위한 배열(배열을 순차적으로 생성하고, 다시 배열을 랜덤하게 섞어서 각 칸에 뿌려준다.)
+// 즉 가상배열은 0(=폭탄)을 제외한 오름차순으로 정렬되어 있는 배열.
+function makeTempArray(){
+	for(var idx = 0; idx < tdNum; idx++){
+		// 기본 맞춰야할 횟수에 들어갈 숫자 배분
+		if(idx < sameNum*kindsNum*pairNum){
+			tempArray[idx] = parseInt(idx/(sameNum*pairNum))+1;
+		}
+		// 추가적으로 맞춰야될 횟수에 들어갈 숫자 배분(kindNum가pairNum보다 클 경우 발생하는 빈공간. 이 숫자들이 없으면 폭탄이 너무 많이 생성됨.)
+		// 첫조각(1)부터 마지막 숫자(n)까지 다 채우지 못하고, 일부 조각(n-1or2or3...)만큼의 자리만 날때, 그 공간을 부족한 페어(짝)으로 채움.
+		else if(idx >= sameNum*kindsNum*pairNum && idx < noBoombNum*pairNum ){
+			tempArray[idx] = parseInt((idx-(sameNum*kindsNum*pairNum))/ pairNum) +1;
+		}
+		// 나머지 더이상 페어(짝)이 들어갈 수 없을때 폭탄을 생성함.
+		else if(noBoombNum*pairNum <= idx){
+			tempArray[idx] = 0;
+		}
+		// 혹시 모를 상황이... 그럴리 없겟지만.
+		else{
+			alert("오류코드:E20000bYe_makeTempArray() idx: "+idx);
+		}
+	}
+	// 생성된 배열 확인.
+	console.log("array :"+tempArray);
+}
+
+
+var tdData=[];	// 각 칸이 가져야 할 값 : 배열에서 얻은 고유 숫자. 현재 상태(클릭,정답,노오픈), 인덱스(기본으로갖고잇음.)
+//배열 뿌려줌 : startGamePlay()
+function startGamePlay(){
+	tdData=[];	// 배열 초기화
+	for(idx=0;idx<tdNum;idx++){
+		var ranIdx = Math.floor(Math.random()*tempArray.length);
+		tdData[idx]=[];
+		tdData[idx].push(tempArray[ranIdx]);	// 현재 얻은 랜덤한 숫자 == tdData[idx][0]
+		tdData[idx].push(0);					// 현재 상태값 == tdData[idx][1] ( 0:대기, 1:클릭중, 2:정답, 3:치트대기)
+		tempArray.splice(ranIdx,1);				// 넣은 배열을 삭제함.
+	}
+	// 위에서 배정받은 값을 전부 테이블로 옮김, 숫자대신 이미지를 넣고싶다면, 숫자 데이터는 넣지 않은상태로 아래 CSS에서 이미지를 추가 삽입하면 될것으로 예상.
+	$('.td').each(function(index){
+		$(this).html(tdData[index][1]);			//랜덤한 배열값을 원래 테이블에 넣어줌
+		arrayCssFunc(tdData[index][1]);			//나온 숫자에 따른 색상, 아래 함수 참조: arrayCssFunc(checkNum)
+		$(this).css({background:valColor})		//나온 색상 CSS적용시키기.
+	});
+	gameSet = 3; // 테이블 색상 완료!
+}
+
+var valColor;	//각 숫자값에 맞는 색상
+function arrayCssFunc(checkNum){
+	if(checkNum!=0){
+		switch (checkNum%7) {
+		case 1:
+			valColor = "#FF6961";
+			break;
+		case 2:
+			valColor = "#779ECB";
+			break;
+		case 3:
+			valColor = "#A0D6B4";
+			break;
+		case 4:
+			valColor = "#FFB347";
+			break;
+		case 5:
+			valColor = "#B19CD9";
+			break;
+		case 6:
+			valColor = "#FDFD96";
+			break;
+		case 0:
+			valColor = "#836953";
+			break;
+		default:
+			alert("arrayCssFunc() 오류");
+			break;
+		}
+	}
+	else if(checkNum==0){
+		valColor = "#CFCFC4"; //"#1f1f18";(배경이랑 같은색.)
+	}
+}
+
+
+
+
+
+/* 게임 시작버튼 클릭시 초기 1레벨 부터 생성 */
+/*
+function startGameValue(){
+	if(gameSet==0){
+		
+	}else{
+		alert("오류코드:E20000bYe_startGame()");
+	}
+}
+*/
+/* 초기설정 끝! */
+
+
+var viewTime = 5000; // 카드 가려지기 시작하는 시간 // 아직 셋팅안됨.
+var blockInterval = 100; // 카드 가려지는 사이시간
+// 시작전에 화면 가리기.
+function tdBlocking(){
+	$(".td").each(setTimeout(function(index){
+		$(this).css({background:'#1f1f18'});
+		},blockInterval)
+	);
+/*	
+	arrayIndex=0;
+	var tdBlockInterval = setInterval(function(){
+		if(arrayIndex < $(".td").length){
+			$(".td").eq(arrayIndex).css({background:'#1f1f18'});
+		}
+		else{
+			clearInterval(tdBlockInterval);
+		}
+		arrayIndex++;
+	}, blockInterval);
+*/
+}
+
+
+// 번호 위에 마우스 올렸을때 + 클릭시 함수 발생
+// tdData[idx][1] 이걸로 대체함. <= var arrayIndex; 	// 배열 인덱스값확인용 : checkRe(),tdBlocking()
+// var clickCard = [];	//클릭한 번호 확인용 배열
+var cardIdx=0;		//선택카드 순서
+var checkCard=[];	//정답이 맞는지 확인
+function checkRe(){
+	$(".td").on({
+		mouseenter:function(index){
+			//arrayIndex = $(".td").index(this);
+			if(tdData[idx][1]==0){	//if(clickCard[arrayIndex]!=false){
+				$(this).css({
+					'background':'gold',
+					'color':'gold',
+				//	'font-size':$('.td').height()/2+'px',	//의미없음.
+				});
+			}
+		},
+		mouseleave:function(index){	// +index
+			if(tdData[idx][1]==0){	//if(clickCard[arrayIndex]!=false){
+				$(this).css({	//$(".td").eq(arrayIndex).css({
+					'background':'#1f1f18',
+					'color':'#1f1f18',
+				//	'font-size':$('.td').height()/3+'px',	//의미없음.
+				});
+			}
+		},
+		click:function(index){	// +index
+			if(tdData[index][1]==0){	//if(clickCard[arrayIndex]!=false){
+				arrayCssFunc(tdData[idx][0]);	//arrayCssFunc($(this).html());				//나온 숫자에 따른 색상
+				$(this).css({color:valColor,cursor:"progress"});			//나온 색상 CSS적용시키기.
+				tdData[index][1] = 1;	//clickCard[arrayIndex]=false;
+				
+				checkCard.push(index);
+				
+				
+				여기서부터 하면될듯..
+				if(cardIdx<pairNum){
+					checkCard[cardIdx] = arrayIndex;
+					cardIdx++;
+				}	
+					secondCardIdx = arrayIndex;
+					if($('.td').eq(fistCardIdx).html() == $('.td').eq(secondCardIdx).html()){
+						$('.td').eq(fistCardIdx).css({background:valColor,transition:'background 2s'});
+						$('.td').eq(secondCardIdx).css({background:valColor,transition:'background 2s'});
+						checkCard=0;
+					}else if{
+						alert("게임에 졌습니다.");
+					}
+				}
+				
+			}
+		}
+	});
+}
+function correctCard(){
+	$('.td').eq(checkCard[idx]).css({background:valColor,cursor:"not-allowed"});
+}
+
+function worngCard(){
+	for(idx=0;idx<checkCard.length;idx++){
+		$('.td').eq(checkCard[idx]).css({background:'#1f1f18',cursor:'pointer'});
+		
+	}
+		
+}
+
+
+		
+		
+
+
+/*
+ * 
+ * var clickCard = [];	//클릭한 번호 확인용 배열
+ var cardIdx=0;		//선택카드 순서
+ var checkCard=[];	//정답이 맞는지 확인
+ function checkRe(){
+ 	$(".td").on({
+ 		mouseenter:function(){
+ 			arrayIndex = $(".td").index(this);
+ 			if(clickCard[arrayIndex]!=false){
+ 				$(this).css({
+ 					'background':'gold',
+ 					'color':'gold',
+ 					'font-size':$('.td').height()/2+'px',
+ 				});
+ 			}
+ 		},
+ 		mouseleave:function(){
+ 			if(clickCard[arrayIndex]!=false){
+ 				$(".td").eq(arrayIndex).css({
+ 					'background':'#1f1f18',
+ 					'color':'#1f1f18',
+ 					'font-size':$('.td').height()/3+'px',
+ 				});
+ 			}
+ 		},
+ 		click:function(){
+ 			if(clickCard[arrayIndex]!=false){
+ 				arrayCssFunc($(this).html());			//나온 숫자에 따른 색상
+ 				$(this).css({color:valColor});			//나온 색상 CSS적용시키기.
+ 				clickCard[arrayIndex]=false;
+ 				if(cardIdx<=pairNum){
+ 					checkCard[cardIdx] = arrayIndex;
+ 					cardIdx++;
+ 					
+ 					
+ 					
+ 					
+ 					
+ 					
+ 					
+ 					
+ 					
+ 				}else if(checkCard==1){
+ 					secondCardIdx = arrayIndex;
+ 					if($('.td').eq(fistCardIdx).html() == $('.td').eq(secondCardIdx).html()){
+ 						$('.td').eq(fistCardIdx).css({background:valColor,transition:'background 2s'});
+ 						$('.td').eq(secondCardIdx).css({background:valColor,transition:'background 2s'});
+ 						checkCard=0;
+ 					}else if{
+ 						alert("게임에 졌습니다.");
+ 					}
+ 				}
+ 				
+ 			}
+ 		}
+ 	});
+ }
+ */
+
+
+
+</script>
+</head>
+<body>
+<div class="windowFull whyContain">
+	<div id="allTitle"> 짝 맞 추 기 </div>
+	<div id="winHalf">
+		<div id="countBox">
+			<div id="countTime"></div>
+			<div id="countBar"></div>
+		</div>
+		<div class="table whyContain">
+			<div id='manual'>
+				<pre>1.</pre>
+			</div>
+		</div>
+	</div>
+	<div class="sideMenu whyContain">
+		<div class="welcome whyContain">
+			<div class="sideTitle">- 기본 입력 -</div>
+			<div class="sideLine">
+				<div class="sideContents">가로 :</div>
+					<input type="text" id="rowInVal" value="입력하세요">
+				<div class="sideContents">세로 :</div>
+					<input type="text" id="colInVal" value="입력하세요">
+				<div class="sideContents">묶음기준 :</div>
+					<input type="text" id="bundleInVal" value="2(기본값)">
+				<div class="sideBtn" id="btnTable" onclick="createTable()">[ 테이블 생성 ]</div>
+			</div>
+			<div class="sideTitle">- 스테이지 개요 -</div>
+			<div class="sideLine">	
+				<div class="sideContents">Max Lv. :</div>
+					<div class="sideContents" id="levelMaxVal">?</div>
+				<div class="sideContents">LEVEL :</div>
+					<input type="text" id="levelInVal" value="변경가능">
+				<div class="sideContents">총 조각 :</div>
+					<div class="sideContents" id="tdNumVal">?</div>
+				<div class="sideContents">같은 조각 수 :</div>
+					<div class="sideContents" id="sameNumVal">?</div>
+				<div class="sideContents">조각 종류 :</div>
+					<div class="sideContents" id="kindsNumVal">?</div>
+				<div class="sideContents">폭탄 갯수 :</div>
+					<div class="sideContents" id="boombNumVal">?</div>
+				<div class="sideBtn" id="btnStart">[ 시작하기 ]</div>
+			</div>
+			<div class="sideTitle">- 스테이지 정보 -</div>
+			<div class="sideLine">
+				<div class="sideContents">COMBO :</div>
+					<div class="sideContents" id="comboVal">?</div>
+				<div class="sideContents">LEFT PAIR :</div>
+					<div class="sideContents" id="pairVal">?</div>
+				<div class="sideContents">SCORE :</div>
+					<div class="sideContents" id="scoreVal">?</div>
+			</div>
+			<div class="sideBtn" id="btnHelp">[ 도움말 ]</div>
+<!-- 
+			<div class="sideLine"></div>
+ -->
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

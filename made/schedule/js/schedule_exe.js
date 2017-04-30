@@ -1,4 +1,6 @@
 $(document).ready(function(){
+//오늘 날짜 반영.
+	setDate();
 	
 });
 
@@ -16,12 +18,6 @@ if(!String.prototype.whyLpad){
 		return Array(n - String(this).length + 1).join(str || '0') + this;
 	}
 }
-
-
-(function(){
-	setDate();
-}());
-
 
 
 //시작 or 받는 날짜에 따라 데이터 셋팅
@@ -71,8 +67,6 @@ $('#whySetCalendar').click (function(){
 });
 
 //달력에 각각 날짜를 배열로 선언함.
-
-여기서부터 하면된다!!
 
 var calendarDayArray = [];
 $('.calendarDay').each(function (idx,item){

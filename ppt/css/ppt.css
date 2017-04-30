@@ -1,0 +1,147 @@
+<!-- /*  
+^zXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXz^
+l8                                                                                                                              8!
+lW                          C$$-                                                                                                Wl
+lW                          8$$@                                                                                                Wl
+lW                          $$$$.                                                                                               Wl
+lW    )];              :jz"I$$$$i                                   ;&q1       ua_                   8$d:            {OMbQ~     Wl
+lW    $$$$L.           $$$rt$$$$[             "f|_                  f$$$q      $$$                  \$$$Q          ?$$L $$$z    Wl
+lW    |$$$$$i         J$$$jm$$$$(            ?$$$$]                 L$$$$@     $$${     1^    rOQCzj$$$$Z{-I`      `_. \$$$$    Wl
+lW     $$$$$*        `$$$$uM$$$$(           .$$$$$                  d$$$$$$`   $$$U   ~$$$pjvl/$$$@$$$$$$$$$&u        C$$$$$    Wl
+lW     L$$$$$        n$$$$l$$$$$t  IUphx    p$$$$d     Y@o          8$$$$$$$  .$$$@  "$$$$$+ $1    $$$$k             $$$$$$p    Wl
+lW     "$$$$$u       $$$$d,$$$$$)+m{t$$W    $$$$$r    0$$$"         $$$$$/W$# ,$$$$k,m$$$$@w z$   Y$$$$;            %$$$$$n     Wl
+lW      w$$$$$  ($$BL$$$$`{$$$$$@p  C$$0   M$$$$$~   J$$$$; !uZ+    $$$$$r a$p $$$$dr$$$$$  z&$I{x$$$$Q    ;@       $$$$$^      Wl
+lW      :$$$$$Qb$8$$$$$$O c$$$$$c   $$$f  omw$$$$  ;#$$$$$X8O-      $$$$$j  c$8$$$$u $$$$~  ?$L?i\$$$$    }$1       %$$$!       Wl
+lW       b$$$$$8 +$$$$$$  0$$$$1   j$$$; ]$  fW$$d$$%*$$$@[         &$$$$(   ]$$$$$, ~$$$" [$z   m$$$c   O@"        X$$O        Wl
+lW       ,$$$$$"  *$$$$\  ?$$$]    #$$$ ?$I     "l,  C$$$-          U$$$$     ?$$$k    }CwCC;    1$$$  U$|           C\         Wl
+lW        }h@$U    /OwX     I      !b$$dm^         ]$$$$&             ~i        }\                ;Ca*b1                        Wl
+lW                                                &$~$$$(                                                           $$$j        Wl
+lW                                              +$a n$$$                                                            xW%I        Wl
+lW                                             -$p I$$$m                                                                        Wl
+lW                                            "$$  $$$$                                                                         Wl
+lW                                            :$$z$$$$(                                                                         Wl
+lW    Created By. WhyNot. 2017.04.30 01:44      :/XUC:                                                                          Wl
+l&                                                                                                                              &l
+,wzXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXzw,
+*/ -->
+html,body{height:100%;}
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+*{border: 1px dotted red;}
+
+body{font-family: 'Nanum Gothic';}
+
+
+
+
+
+
+
+
+
+/* 페이지 설정 */
+.whyPage{
+	position:relative;
+	top:0px;
+	left:0px;
+	background-color: #151515;
+	color: gold;
+	width: 100%;
+	height: 100%;
+}
+.whyTitle{
+	position:relative;
+	top:0px;
+	left:0px;
+	color:blue;
+	width:100%;
+	height:10%;
+	padding:1vh;
+	font-size:6vh;
+	font-weight:bold;
+	text-align:center;
+}
+.whyContents{
+	position:relative;
+	top:0px;
+	left:0px;
+	color: gold;
+	width: 100%;
+	height: 90%;
+	padding: 2vh;
+}
+
+
+/* 계획 및 일정 페이지 시작 */
+.whySkedTr{
+	display:block;
+	width:100%;
+	height:10%;
+	padding:0.4vh;
+	border: 2px solid grey;
+	border-top:none;
+	text-align:center;
+}
+.whySkedTr:NTH-CHILD(1){
+	border-top:2px solid grey;
+	border-bottom:4px double grey;
+}
+.whySkedTitle,
+.whySkedDetailTitle,
+.whySkedTdWeek,
+.whySkedTdDate,
+.whySkedTh,
+.whySkedTd{
+	display:inline-table;
+	float:left;
+}
+.whySkedTitle,
+.whySkedDetailTitle,
+.whySkedTh{
+	width:10%;
+	height:100%;
+	font-size:3vh;
+}
+.whySkedDetailTitle,
+.whySkedTh{
+	font-size:2vh;
+}
+.whySkedTitle>div,
+.whySkedDetailTitle>div{
+	display:table-cell;
+	vertical-align:middle;
+}
+.whySkedTdWeek,
+.whySkedTdDate{
+	width:80%;
+	height:50%;
+}
+.whySkedTd{
+	width:80%;
+	height:100%;
+}
+
+/* 계획 및 일정 페이지 끝 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
