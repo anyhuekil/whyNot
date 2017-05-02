@@ -238,15 +238,15 @@ var gameSet = 0; //게임 실행과정을 위한 변수
 */
 
 
-//var rowNum;	//가로 갯수
-//var colNum;	//세로 갯수
+var rowNum;	//가로 갯수
+var colNum;	//세로 갯수
 //var textTable;	// $('.table').html(textTable)을 위한 글자 테이블
 
 function createTable(){
 	// 기본 테이블 text상태로 작성. 입력창에 숫자를 입력하면, 숫자를 받고 아니면 기본 4를 입력한다.
-	var rowNum = (parseInt($('#rowInVal').val())>0 ? parseInt($('#rowInVal').val()) : 4 )	// 가로 갯수.
+	rowNum = (parseInt($('#rowInVal').val())>0 ? parseInt($('#rowInVal').val()) : 4 )	// 가로 갯수.
 	console.log("rowNum: "+rowNum);
-	var colNum = (parseInt($('#colInVal').val())>0 ? parseInt($('#colInVal').val()) : 4 )	// 세로 갯수.
+	colNum = (parseInt($('#colInVal').val())>0 ? parseInt($('#colInVal').val()) : 4 )	// 세로 갯수.
 	var textTable="";	//$('.table').html(textTable)을 위한 글자 테이블
 	for(row=1;row<=rowNum;row++){
 		textTable += '<div class="tr">\n';
@@ -351,16 +351,17 @@ function makeTempArray(){
 
 
 var tdData=[];	// 각 칸이 가져야 할 값 : 배열에서 얻은 고유 숫자. 현재 상태(클릭,정답,노오픈), 인덱스(기본으로갖고잇음.)
-
 //배열 뿌려줌 : startGamePlay()
 function startGamePlay(){
 	tdData=[];	// 배열 초기화
 	for(idx=0;idx<tdNum;idx++){
 		var ranIdx = Math.floor(Math.random()*tempArray.length);
-		tdData[idx]=[];
-		tdData[idx].push(tempArray[ranIdx]);	// 현재 얻은 랜덤한 숫자 == tdData[idx][0]
-		console.log("알람:"+tdData[idx]);
-		tdData[idx].push(0);					// 현재 상태값 == tdData[idx][1] ( 0:대기, 1:클릭중, 2:정답, 3:치트대기)
+		tdData[idx][0] = new Array();
+		tdData[idx][1] = new Array();
+		console.log(tdData[idx][1]+","+tdData[idx][0]);
+		tdData[idx][0].push(tempArray[ranIdx]);	// 현재 얻은 랜덤한 숫자 == tdData[idx][0]
+		console.log("알람:"+tdData[0]+",두번재 확인 :"+tdData[1]);
+		tdData[idx][1].push(0);					// 현재 상태값 == tdData[idx][1] ( 0:대기, 1:클릭중, 2:정답, 3:치트대기)
 		tempArray.splice(ranIdx,1);				// 넣은 배열을 삭제함.
 	}
 	// 위에서 배정받은 값을 전부 테이블로 옮김, 숫자대신 이미지를 넣고싶다면, 숫자 데이터는 넣지 않은상태로 아래 CSS에서 이미지를 추가 삽입하면 될것으로 예상.
