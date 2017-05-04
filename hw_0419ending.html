@@ -189,28 +189,39 @@ function setBtn(e){
 		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
 	}
 	if(e.keyCode==48){	//키코드 숫자 0
-	//	createTable();
-		levelSetting();
-		makeTempArray();
-		startGamePlay();
+		gameStart();
 	}
 	if(e.keyCode==49){ // 키코드 숫자 1 
-		tdBlocking();//
 	}
 	if(e.keyCode==50){ // 키코드 숫자 2
-		checkRe();//클릭 활성화
+		
 	}
 	if(e.keyCode==51){ // 키코드 숫자 3
-		
 	}
 	if(e.keyCode==52){ // 키코드 숫자 4
 	}
 	if(e.keyCode==53){ // 키코드 숫자 5
-		
+		test();
 	}
 }
 
+// 시작함수로 적절한지는 모르겠다..
 
+function test(){
+	console.log(pointSwitch)
+}
+
+function gameStart(){
+		createTable();
+			//whyNot 질문 코드리뷰받아야됨!!
+		//levelSetting();
+		//makeTempArray();
+		//setTable();
+			//whyNot
+		//countDown();
+			//whyNot
+		//tdBlocking();
+}
 
 var gameSet = 0; //게임 실행과정을 위한 변수
 /*	기본값 => 0
@@ -221,6 +232,32 @@ var gameSet = 0; //게임 실행과정을 위한 변수
 	플레이시작 => 5
 	레벨클리어 => 6 => 2
 	게임end(win or lose) => 7
+
+	
+	
+	
+	
+	다시 정리
+	기본값=>0
+	테이블셋팅(이름, 가로, 세로, 페어수)끝나면 =>1
+	레벨,가상배열,플레이시작 =>2
+	타이머끝 =>3
+	테이블 블락킹끝=>4
+	
+	
+	!! 4일때면 클릭이된다!!
+	클릭하면 5 or 6!!
+	다시 이벤트 끝나면 4!!
+	
+	클릭후 진행은 5, 정지는 6
+	
+	6에서 분기가 나줘지는데, 패배조건, 레벨업 조건, 승리조건으로 나뉜다.
+	
+	레벨업 조건의 경우, 레벨업 함수 실행 이후에 테이블 0번으로 돌아간다.
+	
+	
+	
+	
 */
 
 
@@ -230,9 +267,8 @@ var colNum;	//세로 갯수
 
 function createTable(){
 	// 기본 테이블 text상태로 작성. 입력창에 숫자를 입력하면, 숫자를 받고 아니면 기본 4를 입력한다.
-	rowNum = (parseInt($('#rowInVal').val())>0 ? parseInt($('#rowInVal').val()) : 5 )	// 가로 갯수.
-	console.log("rowNum: "+rowNum);
-	colNum = (parseInt($('#colInVal').val())>0 ? parseInt($('#colInVal').val()) : 5 )	// 세로 갯수.
+		rowNum = (parseInt($('#rowInVal').val())>0 ? parseInt($('#rowInVal').val()) : 4 )	// 가로 갯수.
+		colNum = (parseInt($('#colInVal').val())>0 ? parseInt($('#colInVal').val()) : 4 )	// 세로 갯수.
 	var textTable="";	//$('.table').html(textTable)을 위한 글자 테이블
 	for(row=1;row<=rowNum;row++){
 		textTable += '<div class="tr">\n';
@@ -264,12 +300,16 @@ function createTable(){
 		'font-size':$('.td').height()/3+'px',
 	});
 	gameSet = 1; //테이블 셋팅끝!
+	//whyNot
+	levelSetting();
+	makeTempArray();
+	setTable();
 }
 
 
 
 var tdNum; //테이블 안의 td총 갯수.
-var pairNum=3;	//짝의 갯수
+var pairNum=2;	//짝의 갯수
 var level=1; // 레벨 초기값 1
 var kindsNum; // 같은 조각 종류 수
 var noBoombNum;
@@ -293,22 +333,21 @@ function levelSetting(){
 	$('#colInVal').val(colNum);		// 세로 갯수
 	//페어수
 	$('#levelInVal').val(level);	// 레벨
-	/*
+	
 	$('#tdNumVal').html(tdNum);
 	$('#levelMaxVal').html(maxLevel);	//최고 가능 레벨 화면에 전송
 	$('#sameNumVal').html(sameNum);
 	$('#kindsNumVal').html(kindsNum);
-	$('#boombNumVal').html(tdNum-noBoombNum);
-	*/
+	$('#boombNumVal').html(tdNum-(noBoombNum*pairNum));
 	//lifePoint++ //레벨업마다 +1, 스테이지마다+1
-	gameSet = 2; //레벨 셋팅끝!
+	//gameSet = 2; //레벨 셋팅끝!
 }
 
 
 
 	
-// 가상배열
-var tempArray = [];
+var tempArray = [];	// 가상배열
+var totalCount=[];	// 가상배열에서 중복되는 숫자 갯수 (0이면 index 0번에, 1이면 index 1번에 갯수 표시)
 // 총칸에서 짝의수, 종류수, 같은 조각수, 폭탄수를 셋팅하기 위한 배열(배열을 순차적으로 생성하고, 다시 배열을 랜덤하게 섞어서 각 칸에 뿌려준다.)
 // 즉 가상배열은 0(=폭탄)을 제외한 오름차순으로 정렬되어 있는 배열.
 function makeTempArray(){
@@ -316,30 +355,55 @@ function makeTempArray(){
 		// 기본 맞춰야할 횟수에 들어갈 숫자 배분
 		if(idx < sameNum*kindsNum*pairNum){
 			tempArray[idx] = parseInt(idx/(sameNum*pairNum))+1;
+			// 숫자 배분하면서 나온숫자 갯수 세기
+			if(!totalCount[tempArray[idx]]){	
+				totalCount[tempArray[idx]]=1;
+			}else{
+				totalCount[tempArray[idx]]++;
+			}
 		}
 		// 추가적으로 맞춰야될 횟수에 들어갈 숫자 배분(kindNum가pairNum보다 클 경우 발생하는 빈공간. 이 숫자들이 없으면 폭탄이 너무 많이 생성됨.)
 		// 첫조각(1)부터 마지막 숫자(n)까지 다 채우지 못하고, 일부 조각(n-1or2or3...)만큼의 자리만 날때, 그 공간을 부족한 페어(짝)으로 채움.
 		else if(idx >= sameNum*kindsNum*pairNum && idx < noBoombNum*pairNum ){
 			tempArray[idx] = parseInt((idx-(sameNum*kindsNum*pairNum))/ pairNum) +1;
+			// 숫자 배분하면서 나온숫자 갯수 세기 //실질적으로 필요한 내용만 넣음.
+			totalCount[tempArray[idx]]++;
+			/* 위 한줄로 요약 가능. 다른 경우의 수 없기때문에.
+			if(!totalCount[tempArray[idx]]){	
+				totalCount[tempArray[idx]]=1;
+			}else{
+				totalCount[tempArray[idx]]++;
+			}
+			*/
 		}
 		// 나머지 더이상 페어(짝)이 들어갈 수 없을때 폭탄을 생성함.
 		else if(noBoombNum*pairNum <= idx){
 			tempArray[idx] = 0;
+			// 숫자 배분하면서 나온숫자 갯수 세기 // 폭탄의 갯수이기때문에, 굳이 구할 필요 없는 숫자.
+			/*
+			if(!totalCount[0]){	
+				totalCount[0]=1;
+			}else{
+				totalCount[0]++;
+			}
+			*/
 		}
 		// 혹시 모를 상황이... 그럴리 없겟지만.
 		else{
 			alert("오류코드:E20000bYe_makeTempArray() idx: "+idx);
 		}
 	}
+	totalCount[0] = tdNum-(noBoombNum*pairNum); // 폭탄의 갯수.
 	// 생성된 배열 확인.
 	console.log("array :"+tempArray);
+	console.log("array :"+totalCount);
+	remainNum();	// 풀어야할 퀴즈 갯수 전송.
 }
-
 
 var tdInNum=[];	// 각 칸이 가져야 할 값 : 배열에서 얻은 고유 숫자. 현재 상태(클릭,정답,노오픈), 인덱스(기본으로갖고잇음.)
 var tdCondition=[];
-//배열 뿌려줌 : startGamePlay()
-function startGamePlay(){
+//배열 뿌려줌 : setTable()
+function setTable(){
 	tdInNum=[];	// 배열 초기화
 	tdCondition=[];	
 	for(idx=0;idx<tdNum;idx++){
@@ -355,7 +419,9 @@ function startGamePlay(){
 		arrayCssFunc(tdInNum[idx]);			//나온 숫자에 따른 색상, 아래 함수 참조: arrayCssFunc(checkNum)
 		$(this).css({background:valColor})		//나온 색상 CSS적용시키기.
 	});
-	gameSet = 3; // 테이블 색상 완료!
+	gameSet = 2; // 테이블 색상 완료!
+	//whyNot
+	countDown();
 }
 
 var valColor;	//각 숫자값에 맞는 색상
@@ -395,39 +461,52 @@ function arrayCssFunc(checkNum){
 
 
 
-
-
-/* 게임 시작버튼 클릭시 초기 1레벨 부터 생성 */
-/*
-function startGameValue(){
-	if(gameSet==0){
-		
-	}else{
-		alert("오류코드:E20000bYe_startGame()");
-	}
-}
-*/
 /* 초기설정 끝! */
 
+var waitTime=3; //초단위
+function countDown(){
+	console.log("ready");
+	var countNum = waitTime;
+	var countDownInterval = setInterval(countDownRun,1000);
+	function countDownRun(){
+		if(countNum > 0){
+			console.log(countNum);
+		}
+		else{
+			clearInterval(countDownInterval);
+			console.log("go");
+			gameSet = 3;
+			//whyNot
+			tdBlocking();
+		}
+		countNum--;
+	}
+}
 
-var viewTime = 5000; // 카드 가려지기 시작하는 시간 // 아직 셋팅안됨.
-var blockInterval = 100; // 카드 가려지는 사이시간
+
+
+
+
+ // 카드 가려지는 사이시간
 // 시작전에 화면 가리기.
 function tdBlocking(){
 	var blockIdx=0;
-	var tdBlockInterval = setInterval(function(){
-		if(blockIdx < $(".td").length){
+	var tdBlockTerm = 100;
+	var tdBlockInterval = setInterval(tdBlockRun,tdBlockTerm);
+	function tdBlockRun(){
+		if(blockIdx < tdNum){
 			$(".td").eq(blockIdx).css({background:'#1f1f18'});
 		}
 		else{
 			clearInterval(tdBlockInterval);
+			gameSet = 4;
+			console.log("헐");
+			//whyNot
+			checkRe();
 		}
 		blockIdx++;
-	}, blockInterval);
+	}
 }
-/*	
-
-*/
 
 
 
@@ -441,17 +520,17 @@ function checkRe(){
 	$(".td").on({
 		mouseenter:function(){
 			arrayIndex=$(".td").index(this);
-			console.log(arrayIndex);
-			if(tdCondition[arrayIndex]==0){	//if(clickCard[arrayIndex]!=false){
+			//console.log(arrayIndex);
+			if(tdCondition[arrayIndex]==0 && gameSet == 4){	// 게임 진행중에 클릭, 호버 안됨.
 				$(this).css({
 					'background':'gold',
-					'color':'gold',
+					'color': "white",//'gold',
 				});
 			}
 		},
 		mouseleave:function(){	
 		//	arrayIndex=$(".td").index(this);				
-			if(tdCondition[arrayIndex]==0){	//if(clickCard[arrayIndex]!=false){
+			if(tdCondition[arrayIndex]==0 && gameSet == 4){	// 게임 진행중에 클릭, 호버 안됨.
 				$(this).css({	//$(".td").eq(arrayIndex).css({
 					'background':'#1f1f18',
 					'color':'#1f1f18',
@@ -460,14 +539,29 @@ function checkRe(){
 		},
 		click:function(){
 		//	arrayIndex=$(".td").index(this);
-			if(tdCondition[arrayIndex]==0 && checkCard.length<pairNum*2){	//if(clickCard[arrayIndex]!=false){
-				arrayCssFunc(tdInNum[arrayIndex]);	//arrayCssFunc($(this).html());				//나온 숫자에 따른 색상
-				$(this).css({color:valColor,cursor:"progress"});			//나온 색상 CSS적용시키기.
-				tdCondition[arrayIndex] = 1;	//clickCard[arrayIndex]=false;
-				checkCard.push(arrayIndex);		//상자위치(인덱스)를 카드 홀수번째에 기억시킨다.
-				checkCard.push(tdInNum[arrayIndex]);	//상자안의 퀴즈번호를 짝수번째에 기억시킨다.
-				console.log(checkCard);
-				checkCorrect();	// 정답 확인.
+			if(tdCondition[arrayIndex]==0 && gameSet == 4){	// 게임 진행중에 클릭, 호버 안됨.
+				gameSet = 5;								// 클릭후 기본적인 셋팅끝날때까지 대기.
+				if(tdInNum[arrayIndex]!=0 && checkCard.length<pairNum*2){ //폭탄이 아니고, 페어수보다 작은 체크 상태이면.
+					arrayCssFunc(tdInNum[arrayIndex]);		//나온 숫자에 따른 색상
+					$(this).css({color:valColor,cursor:"progress"});			//나온 색상 CSS적용시키기.
+					tdCondition[arrayIndex] = 1;	// 클릭 불가능한 상태로 만듬 (0:클릭가능, 1:클릭중, 2:정답)
+					checkCard.push(arrayIndex);		//상자위치(인덱스)를 카드 홀수번째(0,2,4)에 기억시킨다.
+					checkCard.push(tdInNum[arrayIndex]);	//상자안의 퀴즈번호를 짝수번째(1,3,5..)에 기억시킨다.
+					console.log(checkCard);
+					cardCompare();	// 정답 확인.
+				}
+				else if(tdInNum[arrayIndex]==0){ //폭탄이면,
+					$(this).css({
+						color:'#CFCFC4',
+						background:'#CFCFC4',
+						cursor:"not-allowed",
+						transition:'background 2s, color 1s, font-size 1s',
+						'font-size':$('.td').height()+'px'
+					});
+					tdCondition[arrayIndex] = 1;
+					totalCount[0]--;
+					checkWrong();
+				}
 			}
 		}
 	});
@@ -476,71 +570,145 @@ function checkRe(){
 //			else if(tdData[idx][1]==0 && checkCard.length==(pairNum-1)){
 //				arrayCssFunc(tdData[idx][0]);
 //			}
+// remainNum()
+// totalCount[idx]/pairNum
 
-function checkCorrect(){
-	// 카드 넘길때마다,
-	if(checkCard.length<=pairNum*2 && checkCard[1]!=checkCard[checkCard.length-1]){ //첫번째숫자(짝수단위)와 마지막 카드의숫자가 다르면(불일치)
-		setTimeout(function (){
-			for(idx=0;idx<checkCard.length/2;idx++){
-				$('.td').eq(checkCard[idx*2]).css({
-					background:'#1f1f18',
-					color:'#1f1f18',
-					cursor:'pointer',
-					transition:'background 2s, color 1s',
-					'font-size':$('.td').height()/3+'px'
-					});
-				tdCondition[checkCard[idx*2]] = 0;	//다시 퀴즈를 풀수 있게 상태 변경.
-			}
-			if(idx=checkCard.length/2){
-				alert("라이프 1이 줄어듭니다.");
-				tableReset();
-			}
-		},500);
-	}
-	else if(checkCard.length<pairNum*2 && checkCard[1]==checkCard[checkCard.length-1]){
+
+function cardCompare(){	// 카드 맞는지 확인함수
+		// 카드 넘길때마다,
+		if(checkCard.length<=pairNum*2 && checkCard[1]!=checkCard[checkCard.length-1]){ //첫번째숫자(짝수단위)와 마지막 카드의숫자가 다르면(불일치)
+			checkWrong();
+		}
+		else if(checkCard.length<pairNum*2 && checkCard[1]==checkCard[checkCard.length-1]){ //중간 카드가 일치할때(계속진행)
+			checkSame();
+		}
+		else if(checkCard.length==pairNum*2 && checkCard[1]==checkCard[checkCard.length-1]){ // pairNum 마지막 카드 값이 일치할때.
+			checkCorrect();
+		}
+		else{
+			console.log(checkCard); // 오류상황?
+		}
+}
+
+// 카드 맞는지 확인함수 //
+//첫번째숫자(짝수단위)와 마지막 카드의숫자가 다르면(불일치)
+function checkWrong(){	
+	setTimeout(function (){
 		for(idx=0;idx<checkCard.length/2;idx++){
 			$('.td').eq(checkCard[idx*2]).css({
-				'font-size':$('.td').height()/2+'px',
-				transition:'font-size 1s'
-			});
+				background:'#1f1f18',
+				color:'#1f1f18',
+				cursor:'pointer',
+				transition:'background 2s, color 1s',
+				'font-size':$('.td').height()/3+'px'
+				});
+			tdCondition[checkCard[idx*2]] = 0;	//다시 퀴즈를 풀수 있게 상태 변경.
 		}
-	}
-	// pairNum 마지막 카드 값이 일치할때.
-	else if(checkCard.length==pairNum*2 && checkCard[1]==checkCard[checkCard.length-1]){
-		setTimeout(function (){
-			for(idx=0;idx<checkCard.length/2;idx++){
-				$(".td").eq(checkCard[idx*2]).css({
-					background:valColor,
-					cursor:"not-allowed",
-					'font-size':$('.td').height()/1+'px',
-					transition:'background 2s, color 1s, font-size 1s'
-					});
-				tdCondition[checkCard[idx*2]] = 2;	//정답상태로 변경.
-			}
-			if(idx=checkCard.length/2){
-				tableReset();
-			}
-		},500);
-	}
-	else{
-		console.log(checkCard); // 오류상황?
-	}
+		if(idx=checkCard.length/2){
+			alert("라이프 1이 줄어듭니다.");
+			lifePoint--;
+			result();
+		}
+	},500);
 }
+
+//카드 맞는지 확인함수 //
+//중간 카드가 일치할때(계속진행)
+function checkSame(){	
+	for(idx=0;idx<checkCard.length/2;idx++){
+		$('.td').eq(checkCard[idx*2]).css({
+			'font-size':$('.td').height()/2+'px',
+			transition:'font-size 1s'
+		});
+	}
+	gameSet = 4;
+}
+
+//카드 맞는지 확인함수 //
+// pairNum 마지막 카드 값이 일치할때.
+function checkCorrect(){	
+	setTimeout(function (){
+		for(idx=0;idx<checkCard.length/2;idx++){
+			$(".td").eq(checkCard[idx*2]).css({
+				background:valColor,
+				cursor:"not-allowed",
+				'font-size':$('.td').height()/1+'px',
+				transition:'background 2s, color 1s, font-size 1s'
+				});
+			tdCondition[checkCard[idx*2]] = 2;	//정답상태로 변경.
+		}
+		if(idx=checkCard.length/2){
+			totalCount[checkCard[1]] -= pairNum
+			result();
+		}
+	},500);
+}
+
 
 function tableReset(){ // 맞거나 틀렸을 때 상자 초기화.
 	setTimeout(function (){
 		checkCard=[];
 		$('.td').css({
-			transition:'background 0s, color 0s, font-size 0s',
-			'font-size':$('.td').height()/3+'px'
+				transition:'background 0s, color 0s, font-size 0s',
+				'font-size':$('.td').height()/3+'px'
 		});
-	},1000);
+		gameSet = 4;
+	},1500);
 }
 
 
-function levelClear(){
-
+var remainNumMsg;
+function remainNum(){
+	remainNumMsg = "";
+	for(idx=1;idx<totalCount.length;idx++){ //1부터 시작.. 폭탄 제외함.
+		remainNumMsg+= "[ "+idx+" ] : "+totalCount[idx]/pairNum+"쌍\n"
+		if(gameSet == 1){
+			pointSwitch[idx] = 1;
+		}
+	}
+	remainNumMsg += "Boomb : "+totalCount[0]+"개\n"
+	remainNumMsg += "life : "+lifePoint+"Point"
+	pointSwitch[0] = 0;
+	console.log(remainNumMsg);// div로 넘겨야 됨.
 }
+
+
+var lifePoint = 3;
+var pointSwitch = [];
+var resultPoint;
+
+function result(){
+	remainNum();
+	tableReset();
+	if(lifePoint == 0){	//패배
+		alert("패배했습니다.")
+	}
+	else if(pointSwitch[checkCard[1]]==1 && totalCount[checkCard[1]] == 0){
+		pointSwitch[checkCard[1]] = 0;
+		alert("보너스를 획득했습니다.");
+		lifePoint++;
+		resultPoint = 0;
+		console.log("***확인용***")
+		console.log(level+","+maxLevel+","+resultPoint)
+		console.log(pointSwitch)
+		for(idx=0;idx<pointSwitch.length;idx++){
+			resultPoint += pointSwitch[idx];
+		}
+		if(level!=maxLevel && resultPoint==0){
+			level++;
+			alert("레벨업! 다음 단계시작합니다.");
+			gameSet = 0;
+			gameStart(); // 다음단계 시작합니다 div만들기.
+		}
+		else if(level==maxLevel && resultPoint==0){
+			alert("승리!");
+		}
+		console.log("***확인용***")
+		console.log(level+","+maxLevel+","+resultPoint)
+	}
+}
+
+
 
 
 
