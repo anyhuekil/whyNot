@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>♪♪♪♪♪</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>♪QUIZ BANK</title>
 <style type="text/css">
+html,body{height:100%;}
 body{box-sizing:border-box;}
 *, *:after, *:before{box-sizing:inherit;}
 
@@ -14,40 +17,17 @@ body{box-sizing:border-box;}
 .whyContain:before{content:"";display:table;clear:both;}
 
 
-
+/*
 *{border: 1px dotted red;}
+*/
 </style>
 <script src="http://code.jquery.com/jquery-3.2.1.js">
 </script>
 <script type="text/javascript">
 /**/
 $(function(){
-	if(a==b){
-		console.log("같음");
-		}else if(a!=b){
-		console.log("다름");		
-		}
-		else{
-		console.log("잘못됨");
-		}
-	if(c==d){
-		console.log("같음1");
-		}else if(c!=d){
-		console.log("다름1");		
-		}
-		else{
-		console.log("잘못됨1");
-		}
-
+	
 });
-
-
-
-var a = ["홍길동"];
-var b = ["홍길동"];
-
-var c = "홍길동";
-var d = "홍길동";
 
 
 </script>

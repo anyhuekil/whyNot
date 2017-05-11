@@ -1,0 +1,47 @@
+
+CREATE TABLE FMZONE(
+		FMNUM NUMBER(2) PRIMARY KEY,
+        FMNAME VARCHAR2(10),
+        FMA NUMBER(3),
+        FMB NUMBER(3),
+        FMC NUMBER(3),
+        FMD NUMBER(3),
+        FMSUM NUMBER(3));
+
+INSERT INTO FMZONE VALUES
+        (00, '서종원', 0, 0, 0, 0, 0);
+INSERT INTO FMZONE VALUES
+        (01, '신관용', 0, 0, 0, 0, 0);
+INSERT INTO FMZONE VALUES
+        (02, '서정효', 0, 0, 0, 0, 0);
+INSERT INTO FMZONE VALUES
+        (03, '박윤하', 0, 0, 0, 0, 0);
+INSERT INTO FMZONE VALUES
+        (04, '배재현', 0, 0, 0, 0, 0);
+INSERT INTO FMZONE VALUES
+        (05, '윤은혜', 0, 0, 0, 0, 0);
+
+
+
+CREATE TABLE RECFM (
+		RECIDX NUMBER(4) PRIMARY KEY,
+		FMNUM NUMBER(2) references FMZONE(FMNUM),
+		RECDATE DATE,
+		RECNAME VARCHAR2(10),
+		RECPOINT NUMBER(2),
+		RECTEXT VARCHAR2(50)
+		);
+
+INSERT INTO RECFM VALUES
+        (0, 00, TO_DATE('05-11', 'MM-DD'), 'FMD', 99, 'TEST GOOD JOB!');
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
