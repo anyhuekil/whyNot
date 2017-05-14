@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>♪JSP</title>
+<title>♪DATABASE</title>
 <style type="text/css">
 html,body{height:100%;}
 body{box-sizing:border-box;}
