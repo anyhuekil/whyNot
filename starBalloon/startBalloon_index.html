@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>♪HTML</title>
+<style type="text/css">
+html,body{height:100%;}
+body{box-sizing:border-box;}
+*, *:after, *:before{box-sizing:inherit;}
+
+*{margin:0; padding:0;}
+
+.whyContain{padding:0;}
+.whyContain:after,
+.whyContain:before{content:"";display:table;clear:both;}
+
+
+
+#inpputName{}
+#button{}
+#nameValue{}
+
+
+*{border: 1px dotted red;}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.js">
+</script>
+<script type="text/javascript">
+
+$(function(){
+	$("#button").on("click",function(){
+		var upperChar = $("#inputName").val().toUpperCase(); //대문자로 변환
+		var temp=[]; // 각 단어 아스키코드 값
+		var cnt = 0;
+		word[0] = 0;
+		alert($("#inputName").val());
+		for(var idx = 0; idx < upperChar.length; idx++){
+			temp[idx] = upperChar.charCodeAt(idx);
+			if(temp[idx]==32){
+				word[cnt] = word[cnt]%10; 
+				cnt++;
+				word[cnt]=0;
+			}else{
+				word[cnt] += temp[idx];
+			}
+		}
+		word[cnt] = word[cnt]%10; 
+		$("#nameValue").html(word);
+	});
+});
+
+
+var word = [];
+
+
+//키코드값 알기
+/* 
+document.addEventListener("keydown",keyDown);
+function keyDown(e){
+	if(e.keyCode){
+		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
+	}
+}
+*/
+
+</script>
+</head>
+<body>
+	<div><input id="inputName" type="text" value="a A z Z"></div>
+	<div id="button">입력</div>
+	<h1 id="nameValue">??</h1>
+
+</body>
+</html>

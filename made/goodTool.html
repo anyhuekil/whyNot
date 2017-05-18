@@ -29,10 +29,9 @@ $(function(){
 		});
 });
 
-document.addEventListener("keydown",keyDown);
-
 
 //키코드값 알기
+document.addEventListener("keydown",keyDown);
 function keyDown(e){
 	if(e.keyCode){
 		console.log( String.fromCharCode(event.keyCode) +" : "+event.keyCode);
