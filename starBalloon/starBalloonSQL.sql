@@ -6,6 +6,20 @@ CREATE TABLE ACCESSUSER(
 	nameSign NUMBER,
 	starBalloon NUMBER,
 	nameCode NUMBER
-);
+)
+NOCACHE
+LOGGING;
 
-SELECT * FROM ACCESSUSER;
+select * from product;
+
+
+
+CREATE TABLE PRODUCT
+(
+   PROD    VARCHAR2 (500),
+   COUNT   NUMBER
+)
+NOCACHE
+LOGGING;
+
+insert into PRODUCT values('돌맹이' , 10);

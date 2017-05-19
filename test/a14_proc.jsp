@@ -17,7 +17,7 @@ if(name!=null){
    // 해당 데이터가 있으면..
    if(vo!=null){
       hasProduct=true;
-      session.setAttribute("prod", vo);
+      session.setAttribute("why", vo);
    }   
 }
 %>
@@ -52,7 +52,7 @@ $(document).ready(function(){
 </script>
 </head>
 <%
-Product sessVo=(Product)session.getAttribute("prod");
+Product sessVo=(Product)session.getAttribute("why");
 %>   
 <body>
 
