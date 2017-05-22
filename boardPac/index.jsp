@@ -28,25 +28,7 @@ String lastTime=format.format(time);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>♪JSP</title>
-<style type="text/css">
-html,body{height:100%;}
-body{box-sizing:border-box;}
-*, *:after, *:before{box-sizing:inherit;}
-
-*{margin:0; padding:0;}
-
-.whyContain{padding:0;}
-.whyContain:after,
-.whyContain:before{content:"";display:table;clear:both;}
-
-#inpputName{}
-#button{}
-#nameValue{}
-
-/*
-*{border: 1px dotted red;}
-*/
-</style>
+	<link rel="stylesheet" type="text/css" href="css/starBalloon.css">
 <script src="http://code.jquery.com/jquery-3.2.1.js">
 </script>
 <script type="text/javascript">
@@ -84,28 +66,11 @@ var word = [];
 	<h1 id="nameValue">??</h1>
 
 
-</body>
-</html>
+<!-- session.setAttribute("key", value객체);
+ -->
 
-
-
-
-
-
-
-
-
-//session.setAttribute("key", value객체);
-
-
-		<script type="text/javascript">
-			$(document).ready(function(){
-				
-			})
-		</script>
-	</head>
-	<body>
-		<h1>세션 생성시간:<%=creTime%></h1>
+<h1>세션 생성시간:<%=creTime%></h1>
+		<h2>클라이언트IP:<%=request.getRemoteAddr()%></h2>
 		<h1><%=session.getAttribute(userName)%>님 드루와~</h1>
 		<h3>[<%=ip %>]</h3>
 		<p>세션ID:<%=session.getId()%></p>
