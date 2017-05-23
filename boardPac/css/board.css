@@ -9,14 +9,23 @@ body{box-sizing:border-box;}
 .whyContain:before{content:"";display:table;clear:both;}
 
 
+
+.whyClick:HOVER{
+	color:gold;
+}
+.whyClick:ACTIVE{
+	color:red;
+	background-color: white;
+}
+
 /*
-*{border: 1px dotted red;}
+*{border:1px dotted red;}
 */
 
 
-/* list */
+/* main */
 .listBox{
-	width:1200px;
+	width:1204px;
 	height:500px;
 	background:black;
 	color:white;
@@ -36,59 +45,55 @@ body{box-sizing:border-box;}
 	float:left;
 	height:100%;
 }
-.listNo{
-	width:100px;
+.listNo,
+.listSearchCnt{
+	width:50px;
 }
 .listTitle{
-	text-align:left;
-	width:800px;
+	width:1000px;
 }
 .listId{
-	width:200px;
-}
-.listSearchCnt{
 	width:100px;
 }
 
-.listPageContain{
+.listCommandContain{
 	text-align:center;
-	height:30px;
+	height:40px;
+	width:100%;
+	padding:5px 30px;
 }
-.listPage{
+
+.listCommand{
 	display:inline-block;
 	height:100%;
 }
-.lsitMoveleft,
-.lsitMoveright,
-.lsitMoveno{
+
+.listMoveleft,
+.listMoveno,
+.listMoveright{
 	display:inline-block;
 	float:left;
 	width:30px;
 	height:100%;
 }
+.listSearchText,
+.listSearch,
 .listWrite{
 	display:inline-block;
 	float:right;
 	text-align:center;
 	font-weight:bold;
 	width:70px;
-	height:30px;
-	margin-right: 100px;
+	height:100%;
+}
+.listSearchText{
+	width:300px;
+	font-weight:normal;
+	text-align:left;
 }
 
-.whyClick:HOVER {
-	color:gold;
-}
-.whyClick:ACTIVE {
-	color:red;
-	background-color: white;
-}
-/* list */
 
-
-
-
-
+/* write */
 
 
 
