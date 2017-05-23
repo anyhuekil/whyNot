@@ -1,20 +1,15 @@
-<!--
-	경매카운트만 확인하기 위해 DB테이블에 종료시간 속성만 추가함.
--->
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     import = "java.util.*, java.text.*"
-    import = "z02_vo.Item, z01_database.ItemDB"
+	import="fm_VO.SecondPageDTO, fm_DAO.SecondPageDAO"
+	import="fm_VO.Auction_Bid, fm_DAO.Auction_BidDao"
     %>
 <%
 request.setCharacterEncoding("UTF-8"); 
   String path=request.getContextPath();	
 // dao, dto 세팅 
-  ItemDB dao = new ItemDB();
-  Item dto = new Item();
+  SecondPageDAO dao = new SecondPageDAO();
+  SecondPageDTO dto = new SecondPageDTO();
 //	날짜 변환. sql에서 rs.getDate로 테이블의 마감시간값을 따오면 yyyy/MM/dd로만 표시되서 
 //	SimpleDateFormat으로 날짜형식을 변형함.
 //	Timestamp api를 사용하면 따올 수 있기는 한데 뭔가 이상해서 포기함.

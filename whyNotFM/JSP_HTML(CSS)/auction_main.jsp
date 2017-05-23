@@ -3,12 +3,12 @@
     import = "java.util.*, java.text.*"
     import = "fm_VO.SecondPageDTO, fm_DAO.SecondPageDAO"
     import = "fm_VO.Auction_Bid, fm_DAO.Auction_BidDao"
-    
     %>
+    
 <%request.setCharacterEncoding("UTF-8"); 
   String path=request.getContextPath();	
 %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,7 +22,7 @@
 //	날짜 변환. sql에서 rs.getDate로 테이블의 마감시간값을 따오면 yyyy/MM/dd로만 표시되서 
 //	SimpleDateFormat으로 날짜형식을 변형함.
   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-  String day = sdf.format(dao.when(dto).getJdday());
+  String day = sdf.format(dao.bidding_date(dto).getJdday());
 %>    
 
 var count = setInterval(setTime,1000);
@@ -48,9 +48,9 @@ function setTime(){
 		$("input[name = curr]").attr("disabled", true);		
 		<%
 		Auction_Bid bidder = new Auction_Bid();
-		Auction_BidDao db = new Auction_BidDao();
-		bidder.setAuctionID(1);		//###
-		Double curBid = new Double( db.getPrice(bidder).getCurrentBid() ); //###
+		SecondPageDAO db = new SecondPageDAO();
+		bidder.setAuction_id(1);		//###
+		Double curBid = new Double( db.getPrice(bidder).getCurrent_bid_amount());//###
 		int boundary[] = {0,5000,50000,10000000};
 		int increaseBid[] = {1000,2000,3000};
 		int interval = 0;
@@ -113,7 +113,7 @@ function setTime(){
 				Raise Bid +$<input type = text name = curr value = <%=nowBidPrice %> /><br/>
 				Total Bid Price : $<input type = text name = afterR value = <%=(curBid+nowBidPrice) %> />
 				<pre></pre> <button>Place Bid</button> <br/>
-				<input type = text name = hiddenBidderId value = <%=bidder.getAuctionID() %> style = "visibility:hidden;" /> 
+				<input type = text name = hiddenBidderId value = <%=bidder.getAuction_id() %> style = "visibility:hidden;" /> 
 			</form>
 		</div>
 		<div id="seller_info">
