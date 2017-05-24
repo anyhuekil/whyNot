@@ -1,0 +1,60 @@
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	box-sizing: border-box;
+}
+
+*, *:after, *:before {
+	box-sizing: inherit;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.whyContain {
+	padding: 0;
+}
+
+.whyContain:after, .whyContain:before {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* * {
+	border: 1px dotted red;
+} */
+
+.whytable {
+	border-style: outset;
+	background-color: #8080ff;
+	width: 80%;
+	height: 100%;
+}
+
+.whyrow {
+	display: block;
+	float: left;
+	width: 100%;
+	height: 25%;
+	border:inset;
+}
+
+.whycol {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+
+
+
