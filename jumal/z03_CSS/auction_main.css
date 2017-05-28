@@ -1,0 +1,82 @@
+* {
+	margin: auto;
+	padding: 0;
+	font-family: "Comic Sans MS";
+}
+
+h2 {
+	margin-left: 30px;
+	line-height: 60px;
+	color: blue;
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+	color: blue;
+}
+
+h3 {
+	margin-left: 30px;
+	line-height: 40px;
+}
+
+p {
+	margin-left: 30px;
+	line-height: 40px;
+}
+
+div {
+	border: 1px dotted black;
+	display: inline-block;
+}
+
+#main_container {
+	display: block;
+	width: 1200px;
+	height: 100vh;
+}
+
+#item_picture {
+	margin: 2%;
+	width: 45%;
+	height: 50%;
+	float: left;
+	background: url("javaFile/test1.png") no-repeat center;
+}
+
+#item_info {
+	margin: 2%;
+	width: 45%;
+	height: 50%;
+	float: left;
+}
+
+#countdown_info {
+	margin: 2%;
+	width: 45%;
+	height: 15%;
+	float: left;
+}
+
+#bidding_info {
+	margin: 2%;
+	width: 45%;
+	height: 15%;
+	text-align: center;
+}
+
+#seller_info {
+	margin: 2%;
+	width: 95%;
+	height: 20%;
+}
+
+#showTime {
+	text-align: center;
+	font-size: 20px;
+}
+
+#pict {
+	
+}
