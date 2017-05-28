@@ -1,0 +1,11 @@
+create TABLE member(
+	memid VARCHAR2(50) PRIMARY KEY,
+	pass VARCHAR2(30),
+	name VARCHAR2(50),
+	point NUMBER,
+	auth VARCHAR2(20) 
+);
+
+insert into member values('himan','7777','ÇÏÀÌ¸Ç',10,'admin');
+insert into member values('superman','8888','½´ÆÛ¸Ç',20,'user');
+insert into member values('legend','9999','È«±æµ¿',50,'guest');
