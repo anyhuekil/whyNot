@@ -1,13 +1,11 @@
 package z02_vo;
 
-import java.sql.Timestamp;
-
 public class AuctionUserVO {
 	private int userId;
 	private String userName;
 	private String email;
 	private String password;
-	private Timestamp registerDate;
+	private Date registerDate;
 	private int auth;
 
 	public int getUserId() {
@@ -42,11 +40,11 @@ public class AuctionUserVO {
 		this.password = password;
 	}
 
-	public Timestamp getRegisterDate() {
+	public Date getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Timestamp registerDate) {
+	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
 
